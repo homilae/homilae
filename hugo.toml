@@ -1,0 +1,30 @@
+baseURL = "https://homiliae.org/"
+languageCode = "en-us"
+title = "Homiliae"
+theme = "PaperMod"
+paginate = 20
+
+[params]
+  description = "An open-access archive of Catholic homilies and sermons, with original language texts and English translations."
+  defaultTheme = "light"
+  ShowReadingTime = false
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = false
+
+[params.homeInfoParams]
+  Title = "Homiliae"
+  Content = "An open-access archive of Christian preaching across twenty centuries — original languages alongside English translation, free to all."
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/YOURUSERNAME/homiliae"
+
+[taxonomies]
+  author = "authors"
+  period = "periods"
+  language = "languages"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

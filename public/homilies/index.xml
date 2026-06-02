@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Homilies on Homiliae</title>
+    <link>http://localhost:1313/homilies/</link>
+    <description>Recent content in Homilies on Homiliae</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/homilies/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tractate I on the Gospel of John</title>
+      <link>http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/</guid>
+      <description>&lt;h2 id=&#34;original-text&#34;&gt;Original Text&lt;/h2&gt;
+&lt;p&gt;In principio erat Verbum&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;english-translation&#34;&gt;English Translation&lt;/h2&gt;
+&lt;p&gt;In the beginning was the Word&amp;hellip;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
