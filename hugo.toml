@@ -1,4 +1,4 @@
-baseURL = "https://homiliae.org/"
+baseURL = "https://homilae.github.io/"
 languageCode = "en-us"
 title = "Homiliae"
 theme = "PaperMod"
