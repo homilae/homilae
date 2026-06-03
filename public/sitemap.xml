@@ -3,38 +3,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://homilae.github.io/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
   </url><url>
-    <loc>https://homilae.github.io/authors/</loc>
+    <loc>http://localhost:1313/authors/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/creation/</loc>
+    <loc>http://localhost:1313/tags/creation/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/election/</loc>
+    <loc>http://localhost:1313/tags/election/</loc>
   </url><url>
-    <loc>https://homilae.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
   </url><url>
-    <loc>https://homilae.github.io/homilies/</loc>
+    <loc>http://localhost:1313/homilies/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/judgement/</loc>
+    <loc>http://localhost:1313/tags/judgement/</loc>
   </url><url>
-    <loc>https://homilae.github.io/languages/</loc>
+    <loc>http://localhost:1313/languages/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/lent/</loc>
+    <loc>http://localhost:1313/tags/lent/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/light/</loc>
+    <loc>http://localhost:1313/tags/light/</loc>
   </url><url>
-    <loc>https://homilae.github.io/periods/</loc>
+    <loc>http://localhost:1313/periods/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/salvation/</loc>
+    <loc>http://localhost:1313/tags/salvation/</loc>
   </url><url>
-    <loc>https://homilae.github.io/homilies/massillon/petit-careme/sermon-01/</loc>
+    <loc>http://localhost:1313/homilies/massillon/petit-careme/sermon-01/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url><url>
-    <loc>https://homilae.github.io/homilies/augustine/tractates-on-john/tractate-01/</loc>
+    <loc>http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/trinity/</loc>
+    <loc>http://localhost:1313/tags/trinity/</loc>
   </url><url>
-    <loc>https://homilae.github.io/tags/word/</loc>
+    <loc>http://localhost:1313/tags/word/</loc>
   </url>
 </urlset>

@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Homiliae</title>
-    <link>https://homilae.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Homiliae</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://homilae.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://homilae.github.io/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://homilae.github.io/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description></description>
     </item>
     <item>
       <title>Sermon I — On the Small Number of the Elect</title>
-      <link>https://homilae.github.io/homilies/massillon/petit-careme/sermon-01/</link>
+      <link>http://localhost:1313/homilies/massillon/petit-careme/sermon-01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://homilae.github.io/homilies/massillon/petit-careme/sermon-01/</guid>
+      <guid>http://localhost:1313/homilies/massillon/petit-careme/sermon-01/</guid>
       <description>&lt;h2 id=&#34;original-text&#34;&gt;Original Text&lt;/h2&gt;
 &lt;div class=&#34;text-section&#34; data-section=&#34;1&#34;&gt;
   Mes frères, si vous étiez dans l&amp;rsquo;incertitude si Dieu vous a destinés à la vie ou à la mort éternelle, et qu&amp;rsquo;en parcourant les Livres saints vous vinssiez à trouver cet oracle terrible : Le grand nombre est destiné à la mort, et le petit nombre seulement à la vie ; quelle serait votre frayeur ?
@@ -54,9 +54,9 @@
     </item>
     <item>
       <title>Tractate I on the Gospel of John</title>
-      <link>https://homilae.github.io/homilies/augustine/tractates-on-john/tractate-01/</link>
+      <link>http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://homilae.github.io/homilies/augustine/tractates-on-john/tractate-01/</guid>
+      <guid>http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/</guid>
       <description>&lt;h2 id=&#34;original-text&#34;&gt;Original Text&lt;/h2&gt;
 &lt;p&gt;In principio erat Verbum&amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;english-translation&#34;&gt;English Translation&lt;/h2&gt;

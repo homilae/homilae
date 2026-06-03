@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.162.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homiliae — Christian Preaching Archive</title>
@@ -21,28 +20,26 @@
     </nav>
   </header>
 
-  
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-label">Open Access · AI-Assisted Translation · Free to All</div>
       <h1>The voice of the Church,<br><em>across twenty centuries</em></h1>
       <p class="hero-sub">A free archive of Christian homilies and sermons from the Fathers, the medieval Church, and later preachers — original languages alongside English translation.</p>
       <div class="hero-stats">
-        
-        
-        
-          
-        
-          
-        
-        <div><strong>2</strong> homilies</div>
-        <div><strong>2</strong> authors</div>
+        {{ $homilies := where .Site.RegularPages "Section" "homilies" }}
+        {{ $authors := slice }}
+        {{ range $homilies }}
+          {{ $authors = $authors | append .Params.author }}
+        {{ end }}
+        <div><strong>{{ len $homilies }}</strong> homilies</div>
+        <div><strong>{{ len ($authors | uniq) }}</strong> authors</div>
         <div><strong>c. 200 – 1900 AD</strong></div>
       </div>
     </div>
   </section>
 
-  
+  <!-- Browse bar -->
   <div class="browse-bar">
     <a href="/homilies" class="browse-tab active">All Periods</a>
     <a href="/periods/patristic" class="browse-tab">Patristic</a>
@@ -51,10 +48,10 @@
     <a href="/periods/modern" class="browse-tab">Modern (1700–1900)</a>
   </div>
 
-  
+  <!-- Body -->
   <div class="home-body">
 
-    
+    <!-- Sidebar -->
     <aside class="home-sidebar">
       <div class="sidebar-section">
         <div class="sidebar-heading">Language</div>
@@ -70,111 +67,75 @@
       <div class="sidebar-section">
         <div class="sidebar-heading">Authors</div>
         <ul class="sidebar-list">
-          
-          
-          
-            
-          
-            
-          
-          
-            
-            <li><a href="/authors/jean-baptiste-massillon">Jean-Baptiste Massillon</a></li>
-            
-          
-            
-            <li><a href="/authors/augustine-of-hippo">Augustine of Hippo</a></li>
-            
-          
+          {{ $homilies := where .Site.RegularPages "Section" "homilies" }}
+          {{ $authors := slice }}
+          {{ range $homilies }}
+            {{ $authors = $authors | append .Params.author }}
+          {{ end }}
+          {{ range ($authors | uniq) }}
+            {{ if . }}
+            <li><a href="/authors/{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+          {{ end }}
         </ul>
       </div>
       <div class="sidebar-section">
         <div class="sidebar-heading">Recently Added</div>
         <ul class="sidebar-list">
-          
-          
-          <li><a href="http://localhost:1313/homilies/massillon/petit-careme/sermon-01/">Sermon I — On the Small Number of the Elect</a></li>
-          
-          <li><a href="http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/">Tractate I on the Gospel of John</a></li>
-          
+          {{ $homilies := where .Site.RegularPages "Section" "homilies" }}
+          {{ range first 5 $homilies }}
+          <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          {{ end }}
         </ul>
       </div>
     </aside>
 
-    
+    <!-- Main content -->
     <main class="home-main">
       <h2 class="section-title">Browse by Author</h2>
 
-      
+      {{ $homilies := where .Site.RegularPages "Section" "homilies" }}
 
-      
-      
-      
-        
-      
-        
-      
+      <!-- Group by author -->
+      {{ $authors := slice }}
+      {{ range $homilies }}
+        {{ $authors = $authors | append .Params.author }}
+      {{ end }}
 
       <div class="author-grid">
-        
-          
-          
-          
-          
-          <a class="author-card" href="/authors/jean-baptiste-massillon">
-            <div class="author-card-period">Modern</div>
-            <div class="author-card-name">Jean-Baptiste Massillon</div>
-            <div class="author-card-lang">French</div>
-            <div class="author-card-count"><strong>1</strong> homily</div>
+        {{ range ($authors | uniq) }}
+          {{ $author := . }}
+          {{ $authorHomilies := where $homilies "Params.author" $author }}
+          {{ $first := index $authorHomilies 0 }}
+          {{ if $first }}
+          <a class="author-card" href="/authors/{{ $author | urlize }}">
+            <div class="author-card-period">{{ $first.Params.period }}</div>
+            <div class="author-card-name">{{ $author }}</div>
+            <div class="author-card-lang">{{ $first.Params.language_original }}</div>
+            <div class="author-card-count"><strong>{{ len $authorHomilies }}</strong> {{ if eq (len $authorHomilies) 1 }}homily{{ else }}homilies{{ end }}</div>
           </a>
-          
-        
-          
-          
-          
-          
-          <a class="author-card" href="/authors/augustine-of-hippo">
-            <div class="author-card-period">Patristic</div>
-            <div class="author-card-name">Augustine of Hippo</div>
-            <div class="author-card-lang">Latin</div>
-            <div class="author-card-count"><strong>1</strong> homily</div>
-          </a>
-          
-        
+          {{ end }}
+        {{ end }}
       </div>
 
-      
+      <!-- All homilies list -->
       <h2 class="section-title" style="margin-top:3rem">All Homilies</h2>
       <div class="homily-list">
-        
-        <a class="homily-row" href="http://localhost:1313/homilies/massillon/petit-careme/sermon-01/">
+        {{ range $homilies }}
+        <a class="homily-row" href="{{ .Permalink }}">
           <div class="homily-row-main">
-            <div class="homily-row-title">Sermon I — On the Small Number of the Elect</div>
+            <div class="homily-row-title">{{ .Title }}</div>
             <div class="homily-row-meta">
-              <span>Jean-Baptiste Massillon</span>
-              <span>1718</span>
-              <span>Matthew 22:14</span>
+              <span>{{ .Params.author }}</span>
+              {{ with .Params.date_composed }}<span>{{ . }}</span>{{ end }}
+              {{ with .Params.scripture_refs }}<span>{{ delimit . ", " }}</span>{{ end }}
             </div>
           </div>
-          <div class="lang-badge lang-french">
-            French
+          <div class="lang-badge lang-{{ .Params.language_original | lower | replaceRE " " "-" }}">
+            {{ .Params.language_original }}
           </div>
         </a>
-        
-        <a class="homily-row" href="http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/">
-          <div class="homily-row-main">
-            <div class="homily-row-title">Tractate I on the Gospel of John</div>
-            <div class="homily-row-meta">
-              <span>Augustine of Hippo</span>
-              <span>c. 406–420 AD</span>
-              <span>John 1:1-5</span>
-            </div>
-          </div>
-          <div class="lang-badge lang-latin">
-            Latin
-          </div>
-        </a>
-        
+        {{ end }}
       </div>
 
     </main>
