@@ -1,0 +1,312 @@
+/* ── Tokens ── */
+:root {
+  --ink:        #1a1611;
+  --ink-faint:  #4a443a;
+  --ink-ghost:  #8a8078;
+  --parchment:  #faf7f2;
+  --warm-white: #fffdf9;
+  --rule:       #ddd6ca;
+  --rule-dark:  #b8ac9e;
+  --accent:     #8b3a2a;
+  --gold:       #a07830;
+  --latin-bg:   #f5f0e8;
+  --english-bg: #faf7f2;
+  --greek-bg:   #eef0f5;
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ink);
+  background: var(--parchment);
+}
+
+/* ── Header ── */
+.site-header {
+  background: var(--ink);
+  color: #fff;
+  padding: 0 2rem;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.wordmark {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  color: #c8a060;
+  text-decoration: none;
+  margin-right: auto;
+}
+.site-header nav a {
+  color: rgba(255,255,255,.65);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.6rem;
+}
+.site-header nav a:hover { color: #fff; }
+
+/* ── Reader wrap ── */
+.reader-wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 5rem;
+}
+
+/* ── Homily header ── */
+.reader-header {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.breadcrumb {
+  font-size: 0.78rem;
+  color: var(--ink-ghost);
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+.breadcrumb a { color: var(--ink-ghost); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
+.homily-title {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+.title-original {
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-bottom: 0.8rem;
+}
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  font-size: 0.88rem;
+  color: var(--ink-ghost);
+  margin-bottom: 1.2rem;
+}
+.meta-row strong { color: var(--ink-faint); font-weight: 400; }
+
+/* ── View toggle ── */
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.view-btn {
+  padding: 0.4rem 1rem;
+  font-family: 'EB Garamond', serif;
+  font-variant: small-caps;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  background: var(--warm-white);
+  border: none;
+  border-right: 1px solid var(--rule);
+  cursor: pointer;
+  color: var(--ink-ghost);
+  transition: background .15s, color .15s;
+}
+.view-btn:last-child { border-right: none; }
+.view-btn.active { background: var(--ink); color: #fff; }
+.view-btn:hover:not(.active) { background: #eee8dc; color: var(--ink); }
+
+/* ── Parallel reader ── */
+.parallel-reader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Single-column view modes */
+.parallel-reader.show-original .col-translation { display: none; }
+.parallel-reader.show-original .col-original { grid-column: 1 / -1; }
+.parallel-reader.show-translation .col-original { display: none; }
+.parallel-reader.show-translation .col-translation { grid-column: 1 / -1; }
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.col-original { background: var(--latin-bg); }
+.col-translation {
+  background: var(--english-bg);
+  border-left: 1px solid var(--rule);
+}
+
+/* Column label */
+.col-label {
+  font-size: 0.68rem;
+  font-variant: small-caps;
+  letter-spacing: 0.2em;
+  color: var(--ink-ghost);
+  padding: 0.9rem 1.8rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  position: sticky;
+  top: 52px;
+  background: inherit;
+  z-index: 10;
+}
+.lang-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-latin   { background: #a07830; }
+.dot-greek   { background: #6090c0; }
+.dot-english { background: #60b080; }
+
+/* ── Sections — the alignment mechanism ── */
+.col-content {
+  padding: 0;
+}
+
+/*
+  Each .text-row contains one Latin section (left cell)
+  and its matching English section (right cell).
+  The row stretches to whichever side is taller,
+  keeping both columns in sync.
+*/
+.parallel-reader .text-rows {
+  display: contents; /* rows are managed at reader level */
+}
+
+/*
+  The actual alignment grid: we use CSS subgrid
+  so that matching sections share row height.
+  Fallback for browsers without subgrid: sections
+  have a visible divider so drift is tolerable.
+*/
+.col-content { display: flex; flex-direction: column; }
+
+.text-section {
+  padding: 1.4rem 1.8rem;
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+.text-section:last-child { border-bottom: none; }
+
+/* Original text typography */
+.col-original .text-section {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+/* English translation typography */
+.col-translation .text-section {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 0.98rem;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.85;
+  color: var(--ink-faint);
+}
+
+/* Section number marker */
+.section-num {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+/* Hover highlight — same section both sides */
+.text-section.highlighted {
+  background: rgba(160, 120, 48, 0.07);
+}
+
+/* Scripture reference links */
+.text-section a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+.text-section a:hover { border-bottom-style: solid; }
+
+/* ── Source note ── */
+.source-note {
+  margin-top: 2.5rem;
+  padding: 1.2rem 1.5rem;
+  background: #f0e8d8;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  line-height: 1.7;
+}
+.source-note strong { color: var(--ink); font-weight: 500; }
+.ai-badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  background: rgba(139,58,42,.1);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  padding: 0.1rem 0.5rem;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.translation-notes {
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+/* ── Prev/Next nav ── */
+.homily-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--warm-white);
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+  max-width: 45%;
+}
+.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-next { margin-left: auto; }
+
+/* ── Responsive ── */
+@media (max-width: 780px) {
+  .parallel-reader {
+    grid-template-columns: 1fr;
+  }
+  .col-translation {
+    border-left: none;
+    border-top: 1px solid var(--rule);
+  }
+}

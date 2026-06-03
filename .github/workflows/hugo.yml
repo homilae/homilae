@@ -39,8 +39,12 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build with Hugo
-        run: |
-          hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+        env:
+          HUGO_ENVIRONMENT: production
+        run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Index with Pagefind
+        run: npx pagefind --site public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

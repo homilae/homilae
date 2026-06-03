@@ -2,16 +2,61 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Homiliae</title>
-    <link>http://localhost:1313/</link>
+    <link>https://homilae.github.io/</link>
     <description>Recent content on Homiliae</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://homilae.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://homilae.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homilae.github.io/about/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sermon I — On the Small Number of the Elect</title>
+      <link>https://homilae.github.io/homilies/massillon/petit-careme/sermon-01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://homilae.github.io/homilies/massillon/petit-careme/sermon-01/</guid>
+      <description>&lt;h2 id=&#34;original-text&#34;&gt;Original Text&lt;/h2&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;1&#34;&gt;
+  Mes frères, si vous étiez dans l&amp;rsquo;incertitude si Dieu vous a destinés à la vie ou à la mort éternelle, et qu&amp;rsquo;en parcourant les Livres saints vous vinssiez à trouver cet oracle terrible : Le grand nombre est destiné à la mort, et le petit nombre seulement à la vie ; quelle serait votre frayeur ?
+&lt;/div&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;2&#34;&gt;
+  Vous vous diriez à vous-mêmes : Hélas ! je suis peut-être du grand nombre. Et vous ne pourriez vivre avec cette incertitude. Vous ne pourriez penser ni aux affaires, ni aux plaisirs ; vous ne pourriez ni manger, ni dormir en paix. Vous ne seriez occupés qu&amp;rsquo;à chercher les moyens de vous assurer si vous êtes du petit nombre des élus.
+&lt;/div&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;3&#34;&gt;
+  Eh bien ! mes frères, ce que je suppose n&amp;rsquo;est point une fiction. Dieu lui-même nous a révélé que beaucoup sont appelés et peu sont élus. Ce n&amp;rsquo;est point un oracle caché dans les ténèbres de l&amp;rsquo;avenir ; c&amp;rsquo;est une vérité que Jésus-Christ nous a clairement annoncée. Beaucoup sont appelés, peu sont élus.
+&lt;/div&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;4&#34;&gt;
+  Et cependant cette terrible vérité ne vous trouble point ? Vous l&amp;rsquo;entendez avec la même tranquillité que si elle ne vous regardait pas ? Vous vivez au milieu du monde, dans les plaisirs, dans l&amp;rsquo;oubli de Dieu et du salut, comme si vous étiez sûrs d&amp;rsquo;être du petit nombre des élus ?
+&lt;/div&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;5&#34;&gt;
+  C&amp;rsquo;est ce qui fait le sujet de ma douleur et de mon étonnement. Comment des hommes raisonnables peuvent-ils vivre dans un si grand péril sans chercher à en sortir ? Comment peuvent-ils entendre que peu seront sauvés, et ne point trembler à la pensée qu&amp;rsquo;ils pourraient être du grand nombre des réprouvés ?
+&lt;/div&gt;
+&lt;h2 id=&#34;english-translation&#34;&gt;English Translation&lt;/h2&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;1&#34;&gt;
+  My brethren, if you were uncertain whether God had destined you for eternal life or eternal death, and if in searching the sacred scriptures you came upon this terrible oracle — the greater number are destined for death, and only the lesser number for life — what fear would seize you?
+&lt;/div&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;2&#34;&gt;
+  You would say to yourselves: Alas, perhaps I am among the greater number. And you could not live with that uncertainty. You could think neither of business nor of pleasure; you could neither eat nor sleep in peace. Your only occupation would be to seek some assurance that you belong to the small number of the elect.
+&lt;/div&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;3&#34;&gt;
+  And yet, my brethren, what I have supposed is no fiction. God himself has revealed to us that many are called and few are chosen. This is no oracle hidden in the darkness of the future; it is a truth that Jesus Christ has declared to us plainly. Many are called, and few are chosen.
+&lt;/div&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;4&#34;&gt;
+  And yet this terrible truth does not trouble you? You hear it with the same calm as though it did not concern you? You live in the midst of the world, in its pleasures, forgetful of God and of salvation, as though you were certain of belonging to the small number of the elect?
+&lt;/div&gt;
+&lt;div class=&#34;text-section&#34; data-section=&#34;5&#34;&gt;
+  This is the cause of my grief and my astonishment. How can reasonable men live in so great a danger without seeking to escape it? How can they hear that few shall be saved, and not tremble at the thought that they might be numbered among the many who are lost?
+&lt;/div&gt;</description>
+    </item>
     <item>
       <title>Tractate I on the Gospel of John</title>
-      <link>http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/</link>
+      <link>https://homilae.github.io/homilies/augustine/tractates-on-john/tractate-01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/</guid>
+      <guid>https://homilae.github.io/homilies/augustine/tractates-on-john/tractate-01/</guid>
       <description>&lt;h2 id=&#34;original-text&#34;&gt;Original Text&lt;/h2&gt;
 &lt;p&gt;In principio erat Verbum&amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;english-translation&#34;&gt;English Translation&lt;/h2&gt;

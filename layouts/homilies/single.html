@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/search">Search</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+
+  <div class="reader-wrap">
+
+    <!-- Homily header -->
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/authors/{{ .Params.author | urlize }}">{{ .Params.author }}</a> ›
+        {{ .Params.work_series }}
+      </div>
+      <h1 class="homily-title">{{ .Title }}</h1>
+      {{ with .Params.title_original }}
+        <p class="title-original">{{ . }}</p>
+      {{ end }}
+      <div class="meta-row">
+        <span><strong>Author:</strong> {{ .Params.author }}</span>
+        <span><strong>Date:</strong> {{ .Params.date_composed }}</span>
+        <span><strong>Language:</strong> {{ .Params.language_original }}</span>
+        {{ with .Params.scripture_refs }}
+          <span><strong>Scripture:</strong> {{ delimit . ", " }}</span>
+        {{ end }}
+      </div>
+
+      <!-- View toggle -->
+      <div class="view-toggle">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">{{ .Params.language_original }} only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    <!-- Parallel reader -->
+    <div class="parallel-reader" id="parallel-reader">
+      <div class="col col-original">
+        <div class="col-label">
+          <span class="lang-dot dot-latin"></span>
+          {{ .Params.language_original }} · Original
+        </div>
+        <div class="col-content" id="original-content">
+          <!-- original text sections injected by JS -->
+        </div>
+      </div>
+      <div class="col col-translation">
+        <div class="col-label">
+          <span class="lang-dot dot-english"></span>
+          English · Translation
+        </div>
+        <div class="col-content" id="translation-content">
+          <!-- translation sections injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden content store (Hugo renders both halves here) -->
+    <div id="raw-content" style="display:none">
+      {{ .Content }}
+    </div>
+
+    <!-- Source note -->
+    <div class="source-note">
+      <strong>Source of original text:</strong> {{ .Params.source_text }}<br>
+      <strong>Translation:</strong> {{ .Params.translation_source }}
+      {{ if .Params.ai_assisted }}
+        <span class="ai-badge">AI-assisted translation — reviewed</span>
+      {{ end }}
+      {{ with .Params.translation_notes }}
+        <p class="translation-notes">{{ . }}</p>
+      {{ end }}
+    </div>
+
+    <!-- Prev / Next navigation -->
+    <div class="homily-nav">
+      {{ with .PrevInSection }}
+        <a class="nav-btn nav-prev" href="{{ .Permalink }}">
+          ← <span>{{ .Title }}</span>
+        </a>
+      {{ end }}
+      {{ with .NextInSection }}
+        <a class="nav-btn nav-next" href="{{ .Permalink }}">
+          <span>{{ .Title }}</span> →
+        </a>
+      {{ end }}
+    </div>
+
+  </div><!-- /reader-wrap -->
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

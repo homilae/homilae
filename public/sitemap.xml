@@ -3,26 +3,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/authors/</loc>
+    <loc>https://homilae.github.io/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/creation/</loc>
+    <loc>https://homilae.github.io/authors/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://homilae.github.io/tags/creation/</loc>
   </url><url>
-    <loc>http://localhost:1313/homilies/</loc>
+    <loc>https://homilae.github.io/tags/election/</loc>
   </url><url>
-    <loc>http://localhost:1313/languages/</loc>
+    <loc>https://homilae.github.io/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/light/</loc>
+    <loc>https://homilae.github.io/homilies/</loc>
   </url><url>
-    <loc>http://localhost:1313/periods/</loc>
+    <loc>https://homilae.github.io/tags/judgement/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://homilae.github.io/languages/</loc>
   </url><url>
-    <loc>http://localhost:1313/homilies/augustine/tractates-on-john/tractate-01/</loc>
+    <loc>https://homilae.github.io/tags/lent/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/trinity/</loc>
+    <loc>https://homilae.github.io/tags/light/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/word/</loc>
+    <loc>https://homilae.github.io/periods/</loc>
+  </url><url>
+    <loc>https://homilae.github.io/tags/salvation/</loc>
+  </url><url>
+    <loc>https://homilae.github.io/homilies/massillon/petit-careme/sermon-01/</loc>
+  </url><url>
+    <loc>https://homilae.github.io/tags/</loc>
+  </url><url>
+    <loc>https://homilae.github.io/homilies/augustine/tractates-on-john/tractate-01/</loc>
+  </url><url>
+    <loc>https://homilae.github.io/tags/trinity/</loc>
+  </url><url>
+    <loc>https://homilae.github.io/tags/word/</loc>
   </url>
 </urlset>
