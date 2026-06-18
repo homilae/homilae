@@ -1,7 +1,7 @@
 baseURL = "https://homilae.github.io/"
-languageCode = "en-us"
+locale = "en-us"
 title = "Homiliae"
-theme = "PaperMod"
+# theme = "PaperMod"
 [pagination]
   pagerSize = 5
 
@@ -13,19 +13,27 @@ theme = "PaperMod"
   ShowPostNavLinks = true
   ShowCodeCopyButtons = false
 
-[params.homeInfoParams]
-  Title = "Homiliae"
-  Content = "An open-access archive of Christian preaching across twenty centuries — original languages alongside English translation, free to all."
-
-[[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/YOURUSERNAME/homiliae"
 
 [taxonomies]
   author = "authors"
   period = "periods"
   language = "languages"
   tag = "tags"
+  liturgical_occasion = "liturgical_occasions"
+  audience = "audiences"
+  theme = "themes"
+  homily_type = "homily_types"
+  verse = "verses"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "JSON"]
+  page = ["HTML"]
+  section = ["HTML"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

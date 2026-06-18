@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;500&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+  <link rel="stylesheet" href="/css/browse.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies" class="active">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+
+  <!-- Author data from Hugo -->
+<script id="author-data" type="application/json">
+    {{ hugo.Data.authors | jsonify }}
+  </script>
+  <!-- VIEW: Author Index (default) -->
+  <div id="view-authors" class="browse-view">
+    <div class="browse-hero">
+      <h1 class="browse-hero-title">Browse by Author</h1>
+      <p class="browse-hero-sub">{{ len hugo.Data.authors }} authors · <span id="total-homily-count">—</span> homilies</p>
+      <div class="browse-search-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="author-search" placeholder="Search authors or sermons…" oninput="filterAuthors(this.value)">
+      </div>
+      <div class="browse-filter-row" id="period-filters"></div>
+    </div>
+
+    <div class="browse-wrap">
+      <div class="author-grid" id="author-grid">
+        <div class="browse-loading">Loading…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW: Author Detail -->
+  <div id="view-author-detail" class="browse-view" style="display:none">
+    <div class="browse-hero">
+      <div class="author-detail-back">
+        <button onclick="showAuthorIndex()" class="back-btn">← All Authors</button>
+      </div>
+      <div class="author-detail-header">
+        <div class="author-detail-text">
+          <h1 class="author-detail-name" id="detail-name"></h1>
+          <div class="author-detail-meta" id="detail-meta"></div>
+          <p class="author-detail-bio" id="detail-bio"></p>
+        </div>
+        <div class="author-detail-image-wrap" id="detail-image-wrap" style="display:none">
+          <img class="author-detail-image" id="detail-image" src="" alt="">
+          <div class="author-detail-caption" id="detail-caption"></div>
+        </div>
+      </div>
+      <div class="browse-search-box" style="margin-top:1.2rem">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="sermon-search" placeholder="Search within this author's sermons…" oninput="filterSermons(this.value)">
+      </div>
+      <div class="browse-filter-row" id="theme-filters"></div>
+      <div class="browse-filter-row" id="occasion-filters" style="margin-top:0.4rem"></div>
+    </div>
+
+    <div class="browse-wrap">
+      <div class="homily-list" id="sermon-list"></div>
+    </div>
+  </div>
+
+  <script>
+  let allHomilies = [];
+  let authorData = {};
+  let currentAuthor = null;
+  let activeTheme = null;
+  let activeOccasion = null;
+  let activePeriod = null;
+
+  // Load author data
+  try {
+    const raw = document.getElementById('author-data').textContent.trim();
+    const parsed = JSON.parse(raw);
+    authorData = (typeof parsed === 'string') ? JSON.parse(parsed) : parsed;
+  } catch(e) { console.error('Author data error:', e); }
+
+  // Check URL for author param
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlAuthor = urlParams.get('author');
+
+  fetch('/index.json')
+    .then(r => r.json())
+    .then(data => {
+      allHomilies = data.filter(h => h.title && h.title.trim() !== '');
+
+      // Update total count
+      document.getElementById('total-homily-count').textContent = allHomilies.length;
+
+      // Build period filters
+      const periods = [...new Set(allHomilies.map(h => h.period).filter(Boolean))].sort();
+      buildPillFilters('period-filters', periods, val => {
+        activePeriod = activePeriod === val ? null : val;
+        renderAuthorGrid();
+        updatePillsActive('period-filters', activePeriod);
+      });
+
+      // If URL has author param, go straight to detail view
+      if (urlAuthor) {
+        const matched = Object.keys(authorData).find(a =>
+          a.toLowerCase().replace(/\s+/g, '-') === urlAuthor ||
+          (authorData[a].slug && authorData[a].slug === urlAuthor)
+        );
+        if (matched) {
+          showAuthorDetail(matched);
+          return;
+        }
+      }
+
+      renderAuthorGrid();
+    });
+
+  function renderAuthorGrid(searchTerm) {
+    const grid = document.getElementById('author-grid');
+    const term = (searchTerm || document.getElementById('author-search').value || '').toLowerCase();
+
+    // Build author list from data file + homily counts
+    const authorEntries = Object.entries(authorData).map(([name, data]) => {
+      const homilies = allHomilies.filter(h => h.author === name);
+      return { name, data, homilies, count: homilies.length };
+    });
+
+    // Filter by search
+    let filtered = authorEntries.filter(a => {
+      if (term && !a.name.toLowerCase().includes(term) &&
+          !(a.data.tradition || '').toLowerCase().includes(term)) return false;
+      if (activePeriod) {
+        const authorPeriods = [...new Set(a.homilies.map(h => h.period).filter(Boolean))];
+        if (!authorPeriods.includes(activePeriod)) return false;
+      }
+      return true;
+    });
+
+    // Also search homily titles
+    let extraHomilies = [];
+    if (term) {
+      extraHomilies = allHomilies.filter(h =>
+        h.title.toLowerCase().includes(term) &&
+        !filtered.find(a => a.name === h.author)
+      );
+    }
+
+    if (filtered.length === 0 && extraHomilies.length === 0) {
+      grid.innerHTML = '<div class="browse-empty">No authors found.</div>';
+      return;
+    }
+
+    let html = filtered.map(({ name, data, homilies, count }) => `
+      <div class="author-card" onclick="showAuthorDetail('${name.replace(/'/g, "\\'")}')">
+        <div class="author-card-period">${data.tradition || ''}</div>
+        <div class="author-card-name">${name}</div>
+        <div class="author-card-dates">${data.dates || ''}</div>
+        <div class="author-card-desc">${(data.description || '').substring(0, 120)}…</div>
+        <div class="author-card-count">${count} ${count === 1 ? 'homily' : 'homilies'}</div>
+      </div>
+    `).join('');
+
+    if (extraHomilies.length > 0) {
+      html += `<div class="search-also-label">Sermons matching "${term}"</div>`;
+      html += extraHomilies.map(h => `
+        <a class="homily-row" href="${h.url}">
+          <div class="homily-row-main">
+            <div class="homily-row-title">${h.title}</div>
+            <div class="homily-row-meta"><span>${h.author}</span>${h.date_composed ? '<span>' + h.date_composed + '</span>' : ''}</div>
+          </div>
+          <div class="lang-badge lang-${(h.language_original||'').toLowerCase()}">${h.language_original||''}</div>
+        </a>
+      `).join('');
+    }
+
+    grid.innerHTML = html;
+  }
+
+  window.filterAuthors = function(term) {
+    renderAuthorGrid(term);
+  };
+
+  window.showAuthorDetail = function(authorName) {
+    currentAuthor = authorName;
+    activeTheme = null;
+    activeOccasion = null;
+
+    const data = authorData[authorName] || {};
+    const homilies = allHomilies.filter(h => h.author === authorName);
+
+    document.getElementById('detail-name').textContent = authorName;
+    document.getElementById('detail-meta').textContent =
+      [data.dates, data.tradition].filter(Boolean).join(' · ');
+    document.getElementById('detail-bio').textContent = data.description || '';
+    const imageWrap = document.getElementById('detail-image-wrap');
+    const imageEl = document.getElementById('detail-image');
+    const captionEl = document.getElementById('detail-caption');
+
+    if (data.image) {
+      imageEl.src = data.image;
+      imageEl.alt = authorName;
+      captionEl.textContent = data.image_caption || '';
+      imageWrap.style.display = 'block';
+    } else {
+      imageWrap.style.display = 'none';
+    }
+    document.getElementById('sermon-search').value = '';
+
+    // Build theme filters
+    const themes = [...new Set(homilies.flatMap(h => h.themes || []).filter(Boolean))].sort();
+    buildPillFilters('theme-filters', themes, val => {
+      activeTheme = activeTheme === val ? null : val;
+      renderSermonList();
+      updatePillsActive('theme-filters', activeTheme);
+    }, 'Theme: ');
+
+    // Build occasion filters
+    const occasions = [...new Set(homilies.flatMap(h => h.liturgical_occasion || []).filter(Boolean))].sort();
+    buildPillFilters('occasion-filters', occasions, val => {
+      activeOccasion = activeOccasion === val ? null : val;
+      renderSermonList();
+      updatePillsActive('occasion-filters', activeOccasion);
+    }, 'Occasion: ');
+
+    // Update URL
+    window.history.pushState({}, '', '/homilies/?author=' + encodeURIComponent(
+      (data.slug || authorName.toLowerCase().replace(/\s+/g, '-'))
+    ));
+
+    document.getElementById('view-authors').style.display = 'none';
+    document.getElementById('view-author-detail').style.display = 'block';
+
+    renderSermonList();
+  };
+
+  window.showAuthorIndex = function() {
+    currentAuthor = null;
+    document.getElementById('view-author-detail').style.display = 'none';
+    document.getElementById('view-authors').style.display = 'block';
+    window.history.pushState({}, '', '/homilies/');
+  };
+
+  window.filterSermons = function(term) {
+    renderSermonList(term);
+  };
+
+  function renderSermonList(searchTerm) {
+    const list = document.getElementById('sermon-list');
+    const term = (searchTerm !== undefined ? searchTerm :
+      document.getElementById('sermon-search').value || '').toLowerCase();
+
+    let homilies = allHomilies.filter(h => h.author === currentAuthor);
+
+    if (term) homilies = homilies.filter(h =>
+      h.title.toLowerCase().includes(term) ||
+      (h.work_series || '').toLowerCase().includes(term)
+    );
+    if (activeTheme) homilies = homilies.filter(h => (h.themes || []).includes(activeTheme));
+    if (activeOccasion) homilies = homilies.filter(h => (h.liturgical_occasion || []).includes(activeOccasion));
+
+    if (homilies.length === 0) {
+      list.innerHTML = '<div class="browse-empty">No sermons match.</div>';
+      return;
+    }
+
+    // Group by work_series
+    const series = {};
+    const noSeries = [];
+    homilies.forEach(h => {
+      if (h.work_series) {
+        if (!series[h.work_series]) series[h.work_series] = [];
+        series[h.work_series].push(h);
+      } else {
+        noSeries.push(h);
+      }
+    });
+
+    let html = '';
+
+    Object.entries(series).forEach(([seriesName, items]) => {
+      html += `<div class="series-heading">${seriesName}</div>`;
+      html += items.map(h => sermonRow(h)).join('');
+    });
+
+    if (noSeries.length > 0) {
+      if (Object.keys(series).length > 0) {
+        html += `<div class="series-heading">Other Sermons</div>`;
+      }
+      html += noSeries.map(h => sermonRow(h)).join('');
+    }
+
+    list.innerHTML = html;
+  }
+
+  function sermonRow(h) {
+    return `
+      <a class="homily-row" href="${h.url}">
+        <div class="homily-row-main">
+          <div class="homily-row-title">${h.title}</div>
+          <div class="homily-row-meta">
+            ${h.date_composed ? '<span>' + h.date_composed + '</span>' : ''}
+            ${h.liturgical_occasion && h.liturgical_occasion[0] !== 'No specific occasion'
+              ? '<span>' + h.liturgical_occasion[0] + '</span>' : ''}
+          </div>
+        </div>
+        <div class="lang-badge lang-${(h.language_original||'').toLowerCase()}">${h.language_original||''}</div>
+      </a>
+    `;
+  }
+
+  function buildPillFilters(containerId, values, onClick, prefix) {
+    const container = document.getElementById(containerId);
+    if (!container || values.length === 0) {
+      if (container) container.innerHTML = '';
+      return;
+    }
+    container.innerHTML = values.map(val => `
+      <button class="filter-pill" onclick="(${onClick.toString()})('${val.replace(/'/g, "\\'")}')">
+        ${prefix || ''}${val}
+      </button>
+    `).join('');
+  }
+
+  function updatePillsActive(containerId, activeVal) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim().includes(activeVal || '____'));
+    });
+  }
+
+  // Handle browser back button
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('author')) {
+      const name = Object.keys(authorData).find(a =>
+        (authorData[a].slug || a.toLowerCase().replace(/\s+/g, '-')) === params.get('author')
+      );
+      if (name) { showAuthorDetail(name); return; }
+    }
+    showAuthorIndex();
+  });
+
+  </script>
+
+</body>
+</html>

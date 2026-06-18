@@ -1,0 +1,83 @@
+.scripture-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+}
+.scripture-hero {
+  padding: 3.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+.scripture-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.scripture-hero p {
+  font-style: italic;
+  color: var(--ink-ghost);
+  margin-bottom: 0.5rem;
+}
+.scripture-count {
+  font-size: 0.78rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--ink-ghost);
+}
+.scripture-book {
+  margin-bottom: 2.5rem;
+}
+.book-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.verse-list {
+  display: grid;
+  gap: 0;
+}
+.verse-entry {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.verse-entry:last-child { border-bottom: none; }
+.verse-ref {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  padding-top: 0.1rem;
+}
+.verse-homilies {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.verse-homilies li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+}
+.verse-homilies a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.verse-homilies a:hover { text-decoration: underline; }
+.homily-author {
+  font-size: 0.75rem;
+  color: var(--ink-ghost);
+  font-style: italic;
+}

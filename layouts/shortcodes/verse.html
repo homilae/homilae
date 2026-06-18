@@ -1,0 +1,8 @@
+{{ $ref := .Get "ref" }}
+{{ $slug := $ref | urlize }}
+<span class="verse-wrap">
+  <span class="verse-text">{{ .Inner }}</span>
+  <a href="/scriptures/#{{ $slug }}" class="verse-tooltip">
+    <span class="tooltip-ref">{{ $ref }}</span>
+  </a>
+</span>

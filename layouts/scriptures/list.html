@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scripture Index — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+  <link rel="stylesheet" href="/css/scripture.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/search">Search</a>
+      <a href="/scriptures" class="active">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+
+  <div class="scripture-wrap">
+    <div class="scripture-hero">
+      <h1>Scripture Index</h1>
+      <p>Every biblical passage referenced in the archive, linked to the homilies that treat it</p>
+      <div class="scripture-count">{{ len .Data.Pages }} passages indexed</div>
+    </div>
+
+    {{ $books := slice }}
+    {{ range .Data.Pages }}
+      {{ $parts := split .Title ":" }}
+      {{ $book := index $parts 0 }}
+      {{ $books = $books | append $book }}
+    {{ end }}
+
+    {{ range ($books | uniq) }}
+      {{ $book := . }}
+      <div class="scripture-book">
+        <h2 class="book-heading">{{ $book }}</h2>
+        <div class="verse-list">
+          {{ range $.Data.Pages }}
+            {{ if hasPrefix .Title $book }}
+            <div class="verse-entry">
+              <div class="verse-ref">{{ .Title }}</div>
+              <ul class="verse-homilies">
+                {{ range .Pages }}
+                  {{ $currentPage := . }}
+                  {{ $verseTitle := $.Title }}
+                  {{ $section := "" }}
+                  {{ range .Params.scripture_refs }}
+                    {{ if eq .verse $verseTitle }}
+                      {{ $section = .section }}
+                    {{ end }}
+                  {{ end }}
+                  <li>
+                    <a href="{{ $currentPage.Permalink }}{{ if $section }}#section-{{ $section }}{{ end }}">
+                      {{ $currentPage.Title }}
+                    </a>
+                    <span class="homily-author">{{ $currentPage.Params.author }}</span>
+                  </li>
+                {{ end }}
+              </ul>
+            </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+
+  </div>
+</body>
+</html>

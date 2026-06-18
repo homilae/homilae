@@ -7,14 +7,31 @@ number:
 date_composed: ""
 date_composed_circa: true
 language_original: "Latin"
-scripture_refs: []
-tags: []
 period: ""
+homily_type: ""
+
+liturgical_occasion:
+  - ""
+
+audience:
+  - ""
+
+themes:
+  - ""
+
+scripture_refs:
+  - ref: ""
+    type: "direct"
+    section: "1"
+
+verse:
+  - ""
+
 source_text: ""
 source_text_url: ""
 translation_source: ""
 translation_notes: ""
-ai_assisted: false
+ai_assisted: true
 reviewed: false
 draft: true
 ---
@@ -22,19 +39,27 @@ draft: true
 ## Original Text
 
 {{< section "1" >}}
-Lorum Ipsum
+
+Paste first section of original text here.
+
 {{< /section >}}
 
 {{< section "2" >}}
-Ipsum Lorem
+
+Paste second section here.
+
 {{< /section >}}
 
 ## English Translation
 
 {{< section "1" >}}
-Ipsum Lorem
+
+Paste English translation of section 1 here.
+
 {{< /section >}}
 
 {{< section "2" >}}
-Lorum Ipsum
+
+Paste English translation of section 2 here.
+
 {{< /section >}}

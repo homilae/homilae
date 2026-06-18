@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On Right Faith — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,opsz,wght@0,6..144,400;0,6..144,500;1,6..144,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+    <button class="settings-trigger" onclick="toggleSettings()" aria-label="Settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  
+  <div class="settings-overlay" id="settings-overlay" onclick="toggleSettings()"></div>
+  <aside class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <span class="settings-title">Reading Settings</span>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-label">Appearance</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Mode</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setMode('light')">Light</button>
+            <button class="s-btn" onclick="setMode('sepia')">Sepia</button>
+            <button class="s-btn" onclick="setMode('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Font Size</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Size</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setFontSize('small')">Small</button>
+            <button class="s-btn active" onclick="setFontSize('medium')">Medium</button>
+            <button class="s-btn" onclick="setFontSize('large')">Large</button>
+            <button class="s-btn" onclick="setFontSize('xlarge')">X-Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Layout</div>
+        <div class="settings-row">
+          <span class="settings-row-label">View</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setView('parallel')">Parallel</button>
+            <button class="s-btn" onclick="setView('original')">Latin only</button>
+            <button class="s-btn" onclick="setView('translation')">English only</button>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:0.8rem">
+          <span class="settings-row-label">Line spacing</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setLineHeight('compact')">Compact</button>
+            <button class="s-btn active" onclick="setLineHeight('normal')">Normal</button>
+            <button class="s-btn" onclick="setLineHeight('spacious')">Spacious</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Typography</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Font</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setFont('cardo')">Cardo</button>
+            <button class="s-btn" onclick="setFont('garamond')">Garamond</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Scripture</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Show tooltips</span>
+          <label class="settings-toggle-switch">
+            <input type="checkbox" id="tooltip-toggle" checked onchange="toggleTooltips(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section settings-section--future">
+        <div class="settings-section-label">Coming soon</div>
+        <div class="settings-future-item">Bookmark this homily</div>
+        <div class="settings-future-item">Print optimised view</div>
+        <div class="settings-future-item">Download as PDF</div>
+        <div class="settings-future-item">Copy citation</div>
+      </div>
+
+    </div>
+  </aside>
+
+  
+  <div class="info-overlay" id="info-overlay" onclick="toggleInfo()"></div>
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-header">
+      <span class="info-modal-title">Sermon Information</span>
+      <button class="info-modal-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-modal-body">
+
+      
+
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Liturgical Occasion</div>
+        <div class="info-value">No specific occasion</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Audience</div>
+        <div class="info-value">General faithful</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Themes</div>
+        <div class="info-chips">
+          
+          <span class="info-chip">Virtues · Faith</span>
+          
+          <span class="info-chip">Last things · Judgement</span>
+          
+          <span class="info-chip">Last things · Heaven</span>
+          
+          <span class="info-chip">Last things · Hell</span>
+          
+          <span class="info-chip">Sacraments · Baptism</span>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Scripture References</div>
+        <div class="info-chips">
+          
+          <span class="info-chip info-chip--verse">Acts 4:24</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="info-section">
+        <div class="info-label">Source Text</div>
+        <div class="info-value">
+          Migne, Patrologia Latina, vol. 89 (Paris, 1863)
+          
+          <a href="https://dn790000.ca.archive.org/0/items/patrologiaecur89mign/patrologiaecur89mign.pdf" target="_blank" rel="noopener" class="info-link">↗ View source</a>
+          
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Translation</div>
+        <div class="info-value">Claude Sonnet 4.6</div>
+      </div>
+
+      
+
+      <div class="info-section info-section--last">
+        <div class="info-label">How to Cite</div>
+        <div class="info-value info-cite">
+          Pseudo-Boniface, "On Right Faith," trans. Homiliae Archive,
+          <em>Homiliae: Christian Preaching Archive</em>,
+          accessed 2026,
+          http://localhost:1313/homilies/pseudo-boniface/sermon-01/.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reader-wrap">
+
+    
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/homilies/?author=pseudo-boniface">Pseudo-Boniface</a>
+         › Sermons (Pseudo-Boniface)
+      </div>
+
+      <div class="reader-title-row">
+        <div>
+          <h1 class="homily-title">On Right Faith</h1>
+          
+          <p class="title-original">Sermo I: De fide recta</p>
+          
+        </div>
+        <button class="info-trigger" onclick="toggleInfo()" aria-label="Sermon information">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <span>
+          <a href="/homilies/?author=pseudo-boniface" class="meta-author-link">
+            Pseudo-Boniface
+          </a>
+        </span>
+        <span>8th–9th century AD</span>
+        <span>Latin</span>
+      </div>
+
+      
+
+      <div class="view-toggle" style="margin-top:1rem">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">Latin only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    
+    <div class="col-labels">
+      <div class="col-label-outer">
+        <span class="lang-dot dot-latin"></span>
+        Latin · Original
+      </div>
+      <div class="col-label-outer">
+        <span class="lang-dot dot-english"></span>
+        English · Translation
+      </div>
+    </div>
+
+    
+    <div class="parallel-reader" id="parallel-reader"></div>
+
+    
+    <div id="raw-content"><h2 id="original-text">Original Text</h2>
+<div class="text-section" data-section="1">
+  Necessarium est, fratres charissimi, unicuique qui desiderat ad regnum caelorum pervenire, quod nobis a Deo omnipotenti promissum est et praeparatum, fidem rectam et catholicam sine dubitatione firmiter tenere, quia ad aeternam beatitudinem nemo pervenire potest, nisi Deo placeat, et nullus Deo placere potest, nisi per fidem rectam. Fides namque omnium bonorum fundamentum est, fides humanae salutis initium est; sine hac nemo ad nobilitatem filiorum Dei pervenire poterit, quia sine ipsa nec in hoc saeculo quisquam justificationis consequitur gratiam, nec in futuro vitam possidebit aeternam. Proinde valde necessarium est omni homini ut diligenter discat fidem catholicam et apostolicam, maxime populi praedicatoribus Christiani, et Ecclesiarum Dei doctoribus. Quomodo docet quis quod non didicit? vel qualiter pastor esse poterit, si panis vitae gregem sibi commissum pascere ignorat? non erubescat nesciens discere quod ignorat, nec sciens tardus sit docere quod novit.
+</div>
+<div class="text-section" data-section="2">
+  Ista est fides catholica, ut credamus in unum Deum Patrem omnipotentem, et in Filium ejus unicum Dominum Jesum Christum, et in Spiritum sanctum: Patrem eo quod habeat Filium, Filium eo quod habeat Patrem, Spiritum sanctum eo quod sit ex Patre procedens et Filio. Pater ergo principium divinitatis, quia sicut nunquam fuit non Deus, ita nunquam fuit non Pater, a quo natus Filius, a quo Spiritus sanctus non natus, quia non Filius est, nec ingenitus, qui non est Pater, nec factus est, sed ex Deo Patre Deus procedens; Pater aeternus eo quod habeat aeternum Filium, cujus aeternus sit Pater. Filius aeternus eo quod sit Patri coaeternus. Spiritus sanctus aeternus eo quod sit Patri et Filio coaeternus. Iste unus Deus, qui est sancta Trinitas. Pater et Filius et Spiritus sanctus creavit caelum et terram, mare et omnia quae in eis sunt, et secundum suam voluntatem omnia gubernat, et in istum unum Deum omnes Christiani credere debent, qui desiderant vitam aeternam habere. Omnium peccatorum remissionem in sancto baptismate firmiter credere debemus. Futurum quoque judicium esse bonis et malis statim post hujus vitae terminum, nulli catholicorum dubium est. Paganis, impiis et peccatoribus, qui sua scelera confiteri noluerunt, nec per poenitentiam emendare, supplicium sempiternum erit. Poenitentibus et justis gloria sempiterna manebit. De resurrectione mortuorum in novissimo die hujus saeculi nullus Christianorum dubitare debet, sed sicut Christus tertia die resurrexit a mortuis, sic omnes homines boni et mali in novissimo die cum propriis corporibus resurgere debent. Impii enim in contumeliam suam et supplicium, justi vero in gloriam sempiternam.
+</div>
+<h2 id="english-translation">English Translation</h2>
+<div class="text-section" data-section="1">
+  It is necessary, most dear brothers, that everyone who desires to reach the kingdom of heaven — which has been promised and prepared for us by God Almighty — should hold right and catholic faith firmly and without doubt; because no one can attain to eternal blessedness unless he pleases God, and no one can please God except through right faith. For faith is the foundation of all good things; faith is the beginning of human salvation. Without it, no one can attain to the dignity of the sons of God; because without it, no one in this present age obtains the grace of justification, nor in the age to come will he possess eternal life. It is therefore greatly necessary for every person to learn the catholic and apostolic faith diligently — above all the preachers of the Christian people and the teachers of the Churches of God. How can anyone teach what he has not learned? Or how can he be a pastor if he does not know how to feed the flock entrusted to him with the bread of life? Let the one who does not know be unashamed to learn what he is ignorant of, and let the one who does know not be slow to teach what he knows.
+</div>
+<div class="text-section" data-section="2">
+  This is the catholic faith: that we believe in one God the Father Almighty, and in his only Son our Lord Jesus Christ, and in the Holy Spirit — the Father in that he has a Son, the Son in that he has a Father, the Holy Spirit in that he proceeds from the Father and the Son. The Father therefore is the principle and source of the Godhead, because just as he was never not God, so also was he never not Father — from whom the Son is born; from whom the Holy Spirit is not born, for he is not the Son, nor is he unbegotten, for he is not the Father, nor was he made, but proceeds as God from God the Father. The Father is eternal in that he has an eternal Son, whose eternal Father he is. The Son is eternal in that he is coeternal with the Father. The Holy Spirit is eternal in that he is coeternal with the Father and the Son. This one God is the holy Trinity. The Father and the Son and the Holy Spirit created heaven and earth, the sea, and all things that are in them, and governs all things according to his will; and in this one God all Christians who desire eternal life ought to believe. We ought firmly to believe in the remission of all sins in holy baptism. That there will be a judgment for the good and the evil immediately after the end of this life is in no way doubtful to any of the faithful. For pagans, the impious, and sinners who have refused to confess their wickedness or to amend it through penance, there will be everlasting punishment. For the penitent and the just, everlasting glory will remain. No Christian should doubt the resurrection of the dead on the last day of this age; but just as Christ rose from the dead on the third day, so must all people, good and evil alike, rise again in their own bodies on the last day — the impious to their own shame and punishment, but the just to everlasting glory.
+</div>
+</div>
+
+    
+
+    
+    <div class="homily-nav">
+      
+      
+    </div>
+
+  </div>
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

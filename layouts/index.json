@@ -1,0 +1,19 @@
+{{- $pages := where .Site.RegularPages "Section" "homilies" -}}
+[
+{{- range $i, $p := $pages }}
+{{- if $i }},{{ end }}
+{
+  "title": {{ $p.Title | jsonify }},
+  "url": {{ $p.Permalink | jsonify }},
+  "author": {{ $p.Params.author | jsonify }},
+  "period": {{ $p.Params.period | jsonify }},
+  "date_composed": {{ $p.Params.date_composed | jsonify }},
+  "language_original": {{ $p.Params.language_original | jsonify }},
+  "work_series": {{ $p.Params.work_series | jsonify }},
+  "themes": {{ $p.Params.themes | jsonify }},
+  "liturgical_occasion": {{ $p.Params.liturgical_occasion | jsonify }},
+  "audience": {{ $p.Params.audience | jsonify }},
+  "scripture_refs": {{ $p.Params.scripture_refs | jsonify }}
+}
+{{- end }}
+]

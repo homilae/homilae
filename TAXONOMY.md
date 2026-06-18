@@ -1,0 +1,116 @@
+# Homiliae Taxonomy — Controlled Vocabulary
+
+## Period
+- Patristic
+- Early Medieval
+- High Medieval
+- Late Medieval
+- Counter-Reformation
+- Modern
+
+## Liturgical Occasion
+- Advent
+- Christmas
+- Epiphany
+- Lent
+- Palm Sunday
+- Good Friday
+- Easter
+- Ascension
+- Pentecost
+- Ordinary Time
+- Corpus Christi
+- Sacred Heart
+- Christ the King
+- Annunciation
+- Assumption
+- Immaculate Conception
+- Nativity of Mary
+- Feast of a Saint
+- Dedication of a Church
+- Funeral
+- Votive
+- No specific occasion
+
+## Audience
+- General faithful
+- Clergy
+- Religious
+- Cistercian
+- Dominican
+- Franciscan
+- Benedictine
+- Laity
+- Nobility
+- Students
+- Sick and dying
+- Penitents
+- Children
+- Women
+- Men
+- Missionaries
+
+## Themes
+- Sacraments · Baptism
+- Sacraments · Eucharist
+- Sacraments · Confession
+- Sacraments · Confirmation
+- Sacraments · Marriage
+- Sacraments · Holy Orders
+- Sacraments · Anointing
+- Prayer · Mental prayer
+- Prayer · Vocal prayer
+- Prayer · Contemplation
+- Virtues · Faith
+- Virtues · Hope
+- Virtues · Charity
+- Virtues · Humility
+- Virtues · Obedience
+- Virtues · Prudence
+- Virtues · Justice
+- Virtues · Fortitude
+- Virtues · Temperance
+- Vices · Pride
+- Vices · Avarice
+- Vices · Lust
+- Vices · Anger
+- Vices · Gluttony
+- Vices · Envy
+- Vices · Sloth
+- Last things · Death
+- Last things · Judgement
+- Last things · Hell
+- Last things · Purgatory
+- Last things · Heaven
+- Christology · Incarnation
+- Christology · Passion
+- Christology · Resurrection
+- Christology · Ascension
+- Mariology · Immaculate Conception
+- Mariology · Assumption
+- Mariology · Queenship
+- Mariology · Intercession
+- Ecclesiology · Church
+- Ecclesiology · Priesthood
+- Moral · Poverty
+- Moral · Justice
+- Moral · Almsgiving
+- Mystical theology · Union with God
+- Scripture exposition · Genesis
+- Scripture exposition · Psalms
+- Scripture exposition · Isaiah
+- Scripture exposition · Matthew
+- Scripture exposition · John
+- Scripture exposition · Romans
+
+## Homily Type
+- Homily
+- Sermon
+- Panegyric
+- Funeral oration
+- Catechetical instruction
+- Mission sermon
+- Mystagogical
+- Retreat conference
+- Lenten series
+- Advent series

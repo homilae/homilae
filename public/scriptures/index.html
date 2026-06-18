@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scripture Index — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+  <link rel="stylesheet" href="/css/scripture.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+
+  <div class="scripture-wrap">
+    <div class="scripture-hero">
+      <h1>Scripture Index</h1>
+      <p>Every biblical passage referenced in the archive, linked to the homilies that treat it</p>
+      <div class="scripture-count" id="verse-count">Loading...</div>
+    </div>
+
+    <div id="scripture-index">
+      <p style="color:var(--ink-ghost); font-style:italic">Building index...</p>
+    </div>
+  </div>
+
+  <script>
+  fetch('/index.json')
+    .then(r => r.json())
+    .then(homilies => {
+
+      
+      const verseMap = {};
+
+      homilies.forEach(homily => {
+        if (!homily.scripture_refs) return;
+        homily.scripture_refs.forEach(ref => {
+          if (!ref || !ref.ref) return;
+          const verse = ref.ref;
+          if (!verseMap[verse]) verseMap[verse] = [];
+          verseMap[verse].push({
+            title: homily.title,
+            url: homily.url,
+            author: homily.author,
+            section: ref.section || null,
+            type: ref.type || 'direct'
+          });
+        });
+      });
+
+      
+      const verses = Object.keys(verseMap).sort((a, b) => {
+        return bookOrder(a) - bookOrder(b) || a.localeCompare(b);
+      });
+
+      
+      const bookMap = {};
+      verses.forEach(verse => {
+        const book = verse.replace(/\s+\d+.*$/, '').trim();
+        if (!bookMap[book]) bookMap[book] = [];
+        bookMap[book].push(verse);
+      });
+
+      
+      document.getElementById('verse-count').textContent =
+        verses.length + ' passages · ' + homilies.length + ' homilies';
+
+      
+      const container = document.getElementById('scripture-index');
+      container.innerHTML = '';
+
+      Object.keys(bookMap).sort((a, b) => bookOrder(a) - bookOrder(b)).forEach(book => {
+        const bookEl = document.createElement('div');
+        bookEl.className = 'scripture-book';
+
+        const heading = document.createElement('h2');
+        heading.className = 'book-heading';
+        heading.textContent = book;
+        bookEl.appendChild(heading);
+
+        const verseList = document.createElement('div');
+        verseList.className = 'verse-list';
+
+        bookMap[book].forEach(verse => {
+          const entry = document.createElement('div');
+          entry.className = 'verse-entry';
+
+          const refEl = document.createElement('div');
+            refEl.className = 'verse-ref';
+            refEl.textContent = verse;
+            entry.id = verse.toLowerCase().replace(/\s+/g, '-').replace(/:/g, '-');
+            entry.appendChild(refEl);
+
+          const homilyList = document.createElement('ul');
+          homilyList.className = 'verse-homilies';
+
+          verseMap[verse].forEach(h => {
+            const li = document.createElement('li');
+            const url = h.section ? h.url + '#section-' + h.section : h.url;
+            li.innerHTML = `<a href="${url}">${h.title}</a>
+              <span class="homily-author">${h.author}</span>
+              <span class="verse-type">${h.type}</span>`;
+            homilyList.appendChild(li);
+          });
+
+          entry.appendChild(homilyList);
+          verseList.appendChild(entry);
+        });
+
+        bookEl.appendChild(verseList);
+        container.appendChild(bookEl);
+      });
+    })
+    .catch(err => {
+      document.getElementById('scripture-index').innerHTML =
+        '<p style="color:var(--accent)">Could not load index. Try refreshing.</p>';
+    });
+
+  
+  function bookOrder(str) {
+    const books = [
+      'Genesis','Exodus','Leviticus','Numbers','Deuteronomy',
+      'Joshua','Judges','Ruth','1 Samuel','2 Samuel',
+      '1 Kings','2 Kings','1 Chronicles','2 Chronicles',
+      'Ezra','Nehemiah','Esther','Job','Psalms','Proverbs',
+      'Ecclesiastes','Song of Solomon','Isaiah','Jeremiah',
+      'Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos',
+      'Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah',
+      'Haggai','Zechariah','Malachi',
+      'Matthew','Mark','Luke','John','Acts',
+      'Romans','1 Corinthians','2 Corinthians','Galatians',
+      'Ephesians','Philippians','Colossians',
+      '1 Thessalonians','2 Thessalonians','1 Timothy','2 Timothy',
+      'Titus','Philemon','Hebrews','James',
+      '1 Peter','2 Peter','1 John','2 John','3 John',
+      'Jude','Revelation'
+    ];
+    const book = str.replace(/\s+\d+.*$/, '').trim();
+    const idx = books.indexOf(book);
+    return idx === -1 ? 999 : idx;
+  }
+  </script>
+
+</body>
+</html>

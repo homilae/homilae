@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+  <link rel="stylesheet" href="/css/taxonomy.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/search">Search</a>
+      <a href="/bible_refs">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+
+  <div class="taxonomy-wrap">
+    <div class="taxonomy-hero">
+      <h1>{{ .Title }}</h1>
+      <p>{{ len .Pages }} {{ if eq (len .Pages) 1 }}homily{{ else }}homilies{{ end }}</p>
+    </div>
+
+    <div class="homily-list">
+      {{ range .Pages }}
+      <a class="homily-row" href="{{ .Permalink }}">
+        <div class="homily-row-main">
+          <div class="homily-row-title">{{ .Title }}</div>
+          <div class="homily-row-meta">
+            <span>{{ .Params.author }}</span>
+            {{ with .Params.date_composed }}<span>{{ . }}</span>{{ end }}
+            {{ with .Params.period }}<span>{{ . }}</span>{{ end }}
+          </div>
+        </div>
+        {{ with .Params.language_original }}
+        <div class="lang-badge lang-{{ . | lower | replaceRE " " "-" }}">{{ . }}</div>
+        {{ end }}
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</body>
+</html>

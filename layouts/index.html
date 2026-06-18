@@ -15,7 +15,7 @@
     <a href="/" class="wordmark">Homiliae</a>
     <nav>
       <a href="/homilies">Browse</a>
-      <a href="/search">Search</a>
+      <a href="/scriptures">Scripture Index</a>
       <a href="/about">About</a>
     </nav>
   </header>
@@ -40,13 +40,13 @@
   </section>
 
   <!-- Browse bar -->
-  <div class="browse-bar">
-    <a href="/homilies" class="browse-tab active">All Periods</a>
-    <a href="/periods/patristic" class="browse-tab">Patristic</a>
-    <a href="/periods/medieval" class="browse-tab">Medieval</a>
-    <a href="/periods/counter-reformation" class="browse-tab">Counter-Reformation</a>
-    <a href="/periods/modern" class="browse-tab">Modern (1700–1900)</a>
-  </div>
+<div class="browse-bar">
+  <a href="/homilies" class="browse-tab active">All Periods</a>
+  <a href="/periods/patristic" class="browse-tab">Patristic</a>
+  <a href="/periods/medieval" class="browse-tab">Medieval</a>
+  <a href="/periods/counter-reformation" class="browse-tab">Counter-Reformation</a>
+  <a href="/periods/modern" class="browse-tab">Modern (1700–1900)</a>
+</div>
 
   <!-- Body -->
   <div class="home-body">
@@ -54,16 +54,16 @@
     <!-- Sidebar -->
     <aside class="home-sidebar">
       <div class="sidebar-section">
-        <div class="sidebar-heading">Language</div>
+        <div class="sidebar-heading">Browse by</div>
         <ul class="sidebar-list">
-          <li><a href="/homilies">All languages</a></li>
-          <li><a href="/languages/latin">Latin</a></li>
-          <li><a href="/languages/greek">Greek</a></li>
-          <li><a href="/languages/french">French</a></li>
-          <li><a href="/languages/spanish">Spanish</a></li>
-          <li><a href="/languages/italian">Italian</a></li>
+            <li><a href="/liturgical_occasions/lent/">Lenten sermons</a></li>
+            <li><a href="/liturgical_occasions/advent/">Advent sermons</a></li>
+            <li><a href="/themes/last-things--judgement/">On Judgement</a></li>
+            <li><a href="/themes/last-things--hell/">On Hell</a></li>
+            <li><a href="/themes/vices--pride/">On Pride</a></li>
+            <li><a href="/scriptures/">Scripture Index</a></li>
         </ul>
-      </div>
+        </div>
       <div class="sidebar-section">
         <div class="sidebar-heading">Authors</div>
         <ul class="sidebar-list">
@@ -108,7 +108,7 @@
           {{ $authorHomilies := where $homilies "Params.author" $author }}
           {{ $first := index $authorHomilies 0 }}
           {{ if $first }}
-          <a class="author-card" href="/authors/{{ $author | urlize }}">
+          <a class="author-card" href="/homilies/?author={{ $author | urlize }}">
             <div class="author-card-period">{{ $first.Params.period }}</div>
             <div class="author-card-name">{{ $author }}</div>
             <div class="author-card-lang">{{ $first.Params.language_original }}</div>
@@ -145,7 +145,7 @@
     <div class="footer-inner">
       <div>
         <div class="footer-brand">Homiliae</div>
-        <p>A free, open-access archive of Christian homilies and sermons. All texts public domain. Translations CC BY 4.0.</p>
+        <p>A free, open-access archive of Christian homilies and sermons. All texts are in the public domain.</p>
       </div>
       <div>
         <div class="footer-col-heading">Browse</div>
@@ -157,7 +157,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>All original-language texts: public domain. Translations: CC BY 4.0.</span>
+     
       <span>Homiliae Archive</span>
     </div>
   </footer>
