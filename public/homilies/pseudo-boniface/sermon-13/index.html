@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why the Lenten Fasts Are to Be Venerated above Other Fasts — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,opsz,wght@0,6..144,400;0,6..144,500;1,6..144,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+    <button class="settings-trigger" onclick="toggleSettings()" aria-label="Settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  
+  <div class="settings-overlay" id="settings-overlay" onclick="toggleSettings()"></div>
+  <aside class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <span class="settings-title">Reading Settings</span>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-label">Appearance</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Mode</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setMode('light')">Light</button>
+            <button class="s-btn" onclick="setMode('sepia')">Sepia</button>
+            <button class="s-btn" onclick="setMode('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Font Size</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Size</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setFontSize('small')">Small</button>
+            <button class="s-btn active" onclick="setFontSize('medium')">Medium</button>
+            <button class="s-btn" onclick="setFontSize('large')">Large</button>
+            <button class="s-btn" onclick="setFontSize('xlarge')">X-Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Layout</div>
+        <div class="settings-row">
+          <span class="settings-row-label">View</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setView('parallel')">Parallel</button>
+            <button class="s-btn" onclick="setView('original')">Latin only</button>
+            <button class="s-btn" onclick="setView('translation')">English only</button>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:0.8rem">
+          <span class="settings-row-label">Line spacing</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setLineHeight('compact')">Compact</button>
+            <button class="s-btn active" onclick="setLineHeight('normal')">Normal</button>
+            <button class="s-btn" onclick="setLineHeight('spacious')">Spacious</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Typography</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Font</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setFont('cardo')">Cardo</button>
+            <button class="s-btn" onclick="setFont('garamond')">Garamond</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Scripture</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Show tooltips</span>
+          <label class="settings-toggle-switch">
+            <input type="checkbox" id="tooltip-toggle" checked onchange="toggleTooltips(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section settings-section--future">
+        <div class="settings-section-label">Coming soon</div>
+        <div class="settings-future-item">Bookmark this homily</div>
+        <div class="settings-future-item">Print optimised view</div>
+        <div class="settings-future-item">Download as PDF</div>
+        <div class="settings-future-item">Copy citation</div>
+      </div>
+
+    </div>
+  </aside>
+
+  
+  <div class="info-overlay" id="info-overlay" onclick="toggleInfo()"></div>
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-header">
+      <span class="info-modal-title">Sermon Information</span>
+      <button class="info-modal-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-modal-body">
+
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Type</div>
+        <div class="info-value">Lenten series</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Liturgical Occasion</div>
+        <div class="info-value">Lent</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Audience</div>
+        <div class="info-value">General faithful</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Themes</div>
+        <div class="info-chips">
+          
+          <span class="info-chip">Virtues · Charity</span>
+          
+          <span class="info-chip">Virtues · Temperance</span>
+          
+          <span class="info-chip">Virtues · Fortitude</span>
+          
+          <span class="info-chip">Virtues · Hope</span>
+          
+          <span class="info-chip">Vices · Lust</span>
+          
+          <span class="info-chip">Vices · Anger</span>
+          
+          <span class="info-chip">Vices · Envy</span>
+          
+          <span class="info-chip">Vices · Gluttony</span>
+          
+          <span class="info-chip">Moral · Almsgiving</span>
+          
+          <span class="info-chip">Last things · Judgement</span>
+          
+          <span class="info-chip">Last things · Heaven</span>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Scripture References</div>
+        <div class="info-chips">
+          
+          <span class="info-chip info-chip--verse">Eph 6:8</span>
+          
+          <span class="info-chip info-chip--verse">2 Cor 9:7</span>
+          
+          <span class="info-chip info-chip--verse">Matt 7:7</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="info-section">
+        <div class="info-label">Source Text</div>
+        <div class="info-value">
+          Migne, Patrologia Latina, vol. 89 (Paris, 1863)
+          
+          <a href="https://dn790000.ca.archive.org/0/items/patrologiaecur89mign/patrologiaecur89mign.pdf" target="_blank" rel="noopener" class="info-link">↗ View source</a>
+          
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Translation</div>
+        <div class="info-value">Claude Sonnet 4.6</div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Accuracy Note</div>
+        <div class="info-value info-value--notes">All translations are AI-assisted and have been reviewed, but may contain errors. Always verify against the original source text before citing.</div>
+      </div>
+      
+      
+
+      <div class="info-section info-section--last">
+        <div class="info-label">How to Cite</div>
+        <div class="info-value info-cite">
+          Pseudo-Boniface, "Why the Lenten Fasts Are to Be Venerated above Other Fasts," trans. Homiliae Archive,
+          <em>Homiliae: Christian Preaching Archive</em>,
+          accessed 2026,
+          http://localhost:1313/homilies/pseudo-boniface/sermon-13/.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reader-wrap">
+
+    
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/homilies/?author=pseudo-boniface">Pseudo-Boniface</a>
+         › Sermons (Pseudo-Boniface)
+      </div>
+
+      <div class="reader-title-row">
+        <div>
+          <h1 class="homily-title">Why the Lenten Fasts Are to Be Venerated above Other Fasts</h1>
+          
+          <p class="title-original">Sermo XIII: Quare ieiunia Quadragesimae magis aliis ieiuniis veneranda sint</p>
+          
+        </div>
+        <button class="info-trigger" onclick="toggleInfo()" aria-label="Sermon information">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <span>
+          <a href="/homilies/?author=pseudo-boniface" class="meta-author-link">
+            Pseudo-Boniface
+          </a>
+        </span>
+        <span>8th–9th century AD</span>
+        <span>Latin</span>
+      </div>
+
+      
+
+      <div class="view-toggle" style="margin-top:1rem">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">Latin only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    
+    <div class="col-labels">
+      <div class="col-label-outer">
+        <span class="lang-dot dot-latin"></span>
+        Latin · Original
+      </div>
+      <div class="col-label-outer">
+        <span class="lang-dot dot-english"></span>
+        English · Translation
+      </div>
+    </div>
+
+    
+    <div class="parallel-reader" id="parallel-reader"></div>
+
+    
+    <div id="raw-content"><h2 id="original-text">Original Text</h2>
+<div class="text-section" data-section="1">
+  Debemus, fratres charissimi, semper in omni tempore nos humiliare et servire Domino Deo nostro, sed maxime in istis sanctis diebus Quadragesimae. Indicamus vobis, fratres, quare ista sancta ieiunia magis aliis ieiuniis venerare debemus: quia Redemptor noster, ad homines veniens, ieiunavit quadraginta diebus et quadraginta noctibus, et nullum omnino cibum sumpsit. Nos quoque, in quantum possumus, cum Dei adiutorio per abstinentiam mundemus nos a peccatis nostris. Scitis quia a praesenti die usque ad paschalis solemnitatis gaudia sex hebdomades veniunt, quarum videlicet dies quadraginta et duo fiunt, ex quibus dum sex dies Dominici abstinentiae subtrahuntur, non plus in abstinentia quam XXXVI dies remanent; dum vero per trecentos et sexaginta dies annus ducitur, nos enim per XXXVI dies affligimur, quasi anni nostri decimas Deo damus, ut qui nobismet ipsis per acceptum annum viximus, auctori nostro nos in eius decimis per abstinentiam subdamus. Unde, fratres charissimi, sicut offerre in lege iubemini decimas rerum, ita offerre contendite et decimas dierum. Unusquisque, in quantum virtus suppetit, carnem maceret, eiusque desideria affligat, quia caro nos laeta traxit ad culpam, afflicta reducat ad veniam, ut qui per peccatum cecidimus, per veniam resurgamus, et semper quod bonum est faciamus, quia apostolus dicit: Unusquisque quodcunque bonum fecerit, hoc percipiet a Domino. Unde, fratres, quodcunque boni facere potestis, facite sine tristitia, quia scriptum est: Hilarem enim datorem diligit Deus.
+</div>
+<div class="text-section" data-section="2">
+  Studeat vero ab omni opere malo se unusquisque continere, et non solum a fornicatione, quod etiam nunquam facere licet, sed etiam a legitimo coniugio se abstineat in istis quadraginta diebus. Abiiciat similiter a se iocos otiosos et verba vana et turpia, et meditetur die ac nocte omne opus suum ad laudem Domini nostri Iesu Christi convertere, cum sanctis orationibus et vigiliis et eleemosynis, et in ecclesia convenientibus, et quando ad ecclesiam venerit, roget Deum omnipotentem, ut dirigat viam eius ad ipsius voluntatem, et sua dimittere peccata dignetur, et verbum Dei libenter audiat, et alterum non impediat, quia Dominus nos admonet dicens: Petite et dabitur vobis, quaerite et invenietis, pulsate et aperietur vobis. Et ista sancta ieiunia in voluntate Dei peragamus, quia ieiunium res sancta est, opus caeleste, quod qui sancte agit, Deo iungitur et spiritualis efficitur. Per hoc enim prosternuntur vitia, humiliatur caro, diaboli tentamenta vincuntur. Ideo fugiamus omnia vitia, fornicationem, immunditiam, inimicitiam, contentionem, aemulationem, iram, rixam, dissensionem, homicidium, invidiam, ebrietates, comessationes, et habeamus charitatem et gaudium, pacem et longanimitatem, patientiam et bonitatem, modestiam et continentiam, ut instructi bonis operibus, vincere valeamus tentamenta diaboli, et crescere in timore Dei, et nunc et semper eius facere voluntatem, quia omnibus horis oportet nos esse ornatos et splendidos et maxime in istis XL diebus, quia in his, ut superius diximus, anni nostri decimas Deo dare debemus.
+</div>
+<div class="text-section" data-section="3">
+  Fratres charissimi, mundemus semper corpus et animam, ut in hora exitus nostri Deo digni inveniamur, et in die iudicii, cum Dominus noster Iesus Christus venerit in maiestate sua cum angelis suis, mereamur ad vitam aeternam venire, et ibi semper beate vivere, ubi est certa securitas, secura tranquillitas, tranquilla iucunditas, felix aeternitas, aeterna felicitas, ubi est amor perfectus, timor nullus, aeterna salus exuberat, veritas regnat, ubi nec fallit quisque, nec fallitur, ubi sunt omnia bona Dominus noster Iesus Christus, qui cum Patre et Spiritu sancto vivit et regnat Deus per omnia saecula saeculorum. Ipse nobis concedat ut ad illam vitam et felicitatem perveniamus. Amen.
+</div>
+<h2 id="english-translation">English Translation</h2>
+<div class="text-section" data-section="1">
+  <p>We must, dearest brethren, humble ourselves and serve the Lord our God at all times, but most especially in these holy days of Lent. Let us explain to you, brethren, why we should venerate these holy fasts above all other fasts: because our Redeemer, coming to mankind, fasted forty days and forty nights and took no food at all. We too, as much as we can, should cleanse ourselves from our sins through abstinence, with the help of God. You know that from the present day to the joys of the Easter feast there are six weeks, making forty-two days in all; when the six Sundays are subtracted from the fast, no more than thirty-six days of fasting remain. Since the year runs for three hundred and sixty days, and we afflict ourselves for thirty-six of them, we give as it were the tithe of our year to God — so that we who have lived for ourselves through the year we have received may submit ourselves to our Maker in his tithes through abstinence. Therefore, dearest brethren, just as the law commands you to offer tithes of your goods, strive to offer also the tithes of your days. Let each person, to the extent of his strength, mortify his flesh and afflict its desires, for the flesh in pleasure drew us to sin; in affliction let it bring us back to pardon — so that we who fell through sin may rise again through forgiveness, and always do what is good. For the Apostle says:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Whatsoever good thing any man shall do, the same shall he receive from the Lord.</span>
+  <a href="/scriptures/#eph-6-8" class="verse-tooltip">
+    <span class="tooltip-ref">Eph 6:8</span>
+  </a>
+</span> So, brethren, whatever good you are able to do, do it without sadness, for it is written: 
+<span class="verse-wrap">
+  <span class="verse-text">God loveth a cheerful giver.</span>
+  <a href="/scriptures/#2-cor-9-7" class="verse-tooltip">
+    <span class="tooltip-ref">2 Cor 9:7</span>
+  </a>
+</span>
+</div>
+<div class="text-section" data-section="2">
+  <p>Let each person strive to hold back from every evil work — and not only from fornication, which is never lawful, but let him also abstain during these forty days from lawful marital relations. Let him likewise cast aside idle jests and vain and foul words, and devote himself day and night to turning all his work toward the praise of our Lord Jesus Christ, through holy prayers, vigils, and almsgiving, and by gathering in the church. When he comes to the church, let him ask Almighty God to direct his way according to his own will and deign to forgive his sins; let him listen willingly to the word of God and not interrupt another, for the Lord urges us, saying:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Ask, and it shall be given you: seek, and you shall find: knock, and it shall be opened to you.</span>
+  <a href="/scriptures/#matt-7-7" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 7:7</span>
+  </a>
+</span> Let us carry out these holy fasts in the will of God, for fasting is a holy thing, a heavenly work; the one who performs it holily is joined to God and becomes spiritual. Through it vices are laid low, the flesh is humbled, and the temptations of the devil are overcome. Therefore let us flee all vices — fornication, impurity, enmity, contention, rivalry, anger, quarreling, dissension, murder, envy, drunkenness, gluttony — and let us have charity and joy, peace and long-suffering, patience and goodness, modesty and continence. Equipped with good works, we will be able to overcome the temptations of the devil and grow in the fear of God, and now and always do his will. For we must be adorned and resplendent at every hour, and most especially in these forty days, in which, as we said above, we must give God the tithes of our year.
+</div>
+<div class="text-section" data-section="3">
+  Dearest brethren, let us always cleanse body and soul, so that at the hour of our departure we may be found worthy of God, and on the day of judgment, when our Lord Jesus Christ comes in his majesty with his angels, we may merit to come to eternal life — to live there always in blessedness, where there is certain security, secure tranquility, tranquil delight, happy eternity, eternal happiness; where there is perfect love and no fear; where eternal salvation abounds and truth reigns; where no one deceives and no one is deceived; where all good things are our Lord Jesus Christ, who with the Father and the Holy Spirit lives and reigns as God for ever and ever. May he grant us to reach that life and that happiness. Amen.
+</div>
+</div>
+
+    
+
+    
+    <div class="homily-nav">
+      
+      
+      <a class="nav-btn nav-next" href="http://localhost:1313/homilies/innocent-v/sermon-03/">
+        <span>Sermon for the Feast of the Most Holy Trinity</span> →
+      </a>
+      
+    </div>
+
+  </div>
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

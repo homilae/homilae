@@ -5,9 +5,23 @@
   <url>
     <loc>http://localhost:1313/about/</loc>
   </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-12/</loc>
+  </url><url>
     <loc>http://localhost:1313/audiences/</loc>
   </url><url>
     <loc>http://localhost:1313/authors/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/christology--ascension/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/christology--incarnation/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/christology--passion/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/christology--resurrection/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/ecclesiology--church/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/ecclesiology--priesthood/</loc>
   </url><url>
     <loc>http://localhost:1313/</loc>
   </url><url>
@@ -17,6 +31,8 @@
   </url><url>
     <loc>http://localhost:1313/languages/</loc>
   </url><url>
+    <loc>http://localhost:1313/themes/last-things--death/</loc>
+  </url><url>
     <loc>http://localhost:1313/themes/last-things--heaven/</loc>
   </url><url>
     <loc>http://localhost:1313/themes/last-things--hell/</loc>
@@ -25,15 +41,59 @@
   </url><url>
     <loc>http://localhost:1313/liturgical_occasions/</loc>
   </url><url>
+    <loc>http://localhost:1313/themes/moral--almsgiving/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/moral--justice/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/moral--poverty/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-07/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-05/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-08/</loc>
+  </url><url>
     <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-01/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-09/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-06/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-14/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-04/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-10/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-02/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-15/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-11/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-03/</loc>
   </url><url>
     <loc>http://localhost:1313/periods/</loc>
   </url><url>
     <loc>http://localhost:1313/themes/sacraments--baptism/</loc>
   </url><url>
+    <loc>http://localhost:1313/themes/sacraments--confession/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/sacraments--confirmation/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/sacraments--eucharist/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/scripture-exposition--john/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/scripture-exposition--matthew/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/scripture-exposition--psalms/</loc>
+  </url><url>
     <loc>http://localhost:1313/scriptures/</loc>
   </url><url>
     <loc>http://localhost:1313/search/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/innocent-v/sermon-03/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
   </url><url>
@@ -41,6 +101,34 @@
   </url><url>
     <loc>http://localhost:1313/verses/</loc>
   </url><url>
+    <loc>http://localhost:1313/themes/vices--anger/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/vices--avarice/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/vices--envy/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/vices--gluttony/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/vices--lust/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/vices--pride/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/virtues--charity/</loc>
+  </url><url>
     <loc>http://localhost:1313/themes/virtues--faith/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/virtues--fortitude/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/virtues--hope/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/virtues--humility/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/virtues--justice/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/virtues--obedience/</loc>
+  </url><url>
+    <loc>http://localhost:1313/themes/virtues--temperance/</loc>
+  </url><url>
+    <loc>http://localhost:1313/homilies/pseudo-boniface/sermon-13/</loc>
   </url>
 </urlset>

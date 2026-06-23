@@ -4,5 +4,14 @@ Pseudo-Boniface:
   tradition: "Carolingian Latin"
   image: "/images/authors/bonifacemainz.jpg"
   image_caption: "St. Boniface, depicted in a medieval manuscript"
-  description: |
+  bio: |
     The fifteen sermons printed under the name of Boniface of Mainz (c. 675–754) in Migne's Patrologia Latina (vol. 89, cols. 843–872) are today regarded by scholars as pseudo-Bonifacian — that is, transmitted under his name but not securely attributable to his pen. The collection was assembled for the Martène–Durand edition from a manuscript owned by Chancellor Daguesseau containing fourteen sermons, collated against two Swedish royal manuscripts identified by Mabillon, with a fifteenth added from a separate source; there is no single manuscript witness to all fifteen together. The Vatican manuscript bearing fourteen of the sermons carries the rubric Sermones sancti Bonifacii martiris ad populum et de baptismo, which locates them in an early medieval missionary context and associates them with Boniface's name, but the sermons are absent from Levison's critical MGH edition and from other standard collections of Boniface's authentic works. Current scholarship connects the collection to insular circles on the Continent and to Carolingian reform thought, with strong parallels to the Admonitio Generalis and Alcuinian theology, suggesting a late eighth- or early ninth-century compilation drawing on preaching materials from Boniface's missionary milieu. Whatever their precise origin, the sermons are historically significant documents of early medieval catechesis: addressed to recently converted or imperfectly Christianised communities, they offer a vivid picture of the doctrinal instruction, moral formation, and practical Christian duties — including the renunciation of surviving pagan practices — that defined the Bonifacian mission in Germania. This is the first English translation of the pseudo-Bonifacian sermons.
+
+Innocent V:
+  slug: "innocent-v"
+  dates: "c. 1225–1276"
+  tradition: "Medieval Latin · Dominican"
+  image: "/images/authors/innocentv.jpg"
+  image_caption: "Pope Innocent V, in the former Dominican convent of San Niccolo in Treviso painted in 1352 as part of a 40 friar fresco cycle by Tommaso da Modena"
+  bio: |
+    Innocent V (c. 1225–1276) was a Dominican friar, theologian, and the first Dominican to become Pope, reigning for only five months in 1276 before his death. Born Peter of Tarentaise in Burgundy, he studied and later taught theology in Paris, where he was a contemporary and colleague of Thomas Aquinas and Albert the Great. He produced a substantial commentary on the Sentences of Peter Lombard and was regarded as one of the leading scholastic theologians of his generation. As Archbishop of Lyon and later Cardinal Bishop of Ostia, he played a central role in the Second Council of Lyon (1274), which attempted reunion with the Eastern Church. Elected Pope on 21 January 1276, he died on 22 June of the same year — one of the shortest pontificates in history. He was beatified by Leo XIII in 1898. His Sermon 3 was printed in 1869, the other 24 are still only in manuscripts.

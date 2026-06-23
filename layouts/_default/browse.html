@@ -79,7 +79,10 @@
 
   // Load author data
   try {
-    authorData = JSON.parse(document.getElementById('author-data').textContent);
+    let raw = document.getElementById('author-data').textContent.trim();
+    let parsed = JSON.parse(raw);
+    while (typeof parsed === 'string') { parsed = JSON.parse(parsed); }
+    authorData = parsed;
   } catch(e) {}
 
   // Check URL for author param

@@ -23,20 +23,22 @@
     <div class="scripture-hero">
       <h1>Scripture Index</h1>
       <p>Every biblical passage referenced in the archive, linked to the homilies that treat it</p>
+      <p class="scripture-note">Psalm numbers follow the Vulgate/Septuagint numbering of the Douay-Rheims Bible, which may differ by one from modern Protestant editions.</p>
       <div class="scripture-count" id="verse-count">Loading...</div>
     </div>
+     <!-- Sticky book navigation -->
+    <div class="book-nav" id="book-nav"></div>
 
     <div id="scripture-index">
       <p style="color:var(--ink-ghost); font-style:italic">Building index...</p>
     </div>
   </div>
 
-  <script>
+<script>
   fetch('/index.json')
     .then(r => r.json())
     .then(homilies => {
 
-      // Build a map of verse → list of homilies
       const verseMap = {};
 
       homilies.forEach(homily => {
@@ -49,18 +51,15 @@
             title: homily.title,
             url: homily.url,
             author: homily.author,
-            section: ref.section || null,
-            type: ref.type || 'direct'
+            section: ref.section || null
           });
         });
       });
 
-      // Sort verses
       const verses = Object.keys(verseMap).sort((a, b) => {
         return bookOrder(a) - bookOrder(b) || a.localeCompare(b);
       });
 
-      // Group by book
       const bookMap = {};
       verses.forEach(verse => {
         const book = verse.replace(/\s+\d+.*$/, '').trim();
@@ -70,15 +69,23 @@
 
       // Update count
       document.getElementById('verse-count').textContent =
-        verses.length + ' passages · ' + homilies.length + ' homilies';
+        verses.length + ' passages · ' + homilies.length + ' homilies indexed';
 
-      // Render
+      // Build sticky book nav
+      const nav = document.getElementById('book-nav');
+      const books = Object.keys(bookMap).sort((a, b) => bookOrder(a) - bookOrder(b));
+      nav.innerHTML = books.map(book =>
+        `<a class="book-nav-link" href="#book-${slugify(book)}">${book}</a>`
+      ).join('');
+
+      // Render index
       const container = document.getElementById('scripture-index');
       container.innerHTML = '';
 
-      Object.keys(bookMap).sort((a, b) => bookOrder(a) - bookOrder(b)).forEach(book => {
+      books.forEach(book => {
         const bookEl = document.createElement('div');
         bookEl.className = 'scripture-book';
+        bookEl.id = 'book-' + slugify(book);
 
         const heading = document.createElement('h2');
         heading.className = 'book-heading';
@@ -91,22 +98,22 @@
         bookMap[book].forEach(verse => {
           const entry = document.createElement('div');
           entry.className = 'verse-entry';
+          // Anchor ID matches tooltip link format
+          entry.id = verse.toLowerCase().replace(/\s+/g, '-').replace(/:/g, '-');
 
           const refEl = document.createElement('div');
-            refEl.className = 'verse-ref';
-            refEl.textContent = verse;
-            entry.id = verse.toLowerCase().replace(/\s+/g, '-').replace(/:/g, '-');
-            entry.appendChild(refEl);
+          refEl.className = 'verse-ref';
+          refEl.textContent = verse;
+          entry.appendChild(refEl);
 
           const homilyList = document.createElement('ul');
           homilyList.className = 'verse-homilies';
 
           verseMap[verse].forEach(h => {
-            const li = document.createElement('li');
             const url = h.section ? h.url + '#section-' + h.section : h.url;
+            const li = document.createElement('li');
             li.innerHTML = `<a href="${url}">${h.title}</a>
-              <span class="homily-author">${h.author}</span>
-              <span class="verse-type">${h.type}</span>`;
+              <span class="homily-author">${h.author}</span>`;
             homilyList.appendChild(li);
           });
 
@@ -117,23 +124,37 @@
         bookEl.appendChild(verseList);
         container.appendChild(bookEl);
       });
-    })
-    .catch(err => {
-      document.getElementById('scripture-index').innerHTML =
-        '<p style="color:var(--accent)">Could not load index. Try refreshing.</p>';
+
+      // Highlight entry if URL has hash
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.classList.add('verse-entry--highlighted');
+          }, 100);
+        }
+      }
     });
 
-  // Bible book order for sorting
+  function slugify(str) {
+    return str.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  }
+
   function bookOrder(str) {
     const books = [
+      // Old Testament
       'Genesis','Exodus','Leviticus','Numbers','Deuteronomy',
       'Joshua','Judges','Ruth','1 Samuel','2 Samuel',
       '1 Kings','2 Kings','1 Chronicles','2 Chronicles',
-      'Ezra','Nehemiah','Esther','Job','Psalms','Proverbs',
-      'Ecclesiastes','Song of Solomon','Isaiah','Jeremiah',
-      'Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos',
+      'Ezra','Nehemiah','Tobit','Judith','Esther',
+      '1 Maccabees','2 Maccabees',
+      'Job','Psalms','Proverbs','Ecclesiastes','Song of Solomon',
+      'Wisdom','Sirach','Isaiah','Jeremiah','Lamentations',
+      'Baruch','Ezekiel','Daniel','Hosea','Joel','Amos',
       'Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah',
       'Haggai','Zechariah','Malachi',
+      // New Testament
       'Matthew','Mark','Luke','John','Acts',
       'Romans','1 Corinthians','2 Corinthians','Galatians',
       'Ephesians','Philippians','Colossians',

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On Faith and Charity — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,opsz,wght@0,6..144,400;0,6..144,500;1,6..144,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+    <button class="settings-trigger" onclick="toggleSettings()" aria-label="Settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  
+  <div class="settings-overlay" id="settings-overlay" onclick="toggleSettings()"></div>
+  <aside class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <span class="settings-title">Reading Settings</span>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-label">Appearance</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Mode</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setMode('light')">Light</button>
+            <button class="s-btn" onclick="setMode('sepia')">Sepia</button>
+            <button class="s-btn" onclick="setMode('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Font Size</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Size</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setFontSize('small')">Small</button>
+            <button class="s-btn active" onclick="setFontSize('medium')">Medium</button>
+            <button class="s-btn" onclick="setFontSize('large')">Large</button>
+            <button class="s-btn" onclick="setFontSize('xlarge')">X-Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Layout</div>
+        <div class="settings-row">
+          <span class="settings-row-label">View</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setView('parallel')">Parallel</button>
+            <button class="s-btn" onclick="setView('original')">Latin only</button>
+            <button class="s-btn" onclick="setView('translation')">English only</button>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:0.8rem">
+          <span class="settings-row-label">Line spacing</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setLineHeight('compact')">Compact</button>
+            <button class="s-btn active" onclick="setLineHeight('normal')">Normal</button>
+            <button class="s-btn" onclick="setLineHeight('spacious')">Spacious</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Typography</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Font</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setFont('cardo')">Cardo</button>
+            <button class="s-btn" onclick="setFont('garamond')">Garamond</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Scripture</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Show tooltips</span>
+          <label class="settings-toggle-switch">
+            <input type="checkbox" id="tooltip-toggle" checked onchange="toggleTooltips(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section settings-section--future">
+        <div class="settings-section-label">Coming soon</div>
+        <div class="settings-future-item">Bookmark this homily</div>
+        <div class="settings-future-item">Print optimised view</div>
+        <div class="settings-future-item">Download as PDF</div>
+        <div class="settings-future-item">Copy citation</div>
+      </div>
+
+    </div>
+  </aside>
+
+  
+  <div class="info-overlay" id="info-overlay" onclick="toggleInfo()"></div>
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-header">
+      <span class="info-modal-title">Sermon Information</span>
+      <button class="info-modal-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-modal-body">
+
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Type</div>
+        <div class="info-value">Sermon</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Liturgical Occasion</div>
+        <div class="info-value">No specific occasion</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Audience</div>
+        <div class="info-value">General faithful</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Themes</div>
+        <div class="info-chips">
+          
+          <span class="info-chip">Virtues · Faith</span>
+          
+          <span class="info-chip">Virtues · Charity</span>
+          
+          <span class="info-chip">Virtues · Hope</span>
+          
+          <span class="info-chip">Virtues · Humility</span>
+          
+          <span class="info-chip">Virtues · Obedience</span>
+          
+          <span class="info-chip">Last things · Heaven</span>
+          
+          <span class="info-chip">Last things · Judgement</span>
+          
+          <span class="info-chip">Sacraments · Baptism</span>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Scripture References</div>
+        <div class="info-chips">
+          
+          <span class="info-chip info-chip--verse">Ps 36:27</span>
+          
+          <span class="info-chip info-chip--verse">Heb 11:6</span>
+          
+          <span class="info-chip info-chip--verse">Matt 22:37-40</span>
+          
+          <span class="info-chip info-chip--verse">John 14:23</span>
+          
+          <span class="info-chip info-chip--verse">John 13:35</span>
+          
+          <span class="info-chip info-chip--verse">Rom 13:10</span>
+          
+          <span class="info-chip info-chip--verse">1 John 4:21</span>
+          
+          <span class="info-chip info-chip--verse">John 3:5</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="info-section">
+        <div class="info-label">Source Text</div>
+        <div class="info-value">
+          Migne, Patrologia Latina, vol. 89 (Paris, 1863)
+          
+          <a href="https://dn790000.ca.archive.org/0/items/patrologiaecur89mign/patrologiaecur89mign.pdf" target="_blank" rel="noopener" class="info-link">↗ View source</a>
+          
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Translation</div>
+        <div class="info-value">Claude Sonnet 4.6</div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Accuracy Note</div>
+        <div class="info-value info-value--notes">All translations are AI-assisted and have been reviewed, but may contain errors. Always verify against the original source text before citing.</div>
+      </div>
+      
+      
+
+      <div class="info-section info-section--last">
+        <div class="info-label">How to Cite</div>
+        <div class="info-value info-cite">
+          Pseudo-Boniface, "On Faith and Charity," trans. Homiliae Archive,
+          <em>Homiliae: Christian Preaching Archive</em>,
+          accessed 2026,
+          http://localhost:1313/homilies/pseudo-boniface/sermon-07/.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reader-wrap">
+
+    
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/homilies/?author=pseudo-boniface">Pseudo-Boniface</a>
+         › Sermons (Pseudo-Boniface)
+      </div>
+
+      <div class="reader-title-row">
+        <div>
+          <h1 class="homily-title">On Faith and Charity</h1>
+          
+          <p class="title-original">Sermo VII: De fide et charitate</p>
+          
+        </div>
+        <button class="info-trigger" onclick="toggleInfo()" aria-label="Sermon information">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <span>
+          <a href="/homilies/?author=pseudo-boniface" class="meta-author-link">
+            Pseudo-Boniface
+          </a>
+        </span>
+        <span>8th–9th century AD</span>
+        <span>Latin</span>
+      </div>
+
+      
+
+      <div class="view-toggle" style="margin-top:1rem">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">Latin only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    
+    <div class="col-labels">
+      <div class="col-label-outer">
+        <span class="lang-dot dot-latin"></span>
+        Latin · Original
+      </div>
+      <div class="col-label-outer">
+        <span class="lang-dot dot-english"></span>
+        English · Translation
+      </div>
+    </div>
+
+    
+    <div class="parallel-reader" id="parallel-reader"></div>
+
+    
+    <div id="raw-content"><h2 id="original-text">Original Text</h2>
+<div class="text-section" data-section="1">
+  Primo omnium quaerendum est homini quae sit vera scientia, veraque sapientia, quia sapientia huius saeculi stultitia est apud Deum. Scientia vera est, a diaboli servitio, quod sunt peccata, recedere, et sapientia perfecta est Deum colere secundum mandatorum illius veritatem, quia in his duobus vita beata acquiritur, sicut psalmista ait: Diverte a malo, et fac bonum, nec etiam sufficit corpus mala non facere, nisi etiam et bona faciat; nec bona facere, nisi etiam et mala omittat. Omnis ergo qui sic sapiens est, procul dubio beatus erit in aeternum. Nulla melior est sapientia quam ea qua Deus secundum modulum humanae mentis intelligitur et timetur, et futurum eius creditur iudicium; vel quid est iustius quam Deum diligere eiusque mandata custodire, per quem, dum non fuerimus, creati sumus, et a servitute diaboli liberati, qui nobis omnia bona quae habemus perdonavit? Ideo unusquisque instantissime bona quae coepit perficere contendat, ut perpetuam a Domino mereatur mercedem accipere. Omnibus viribus diligatur Deus, qui custodit omnes qui ei corpus suum et animam subiiciunt bona voluntate et charitate sincera. Nam omnis creatura, velit aut nolit, uni Deo et Domino suo subiecta est. Sed hoc admonemur, ut tota voluntate serviamus Domino Deo nostro.
+</div>
+<div class="text-section" data-section="2">
+  Fides est prima quae subiugat animam Deo, quia cognitio divinitatis et scientia veritatis per fidem discenda est catholicam, quia sine fide impossibile est placere Deo. Vere beatus est qui et recte credit, et bene vivit, et bene vivendo fidem rectam custodit. Igitur sicut otiosa est fides sine operibus bonis, ita nihil proficiunt opera bona sine fide recta. Ista est fides catholica, ut credamus in unum Deum Patrem omnipotentem, et in Filium eius unicum Dominum nostrum Iesum Christum, et in Spiritum sanctum, id est, unus Deus, unius substantiae Trinitas aeterna; Deus ex quo omnia, per quem omnia, et in quo omnia.
+</div>
+<div class="text-section" data-section="3">
+  In praeceptis vero Dei charitas obtinet principatum, ideo diligenda est et tenenda, sine cuius perfectione nihil Deo placere posse, Paulus testatur apostolus. Unde et ipse Dominus a quadam scriba interrogatus quod esset mandatum maximum, respondit: Diliges Dominum Deum tuum ex toto corde, et ex tota anima tua, et ex tota mente tua. Addidit quoque: Secundum simile est huic: Diliges proximum tuum sicut te ipsum. In his duobus mandatis tota lex pendet et prophetae. Quod vero ait, ex toto corde et tota anima et tota mente, id est, toto intellectu, tota voluntate, et ex omni memoria Deum esse diligendum, Dei vero dilectio in observatione mandatorum eius tota consistit, sicut alibi ait: Si quis diligit me, sermones meos servat. Unde et ipsa Veritas alibi ait: In hoc cognoscent omnes quia mei discipuli estis, si dilectionem habueritis ad invicem. Item Apostolus: Plenitudo legis est dilectio. Item Ioannes evangelista: Hoc mandatum habemus a Deo, ut qui diligit Deum, diligat et proximum suum.
+</div>
+<div class="text-section" data-section="4">
+  Si forte quislibet quaerat quis sit proximus, sciat omnem Christianum recte proximum dici, quia omnes in baptismo Filii Dei sanctificamur, ut fratres simus spiritualiter in charitate perfecta. Nobilior est generatio spiritualis quam carnalis, de qua in Evangelio ipsa Veritas ait: Nisi quis renatus fuerit ex aqua et Spiritu sancto, non potest introire in regnum Dei. Discat homo quae sint praecepta Dei, et ea custodiat quantum valeat, et sic se recognoscat charitatem habere Dei. Nemo igitur quamvis ingenti peccatorum pondere prematur, de bonitate divinae pietatis desperare debet. Sed in omni tribulationum angustia spei solatium supernae pietatis currendum est, quia in Deo solo omnis spes et salus sine dubio consistit; qui vero Deum et Dominum fideliter amat et indesinenter colit, et eius mandata perseveranter implet, aeternam cum angelis gloriam perpetualiter possidere dignus efficiatur, caeleste regnum pro meritis patet. Igitur sicut omnibus aequaliter regni Dei praedicata est beatitudo, ita omni sexui, aetati, et personae aequaliter secundum meritorum dignitatem regni Dei patet introitus, ubi non est distinctio quis esset in saeculo, laicus vel clericus, dives aut pauper, iunior vel senior, servus aut dominus, sed unusquisque secundum cursum boni operis perpetua coronabitur gloria.
+</div>
+<h2 id="english-translation">English Translation</h2>
+<div class="text-section" data-section="1">
+  <p>First of all, a person must seek out what true knowledge and true wisdom are, because the wisdom of this age is foolishness before God. True knowledge is withdrawing from the service of the devil, which consists in sins; and perfect wisdom is worshipping God according to the truth of his commandments — for in these two things a blessed life is attained, as the Psalmist says:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Turn away from evil, and do good.</span>
+  <a href="/scriptures/#ps-36-27" class="verse-tooltip">
+    <span class="tooltip-ref">Ps 36:27</span>
+  </a>
+</span> It is not enough for the body to refrain from evil unless it also does good; nor enough to do good unless it also avoids evil. Anyone who is wise in this way will without doubt be blessed forever. There is no better wisdom than that by which God is understood and feared according to the measure of the human mind, and his coming judgment is believed. Or what is more just than to love God and keep his commandments — through whom, when we did not yet exist, we were created, and were freed from the servitude of the devil, who has granted us all the good things we have? Let each person therefore strive most earnestly to bring to completion the good he has begun, so as to merit receiving a lasting reward from the Lord. Let God be loved with all one's powers — he who watches over all who subject their body and soul to him with good will and sincere charity. For every creature, willing or not, is subject to the one God and Lord. But this is enjoined on us: that we serve the Lord our God with our whole will.
+</div>
+<div class="text-section" data-section="2">
+  <p>Faith is the first thing that subjects the soul to God, because knowledge of the divinity and understanding of truth must be learned through the Catholic faith, since</p>
+<span class="verse-wrap">
+  <span class="verse-text">without faith it is impossible to please God.</span>
+  <a href="/scriptures/#heb-11-6" class="verse-tooltip">
+    <span class="tooltip-ref">Heb 11:6</span>
+  </a>
+</span> Truly blessed is the person who both believes rightly and lives well, and by living well keeps the right faith. Just as faith without good works is idle, so good works without right faith profit nothing. This is the Catholic faith: that we believe in one God the Father almighty, and in his only Son our Lord Jesus Christ, and in the Holy Spirit — one God, an eternal Trinity of one substance; God from whom are all things, through whom are all things, and in whom are all things.
+</div>
+<div class="text-section" data-section="3">
+  <p>Among the commandments of God, charity holds first place and must therefore be loved and held fast — without whose perfection nothing can please God, as the Apostle Paul attests. The Lord himself, when asked by a certain scribe which was the greatest commandment, answered:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Thou shalt love the Lord thy God with thy whole heart, and with thy whole soul, and with thy whole mind. And the second is like to this: Thou shalt love thy neighbour as thyself. On these two commandments dependeth the whole law and the prophets.</span>
+  <a href="/scriptures/#matt-22-37-40" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 22:37-40</span>
+  </a>
+</span> That he says "with whole heart and whole soul and whole mind" means that God must be loved with one's whole understanding, one's whole will, and from one's whole memory. The love of God consists entirely in the observance of his commandments, as he says elsewhere: 
+<span class="verse-wrap">
+  <span class="verse-text">If any one love me, he will keep my word.</span>
+  <a href="/scriptures/#john-14-23" class="verse-tooltip">
+    <span class="tooltip-ref">John 14:23</span>
+  </a>
+</span> And Truth itself says elsewhere: 
+<span class="verse-wrap">
+  <span class="verse-text">By this shall all men know that you are my disciples, if you have love one for another.</span>
+  <a href="/scriptures/#john-13-35" class="verse-tooltip">
+    <span class="tooltip-ref">John 13:35</span>
+  </a>
+</span> Likewise the Apostle: 
+<span class="verse-wrap">
+  <span class="verse-text">The fullness of the law is love.</span>
+  <a href="/scriptures/#rom-13-10" class="verse-tooltip">
+    <span class="tooltip-ref">Rom 13:10</span>
+  </a>
+</span> Likewise John the Evangelist: 
+<span class="verse-wrap">
+  <span class="verse-text">This commandment we have from God, that he, who loveth God, love also his brother.</span>
+  <a href="/scriptures/#1-john-4-21" class="verse-tooltip">
+    <span class="tooltip-ref">1 John 4:21</span>
+  </a>
+</span>
+</div>
+<div class="text-section" data-section="4">
+  <p>If anyone should ask who is one&rsquo;s neighbor, let them know that every Christian is rightly called a neighbor, because we are all sanctified in baptism as children of God, to be brothers and sisters spiritually in perfect charity. The spiritual birth is nobler than the carnal, concerning which Truth itself says in the Gospel:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Unless a man be born again of water and the Holy Ghost, he cannot enter into the kingdom of God.</span>
+  <a href="/scriptures/#john-3-5" class="verse-tooltip">
+    <span class="tooltip-ref">John 3:5</span>
+  </a>
+</span> Let a person learn what the commandments of God are and keep them as well as he can, and so recognize that he has the love of God. No one, therefore, however heavily weighed down by the burden of sins, should despair of the goodness of divine mercy. In every distress of tribulations one must run to the consolation of hope in heavenly mercy, because in God alone all hope and salvation without doubt consist. Whoever truly and faithfully loves God and the Lord, worships him without ceasing, and perseveringly fulfills his commandments, is rendered worthy to possess eternal glory with the angels forever, and the heavenly kingdom stands open for the meritorious. Just as the blessedness of the kingdom of God has been proclaimed equally to all, so equally, according to the worthiness of their merits, the entry into God's kingdom stands open to every sex, age, and person — where there is no distinction of what one was in this world, layman or cleric, rich or poor, young or old, servant or master, but each one will be crowned with eternal glory according to the course of his good works.
+</div>
+</div>
+
+    
+
+    
+    <div class="homily-nav">
+      
+      <a class="nav-btn nav-prev" href="http://localhost:1313/homilies/pseudo-boniface/sermon-05/">
+        ← <span>On Faith and the Works of Love</span>
+      </a>
+      
+      
+      <a class="nav-btn nav-next" href="http://localhost:1313/homilies/pseudo-boniface/sermon-12/">
+        <span>An Exhortation on the Lenten Fasts</span> →
+      </a>
+      
+    </div>
+
+  </div>
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

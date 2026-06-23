@@ -81,3 +81,50 @@
   color: var(--ink-ghost);
   font-style: italic;
 }
+
+/* ── Book navigation ── */
+.book-nav {
+  position: sticky;
+  top: 52px;
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.6rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.1rem;
+  z-index: 50;
+  margin: 0 -2rem 2rem;
+}
+
+.book-nav-link {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-ghost);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  transition: all .15s;
+  white-space: nowrap;
+}
+
+.book-nav-link:hover {
+  color: var(--accent);
+  background: var(--panel-bg);
+}
+
+/* ── Highlighted verse entry (when linked to directly) ── */
+.verse-entry--highlighted {
+  background: rgba(139,58,42,.08);
+  border-radius: 3px;
+  outline: 2px solid rgba(139,58,42,.2);
+  outline-offset: 4px;
+  transition: all .3s;
+}
+
+.scripture-note {
+  font-size: 0.8rem;
+  color: var(--ink-ghost);
+  font-style: italic;
+  margin-top: 0.3rem;
+}

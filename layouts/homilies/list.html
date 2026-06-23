@@ -63,8 +63,18 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="sermon-search" placeholder="Search within this author's sermons…" oninput="filterSermons(this.value)">
       </div>
-      <div class="browse-filter-row" id="theme-filters"></div>
-      <div class="browse-filter-row" id="occasion-filters" style="margin-top:0.4rem"></div>
+      <div class="filter-dropdowns">
+        <div class="filter-dropdown-wrap">
+          <select class="filter-dropdown" id="theme-dropdown" onchange="setThemeFromDropdown(this.value)">
+            <option value="">All Themes</option>
+          </select>
+        </div>
+        <div class="filter-dropdown-wrap">
+          <select class="filter-dropdown" id="occasion-dropdown" onchange="setOccasionFromDropdown(this.value)">
+            <option value="">All Occasions</option>
+          </select>
+        </div>
+      </div>
     </div>
 
     <div class="browse-wrap">
@@ -81,10 +91,13 @@
   let activePeriod = null;
 
   // Load author data
-  try {
-    const raw = document.getElementById('author-data').textContent.trim();
-    const parsed = JSON.parse(raw);
-    authorData = (typeof parsed === 'string') ? JSON.parse(parsed) : parsed;
+try {
+    let raw = document.getElementById('author-data').textContent.trim();
+    let parsed = JSON.parse(raw);
+    while (typeof parsed === 'string') {
+      parsed = JSON.parse(parsed);
+    }
+    authorData = parsed;
   } catch(e) { console.error('Author data error:', e); }
 
   // Check URL for author param
@@ -99,6 +112,15 @@
       // Update total count
       document.getElementById('total-homily-count').textContent = allHomilies.length;
 
+   window.setThemeFromDropdown = function(val) {
+    activeTheme = val || null;
+    renderSermonList();
+   };
+
+   window.setOccasionFromDropdown = function(val) {
+    activeOccasion = val || null;
+    renderSermonList();
+   };
       // Build period filters
       const periods = [...new Set(allHomilies.map(h => h.period).filter(Boolean))].sort();
       buildPillFilters('period-filters', periods, val => {
@@ -157,15 +179,20 @@
       return;
     }
 
-    let html = filtered.map(({ name, data, homilies, count }) => `
-      <div class="author-card" onclick="showAuthorDetail('${name.replace(/'/g, "\\'")}')">
-        <div class="author-card-period">${data.tradition || ''}</div>
-        <div class="author-card-name">${name}</div>
-        <div class="author-card-dates">${data.dates || ''}</div>
-        <div class="author-card-desc">${(data.description || '').substring(0, 120)}…</div>
-        <div class="author-card-count">${count} ${count === 1 ? 'homily' : 'homilies'}</div>
-      </div>
-    `).join('');
+let html = filtered.map(({ name, data, homilies, count }) => `
+  <div class="author-card" onclick="showAuthorDetail('${name.replace(/'/g, "\\'")}')">
+    <div class="author-card-left">
+      <div class="author-card-period">${data.tradition || ''}</div>
+      <div class="author-card-name">${name}</div>
+      <div class="author-card-dates">${data.dates || ''}</div>
+      <div class="author-card-desc">${(data.bio || data.description || '').substring(0, 120)}…</div>
+      <div class="author-card-count">${count} ${count === 1 ? 'homily' : 'homilies'}</div>
+    </div>
+    <div class="author-card-right">
+      ${data.image ? `<img src="${data.image}" alt="${name}" class="author-card-img">` : ''}
+    </div>
+  </div>
+`).join('');
 
     if (extraHomilies.length > 0) {
       html += `<div class="search-also-label">Sermons matching "${term}"</div>`;
@@ -198,7 +225,7 @@
     document.getElementById('detail-name').textContent = authorName;
     document.getElementById('detail-meta').textContent =
       [data.dates, data.tradition].filter(Boolean).join(' · ');
-    document.getElementById('detail-bio').textContent = data.description || '';
+    document.getElementById('detail-bio').textContent = data.bio || data.description || '';
     const imageWrap = document.getElementById('detail-image-wrap');
     const imageEl = document.getElementById('detail-image');
     const captionEl = document.getElementById('detail-caption');
@@ -213,21 +240,27 @@
     }
     document.getElementById('sermon-search').value = '';
 
-    // Build theme filters
     const themes = [...new Set(homilies.flatMap(h => h.themes || []).filter(Boolean))].sort();
-    buildPillFilters('theme-filters', themes, val => {
-      activeTheme = activeTheme === val ? null : val;
-      renderSermonList();
-      updatePillsActive('theme-filters', activeTheme);
-    }, 'Theme: ');
+    const themeDropdown = document.getElementById('theme-dropdown');
+    themeDropdown.innerHTML = '<option value="">All Themes</option>';
+    themes.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t;
+      opt.textContent = t;
+      themeDropdown.appendChild(opt);
+    });
+    themeDropdown.value = '';
 
-    // Build occasion filters
     const occasions = [...new Set(homilies.flatMap(h => h.liturgical_occasion || []).filter(Boolean))].sort();
-    buildPillFilters('occasion-filters', occasions, val => {
-      activeOccasion = activeOccasion === val ? null : val;
-      renderSermonList();
-      updatePillsActive('occasion-filters', activeOccasion);
-    }, 'Occasion: ');
+    const occasionDropdown = document.getElementById('occasion-dropdown');
+    occasionDropdown.innerHTML = '<option value="">All Occasions</option>';
+    occasions.forEach(o => {
+      const opt = document.createElement('option');
+      opt.value = o;
+      opt.textContent = o;
+      occasionDropdown.appendChild(opt);
+    });
+    occasionDropdown.value = '';
 
     // Update URL
     window.history.pushState({}, '', '/homilies/?author=' + encodeURIComponent(

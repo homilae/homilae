@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On the Eight Beatitudes of the Gospel — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,opsz,wght@0,6..144,400;0,6..144,500;1,6..144,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+    <button class="settings-trigger" onclick="toggleSettings()" aria-label="Settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  
+  <div class="settings-overlay" id="settings-overlay" onclick="toggleSettings()"></div>
+  <aside class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <span class="settings-title">Reading Settings</span>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-label">Appearance</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Mode</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setMode('light')">Light</button>
+            <button class="s-btn" onclick="setMode('sepia')">Sepia</button>
+            <button class="s-btn" onclick="setMode('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Font Size</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Size</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setFontSize('small')">Small</button>
+            <button class="s-btn active" onclick="setFontSize('medium')">Medium</button>
+            <button class="s-btn" onclick="setFontSize('large')">Large</button>
+            <button class="s-btn" onclick="setFontSize('xlarge')">X-Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Layout</div>
+        <div class="settings-row">
+          <span class="settings-row-label">View</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setView('parallel')">Parallel</button>
+            <button class="s-btn" onclick="setView('original')">Latin only</button>
+            <button class="s-btn" onclick="setView('translation')">English only</button>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:0.8rem">
+          <span class="settings-row-label">Line spacing</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setLineHeight('compact')">Compact</button>
+            <button class="s-btn active" onclick="setLineHeight('normal')">Normal</button>
+            <button class="s-btn" onclick="setLineHeight('spacious')">Spacious</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Typography</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Font</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setFont('cardo')">Cardo</button>
+            <button class="s-btn" onclick="setFont('garamond')">Garamond</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Scripture</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Show tooltips</span>
+          <label class="settings-toggle-switch">
+            <input type="checkbox" id="tooltip-toggle" checked onchange="toggleTooltips(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section settings-section--future">
+        <div class="settings-section-label">Coming soon</div>
+        <div class="settings-future-item">Bookmark this homily</div>
+        <div class="settings-future-item">Print optimised view</div>
+        <div class="settings-future-item">Download as PDF</div>
+        <div class="settings-future-item">Copy citation</div>
+      </div>
+
+    </div>
+  </aside>
+
+  
+  <div class="info-overlay" id="info-overlay" onclick="toggleInfo()"></div>
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-header">
+      <span class="info-modal-title">Sermon Information</span>
+      <button class="info-modal-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-modal-body">
+
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Type</div>
+        <div class="info-value">Sermon</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Liturgical Occasion</div>
+        <div class="info-value">No specific occasion</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Audience</div>
+        <div class="info-value">General faithful</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Themes</div>
+        <div class="info-chips">
+          
+          <span class="info-chip">Virtues · Humility</span>
+          
+          <span class="info-chip">Virtues · Charity</span>
+          
+          <span class="info-chip">Virtues · Justice</span>
+          
+          <span class="info-chip">Virtues · Fortitude</span>
+          
+          <span class="info-chip">Vices · Pride</span>
+          
+          <span class="info-chip">Sacraments · Confession</span>
+          
+          <span class="info-chip">Last things · Judgement</span>
+          
+          <span class="info-chip">Last things · Heaven</span>
+          
+          <span class="info-chip">Moral · Almsgiving</span>
+          
+          <span class="info-chip">Scripture exposition · Matthew</span>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Scripture References</div>
+        <div class="info-chips">
+          
+          <span class="info-chip info-chip--verse">Matt 5:3-10</span>
+          
+          <span class="info-chip info-chip--verse">Matt 11:29</span>
+          
+          <span class="info-chip info-chip--verse">Ps 26:13</span>
+          
+          <span class="info-chip info-chip--verse">John 16:20</span>
+          
+          <span class="info-chip info-chip--verse">Luke 6:36</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="info-section">
+        <div class="info-label">Source Text</div>
+        <div class="info-value">
+          Migne, Patrologia Latina, vol. 89 (Paris, 1863)
+          
+          <a href="https://dn790000.ca.archive.org/0/items/patrologiaecur89mign/patrologiaecur89mign.pdf" target="_blank" rel="noopener" class="info-link">↗ View source</a>
+          
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Translation</div>
+        <div class="info-value">Claude Sonnet 4.6</div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Accuracy Note</div>
+        <div class="info-value info-value--notes">All translations are AI-assisted and have been reviewed, but may contain errors. Always verify against the original source text before citing.</div>
+      </div>
+      
+      
+
+      <div class="info-section info-section--last">
+        <div class="info-label">How to Cite</div>
+        <div class="info-value info-cite">
+          Pseudo-Boniface, "On the Eight Beatitudes of the Gospel," trans. Homiliae Archive,
+          <em>Homiliae: Christian Preaching Archive</em>,
+          accessed 2026,
+          http://localhost:1313/homilies/pseudo-boniface/sermon-04/.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reader-wrap">
+
+    
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/homilies/?author=pseudo-boniface">Pseudo-Boniface</a>
+         › Sermons (Pseudo-Boniface)
+      </div>
+
+      <div class="reader-title-row">
+        <div>
+          <h1 class="homily-title">On the Eight Beatitudes of the Gospel</h1>
+          
+          <p class="title-original">Sermo IV: De octo beatitudinibus evangelicis</p>
+          
+        </div>
+        <button class="info-trigger" onclick="toggleInfo()" aria-label="Sermon information">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <span>
+          <a href="/homilies/?author=pseudo-boniface" class="meta-author-link">
+            Pseudo-Boniface
+          </a>
+        </span>
+        <span>8th–9th century AD</span>
+        <span>Latin</span>
+      </div>
+
+      
+
+      <div class="view-toggle" style="margin-top:1rem">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">Latin only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    
+    <div class="col-labels">
+      <div class="col-label-outer">
+        <span class="lang-dot dot-latin"></span>
+        Latin · Original
+      </div>
+      <div class="col-label-outer">
+        <span class="lang-dot dot-english"></span>
+        English · Translation
+      </div>
+    </div>
+
+    
+    <div class="parallel-reader" id="parallel-reader"></div>
+
+    
+    <div id="raw-content"><h2 id="original-text">Original Text</h2>
+<div class="text-section" data-section="1">
+  Cum praedicaret Dominus Jesus in quodam loco, et multos infirmos curaret, multae turbae convenerunt ad eum, et ascendit excelsiorem locum, et coepit docere eos, dicens: Beati pauperes spiritu, quoniam ipsorum est regnum caelorum. Beati mites, quoniam ipsi possidebunt terram. Beati qui lugent, quoniam ipsi consolabuntur. Beati qui esuriunt et sitiunt justitiam, quoniam ipsi saturabuntur. Beati misericordes, quoniam ipsi misericordiam consequentur. Beati mundo corde, quoniam ipsi Deum videbunt. Beati pacifici, quoniam filii Dei vocabuntur. Beati qui persecutionem patiuntur propter justitiam, quoniam ipsorum est regnum caelorum. Beatitudinem regni caelorum Dominus promisit sua praecepta servantibus, et primo de humilitate loquitur dicens: Beati pauperes spiritu, etc. Ideo enim dicit Pauperes spiritu, ne putemus illos esse beatos quos necessitas et penuria pauperes facit; sed illi sunt vere beati, qui humiliantur in spiritu, et licet divitias habeant, non exaltantur in superbiam, sed in humilitate glorificant Deum, qui semper facit bene sperantibus in se. Humilitas enim omnium bonorum fundamentum est: Quoniam ipsorum est regnum caelorum. Per superbiam et inobedientiam perdidit homo regnum caelorum, ideoque per humilitatem et obedientiam debemus acquirere regnum Dei.
+</div>
+<div class="text-section" data-section="2">
+  Beati mites, quoniam ipsi possidebunt terram. Mitis est nobis Deus, tribuitque nobis cuncta necessaria, quod propterea facit, ut nos mites simus et benigni proximis nostris, et bona semper quae possumus libenter faciamus, sicut ipse Dominus in alio loco admonet dicens: Discite a me quia mitis sum et humilis corde, et invenietis requiem animabus vestris. Mites possidebunt terram, non istam corruptibilem terram quae corporibus mortuorum plena est, quae saepe per superbiam opprimitur, et per sanguinea bella polluitur; sed illam terram habebunt mites, de qua dicit quidam sanctus: Credo videre bona Domini in terra viventium. Illa est terra ubi habitant angeli et animae sanctorum, ubi aeterna est laetitia, et sine fine felicitas.
+</div>
+<div class="text-section" data-section="3">
+  Beati qui lugent nunc, quoniam ipsi consolabuntur. Beati sunt qui in hoc saeculo plangunt sua peccata, ne in aeternis poenis cum diabolo lugeant. Melius est hic parvo tempore poenitere pro delictis, et in aeternum gaudere cum sanctis, quam brevia istius saeculi gaudia immoderanter exercere, et post hanc vitam aeternis suppliciis puniri. Nos vero sumus illis similes ad quos Dominus dicit: Vos contristabimini, sed tristitia vestra vertetur in gaudium.
+</div>
+<div class="text-section" data-section="4">
+  Beati qui esuriunt et sitiunt justitiam. Non omnes sunt beati qui esuriunt et sitiunt, sed illi soli sunt beati qui esuriunt semper justitiam. Sic vero debemus esurire justitiam, ut nunquam putemus quod satis justi simus, sed semper deprecemur Deum ut augeat merita nostra in bono; qui enim putat se satis habere de justitia, non esurit justitiam, sed exaltatur in superbiam et statim cadet. Humilis autem semper ibit de virtute in virtutem, et semper delectatur in melius proficere.
+</div>
+<div class="text-section" data-section="5">
+  Beati misericordes, quoniam ipsi misericordiam consequentur. Nos multum optamus ut Deus nostra delicta remittat nobis poenitentibus. Sic et nos debemus proximis nostris rogantibus debita dimittere, sicut ipse Dominus dixit: Estote misericordes sicut et pater vester caelestis misericors est. Misericordes enim misericordiam consequentur, quia si dimiserimus hominibus peccata eorum, remittet nobis et Pater noster caelestis delicta nostra.
+</div>
+<div class="text-section" data-section="6">
+  Beati mundo corde, quoniam ipsi Deum videbunt. Illi erunt mundo corde, qui omnem malitiam, et dolum, et invidiam, et concupiscentiam, expellent a corde suo, et mundabunt conscientias per charitatem, et castitatem, et justitiam, et per caeteras sanctas virtutes, ut possint videre Deum in caelesti regno. Deus enim non vult habitare in corpore polluto peccatis, ideoque mundemus nos ab omni inquinamento carnis et mentis, ut Deus habitet in cordibus nostris, et dirigat nos ad omne opus bonum. Si enim confitebimur peccata nostra, et emendabimus, et ad eadem non revertemur, mundabit nos Deus a peccatis nostris, et replebit nos virtutibus caelestibus, et dignos nos efficiet caelestis beatitudinis cum omnibus sanctis. Si autem absconderimus, Deus illa manifestabit, velimus nolimus. Et melius est uni homini confiteri peccata, quam in illo tremendo judicio coram tribus familiis, caeli terraeque, et inferorum, publicari, et confundi pro peccatis, non ad emendationem, sed ad poenam perpetuam.
+</div>
+<div class="text-section" data-section="7">
+  Beati pacifici, quoniam filii Dei vocabuntur. Sic debemus pacem sectari, ut primum inter Deum et nos ipsos pacem efficiamus, sectantes quae ipse praecepit, et fugientes mala quae Deo odiosa sunt. Deinde pacificare debemus inter proximos nostros quoscunque viderim inter se discordiam habere. Per pacem filii Dei vocabimur. Magna est bonitas Dei et ineffabilis clementia conditoris, non sumus digni servi Dei esse, et filii vocamur. Studeamus ergo, ut nos ipsi per bona opera tantae haereditatis digni esse mereamur, et non segregemus nos ipsos a tam pio patre, qui nos in filiorum sortem adnumerare dignatus est.
+</div>
+<div class="text-section" data-section="8">
+  Beati qui persecutionem patiuntur propter justitiam, quoniam ipsorum est regnum caelorum. Christus Filius Dei flagella et opprobria pro nobis sustinuit, et postremo ipsam mortem pro nobis suscepit; debemus ergo et nos pro ejus nomine adversa quaeque tolerare patienter, quia per multas tribulationes intrabimus in regnum Dei, si eas propter justitiam toleramus. Beatitudo ergo nobis in caelo parata est, ad illam bonis operibus nos praeparemus, ad illam toto desiderio curramus. Exspectant nos angeli omnes sancti in caelis et gaudent, ut ad eos venire velimus. Laudemus itaque misericordiam Dei, et ei in omnibus gratias agamus, eumque semper deprecemur, ut qui nos redimere dignatus est, ipse nos emendet ab omnibus peccatis, et sui regni consortes cum omnibus sanctis efficiat. Cui est honor et gloria in saecula saeculorum. Amen.
+</div>
+<h2 id="english-translation">English Translation</h2>
+<div class="text-section" data-section="1">
+  <p>When the Lord Jesus was preaching in a certain place and healing many who were sick, great multitudes gathered to Him, and He went up to a higher place and began to teach them, saying:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Blessed are the poor in spirit: for theirs is the kingdom of heaven. Blessed are the meek: for they shall possess the land. Blessed are they that mourn: for they shall be comforted. Blessed are they that hunger and thirst after justice: for they shall have their fill. Blessed are the merciful: for they shall obtain mercy. Blessed are the clean of heart: for they shall see God. Blessed are the peacemakers: for they shall be called the children of God. Blessed are they that suffer persecution for justice' sake: for theirs is the kingdom of heaven.</span>
+  <a href="/scriptures/#matt-5-3-10" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 5:3-10</span>
+  </a>
+</span> The Lord has promised the blessedness of the heavenly kingdom to those who keep His commandments, and He speaks first of humility, saying: Blessed are the poor in spirit, and so on. He says "poor in spirit" lest we suppose that those are blessed whom necessity and want make poor; but those are truly blessed who humble themselves in spirit and, though they possess riches, do not lift themselves up in pride but glorify God in humility — who always deals well with those who hope in Him. For humility is the foundation of all good things. For theirs is the kingdom of heaven. Through pride and disobedience man lost the kingdom of heaven; therefore through humility and obedience we must acquire the kingdom of God.
+</div>
+<div class="text-section" data-section="2">
+  <p>Blessed are the meek, for they shall possess the land. God is meek toward us and bestows upon us all things needful, and He does this so that we in turn may be meek and gentle toward our neighbours and always willingly do the good that we are able — as the Lord Himself exhorts us in another place, saying:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Take up my yoke upon you, and learn of me, because I am meek, and humble of heart: and you shall find rest to your souls.</span>
+  <a href="/scriptures/#matt-11-29" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 11:29</span>
+  </a>
+</span> The meek shall possess the land — not this corruptible earth which is full of the bodies of the dead, which is so often oppressed through pride and polluted by bloody wars, but that land they shall have of which a certain holy man says: 
+<span class="verse-wrap">
+  <span class="verse-text">I believe to see the good things of the Lord in the land of the living.</span>
+  <a href="/scriptures/#ps-26-13" class="verse-tooltip">
+    <span class="tooltip-ref">Ps 26:13</span>
+  </a>
+</span> That is the land where angels dwell and the souls of the saints, where there is eternal joy and happiness without end.
+</div>
+<div class="text-section" data-section="3">
+  <p>Blessed are they that mourn now, for they shall be comforted. Blessed are those who in this age weep for their sins, lest they mourn in eternal torments with the devil. It is better here to do penance for a little time for one&rsquo;s offences and rejoice forever with the saints, than to pursue immoderately the brief joys of this world and after this life be punished with eternal sufferings. For we are like those to whom the Lord says:</p>
+<span class="verse-wrap">
+  <span class="verse-text">You shall be made sorrowful, but your sorrow shall be turned into joy.</span>
+  <a href="/scriptures/#john-16-20" class="verse-tooltip">
+    <span class="tooltip-ref">John 16:20</span>
+  </a>
+</span>
+</div>
+<div class="text-section" data-section="4">
+  Blessed are they that hunger and thirst after justice. Not all who hunger and thirst are blessed, but only those are blessed who hunger always after justice. We ought to hunger for justice in such a way that we never suppose ourselves to be sufficiently just, but always implore God to increase our merits in good; for he who thinks he has justice enough does not hunger for justice, but is puffed up in pride and will quickly fall. But the humble man will always go from virtue to virtue, and always delights to advance toward what is better.
+</div>
+<div class="text-section" data-section="5">
+  <p>Blessed are the merciful, for they shall obtain mercy. We greatly desire that God pardon us our offences when we repent. So too ought we to remit what is owed to our neighbours when they ask it of us, as the Lord Himself said:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Be you therefore merciful, as your Father also is merciful.</span>
+  <a href="/scriptures/#luke-6-36" class="verse-tooltip">
+    <span class="tooltip-ref">Luke 6:36</span>
+  </a>
+</span> For the merciful shall obtain mercy, because if we forgive men their sins our heavenly Father will also remit our offences.
+</div>
+<div class="text-section" data-section="6">
+  Blessed are the clean of heart, for they shall see God. Those shall be clean of heart who drive out from their hearts all malice, and guile, and envy, and concupiscence, and cleanse their consciences through charity, chastity, justice, and the other holy virtues, so that they may see God in the heavenly kingdom. For God does not will to dwell in a body defiled by sins; therefore let us cleanse ourselves from all pollution of flesh and mind, so that God may dwell in our hearts and direct us to every good work. For if we confess our sins and amend and do not return to them, God will cleanse us from our sins, fill us with heavenly virtues, and make us worthy of heavenly blessedness with all the saints. But if we hide our sins, God will make them manifest whether we will or no. And it is better to confess one&rsquo;s sins to one man than to be exposed and put to shame for them at that dread judgement before the three families of heaven, earth, and hell — not for amendment, but for perpetual punishment.
+</div>
+<div class="text-section" data-section="7">
+  Blessed are the peacemakers, for they shall be called the children of God. We ought to pursue peace in such a way that we first make peace between God and ourselves by following what He has commanded and fleeing the evils that are hateful to God. Then we ought to make peace among our neighbours whenever we see them at discord with one another. Through peace we shall be called sons of God. Great is the goodness of God and ineffable the clemency of our Maker — we are not worthy to be servants of God, and yet we are called sons. Let us strive then so to merit by our good works to be worthy of so great an inheritance, and let us not cut ourselves off from so loving a Father, who has deigned to number us in the lot of His children.
+</div>
+<div class="text-section" data-section="8">
+  Blessed are they that suffer persecution for justice&rsquo; sake, for theirs is the kingdom of heaven. Christ the Son of God endured stripes and reproaches for us, and at last accepted death itself on our behalf; therefore we too ought to bear patiently whatever adversities come to us for His name&rsquo;s sake, for through many tribulations we shall enter into the kingdom of God, if we endure them for justice. Blessedness therefore is prepared for us in heaven; let us prepare ourselves by good works to attain it, and let us run toward it with our whole desire. The angels and all the saints await us in the heavens and rejoice that we should desire to come to them. Let us therefore praise the mercy of God and give thanks to Him in all things, and let us always implore Him that He who has deigned to redeem us would Himself cleanse us from all sins and make us partakers of His kingdom with all the saints. To whom be honour and glory for ever and ever. Amen.
+</div>
+</div>
+
+    
+
+    
+    <div class="homily-nav">
+      
+      <a class="nav-btn nav-prev" href="http://localhost:1313/homilies/pseudo-boniface/sermon-10/">
+        ← <span>On the Incarnation of the Son of God and the Restoration of the Human Race</span>
+      </a>
+      
+      
+      <a class="nav-btn nav-next" href="http://localhost:1313/homilies/pseudo-boniface/sermon-14/">
+        <span>On the Day of the Paschal Feast</span> →
+      </a>
+      
+    </div>
+
+  </div>
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 {{ $ref := .Get "ref" }}
-{{ $slug := $ref | urlize }}
+{{ $slug := $ref | lower | replaceRE "\\s+" "-" | replaceRE ":" "-" }}
 <span class="verse-wrap">
   <span class="verse-text">{{ .Inner }}</span>
   <a href="/scriptures/#{{ $slug }}" class="verse-tooltip">

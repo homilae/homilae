@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On Faith and the Works of Love — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,opsz,wght@0,6..144,400;0,6..144,500;1,6..144,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+    <button class="settings-trigger" onclick="toggleSettings()" aria-label="Settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  
+  <div class="settings-overlay" id="settings-overlay" onclick="toggleSettings()"></div>
+  <aside class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <span class="settings-title">Reading Settings</span>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-label">Appearance</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Mode</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setMode('light')">Light</button>
+            <button class="s-btn" onclick="setMode('sepia')">Sepia</button>
+            <button class="s-btn" onclick="setMode('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Font Size</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Size</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setFontSize('small')">Small</button>
+            <button class="s-btn active" onclick="setFontSize('medium')">Medium</button>
+            <button class="s-btn" onclick="setFontSize('large')">Large</button>
+            <button class="s-btn" onclick="setFontSize('xlarge')">X-Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Layout</div>
+        <div class="settings-row">
+          <span class="settings-row-label">View</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setView('parallel')">Parallel</button>
+            <button class="s-btn" onclick="setView('original')">Latin only</button>
+            <button class="s-btn" onclick="setView('translation')">English only</button>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:0.8rem">
+          <span class="settings-row-label">Line spacing</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setLineHeight('compact')">Compact</button>
+            <button class="s-btn active" onclick="setLineHeight('normal')">Normal</button>
+            <button class="s-btn" onclick="setLineHeight('spacious')">Spacious</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Typography</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Font</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setFont('cardo')">Cardo</button>
+            <button class="s-btn" onclick="setFont('garamond')">Garamond</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Scripture</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Show tooltips</span>
+          <label class="settings-toggle-switch">
+            <input type="checkbox" id="tooltip-toggle" checked onchange="toggleTooltips(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section settings-section--future">
+        <div class="settings-section-label">Coming soon</div>
+        <div class="settings-future-item">Bookmark this homily</div>
+        <div class="settings-future-item">Print optimised view</div>
+        <div class="settings-future-item">Download as PDF</div>
+        <div class="settings-future-item">Copy citation</div>
+      </div>
+
+    </div>
+  </aside>
+
+  
+  <div class="info-overlay" id="info-overlay" onclick="toggleInfo()"></div>
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-header">
+      <span class="info-modal-title">Sermon Information</span>
+      <button class="info-modal-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-modal-body">
+
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Type</div>
+        <div class="info-value">Catechetical instruction</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Liturgical Occasion</div>
+        <div class="info-value">No specific occasion</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Audience</div>
+        <div class="info-value">General faithful</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Themes</div>
+        <div class="info-chips">
+          
+          <span class="info-chip">Virtues · Faith</span>
+          
+          <span class="info-chip">Virtues · Charity</span>
+          
+          <span class="info-chip">Virtues · Hope</span>
+          
+          <span class="info-chip">Virtues · Humility</span>
+          
+          <span class="info-chip">Virtues · Obedience</span>
+          
+          <span class="info-chip">Virtues · Temperance</span>
+          
+          <span class="info-chip">Sacraments · Baptism</span>
+          
+          <span class="info-chip">Sacraments · Confirmation</span>
+          
+          <span class="info-chip">Sacraments · Eucharist</span>
+          
+          <span class="info-chip">Moral · Almsgiving</span>
+          
+          <span class="info-chip">Moral · Justice</span>
+          
+          <span class="info-chip">Last things · Judgement</span>
+          
+          <span class="info-chip">Last things · Hell</span>
+          
+          <span class="info-chip">Last things · Heaven</span>
+          
+          <span class="info-chip">Christology · Resurrection</span>
+          
+          <span class="info-chip">Christology · Ascension</span>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Scripture References</div>
+        <div class="info-chips">
+          
+          <span class="info-chip info-chip--verse">Jas 2:26</span>
+          
+          <span class="info-chip info-chip--verse">Matt 22:40</span>
+          
+          <span class="info-chip info-chip--verse">Luke 21:19</span>
+          
+          <span class="info-chip info-chip--verse">Luke 6:36</span>
+          
+          <span class="info-chip info-chip--verse">Matt 5:7</span>
+          
+          <span class="info-chip info-chip--verse">Eph 4:32</span>
+          
+          <span class="info-chip info-chip--verse">Heb 12:14</span>
+          
+          <span class="info-chip info-chip--verse">Matt 5:8</span>
+          
+          <span class="info-chip info-chip--verse">Matt 19:6</span>
+          
+          <span class="info-chip info-chip--verse">Eph 5:25</span>
+          
+          <span class="info-chip info-chip--verse">Matt 5:3</span>
+          
+          <span class="info-chip info-chip--verse">Jas 5:20</span>
+          
+          <span class="info-chip info-chip--verse">Matt 25:35</span>
+          
+          <span class="info-chip info-chip--verse">Matt 25:36</span>
+          
+          <span class="info-chip info-chip--verse">Matt 25:40</span>
+          
+          <span class="info-chip info-chip--verse">Matt 7:12</span>
+          
+          <span class="info-chip info-chip--verse">Rom 13:1</span>
+          
+          <span class="info-chip info-chip--verse">Rom 13:7</span>
+          
+          <span class="info-chip info-chip--verse">Heb 11:6</span>
+          
+          <span class="info-chip info-chip--verse">Acts 1:11</span>
+          
+          <span class="info-chip info-chip--verse">Luke 3:6</span>
+          
+          <span class="info-chip info-chip--verse">Isa 26:10</span>
+          
+          <span class="info-chip info-chip--verse">1 Cor 15:51</span>
+          
+          <span class="info-chip info-chip--verse">Matt 25:46</span>
+          
+          <span class="info-chip info-chip--verse">Matt 13:43</span>
+          
+          <span class="info-chip info-chip--verse">1 Cor 2:9</span>
+          
+          <span class="info-chip info-chip--verse">Rom 8:17</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="info-section">
+        <div class="info-label">Source Text</div>
+        <div class="info-value">
+          Migne, Patrologia Latina, vol. 89 (Paris, 1863)
+          
+          <a href="https://dn790000.ca.archive.org/0/items/patrologiaecur89mign/patrologiaecur89mign.pdf" target="_blank" rel="noopener" class="info-link">↗ View source</a>
+          
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Translation</div>
+        <div class="info-value">Claude Sonnet 4.6</div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Accuracy Note</div>
+        <div class="info-value info-value--notes">All translations are AI-assisted and have been reviewed, but may contain errors. Always verify against the original source text before citing.</div>
+      </div>
+      
+      
+
+      <div class="info-section info-section--last">
+        <div class="info-label">How to Cite</div>
+        <div class="info-value info-cite">
+          Pseudo-Boniface, "On Faith and the Works of Love," trans. Homiliae Archive,
+          <em>Homiliae: Christian Preaching Archive</em>,
+          accessed 2026,
+          http://localhost:1313/homilies/pseudo-boniface/sermon-05/.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reader-wrap">
+
+    
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/homilies/?author=pseudo-boniface">Pseudo-Boniface</a>
+         › Sermons (Pseudo-Boniface)
+      </div>
+
+      <div class="reader-title-row">
+        <div>
+          <h1 class="homily-title">On Faith and the Works of Love</h1>
+          
+          <p class="title-original">Sermo V: De fide et operibus dilectionis</p>
+          
+        </div>
+        <button class="info-trigger" onclick="toggleInfo()" aria-label="Sermon information">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <span>
+          <a href="/homilies/?author=pseudo-boniface" class="meta-author-link">
+            Pseudo-Boniface
+          </a>
+        </span>
+        <span>8th–9th century AD</span>
+        <span>Latin</span>
+      </div>
+
+      
+
+      <div class="view-toggle" style="margin-top:1rem">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">Latin only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    
+    <div class="col-labels">
+      <div class="col-label-outer">
+        <span class="lang-dot dot-latin"></span>
+        Latin · Original
+      </div>
+      <div class="col-label-outer">
+        <span class="lang-dot dot-english"></span>
+        English · Translation
+      </div>
+    </div>
+
+    
+    <div class="parallel-reader" id="parallel-reader"></div>
+
+    
+    <div id="raw-content"><h2 id="original-text">Original Text</h2>
+<div class="text-section" data-section="1">
+  Admoneo vos ut reminiscamini quid omnipotenti Deo in baptismo promisistis. Primitus credere in Deum Patrem omnipotentem, et in Jesum Christum Filium ejus, et in Spiritum sanctum, unum omnipotentem Deum in Trinitate perfecta. Sed quia scriptum est: Fides sine operibus mortua est, et qui novit Deum, mandata debet conservare, haec sunt mandata Dei quae vobis annuntiamus facere et servare. Ut Deum quem confessus es diligas ex toto corde, et ex tota mente, et ex tota virtute. Deinde proximos vestros tanquam vos ipsos. In his duobus mandatis tota lex pendet et prophetae. Initium sapientiae timor Domini, perfectio autem charitas est, et ideo ut possitis hanc charitatem, quae Deus est, adipisci, habete, sicut Apostolus praecepit, cum omnibus pacem, ut Dominus dicit: Pacem et veritatem diligite; patientiam, quia Dominus dicit: In patientia vestra possidebitis animas vestras. Habete misericordiam, quia Dominus praecepit: Estote misericordes, sicut Pater vester caelestis misericors est. Et iterum: Beati misericordes, quoniam ipsi misericordiam consequentur. Estote benigni, sicut Apostolus praecepit: Estote invicem benigni, misericordes, donantes invicem sicut et Deus in Christo donavit vobis. Sitis casti, sicut Apostolus dicit: Sequimini pacem et castimoniam, sine qua nemo videbit Deum. Sitis impolluti corde et corpore, quia Deus dicit: Beati mundo corde, quoniam ipsi Deum videbunt. Conjugibus fidem servate, quia Dominus dicit: Quod Deus conjunxit, homo non separet. Viri caste diligant uxores, sicut Apostolus praecipit: Viri, diligite uxores vestras, sicut Christus dilexit Ecclesiam. Uxores timeant viros, quia Deus dicit mulieri: Sub viri potestate eris, et ipse dominabitur tui cunctis diebus. Filios vestros docete, ut Deum timeant; familiam vestram similiter bene aliquid per vestram negligentiam Deo pereat; nec non et omnes vicinos exhortamini, ut benefaciant, quoniam scriptum est: Qui converti fecerit peccatorem ab errore viae suae, salvabit animam ejus a morte, et operiet multitudinem peccatorum. Discordes ad concordiam revocate, quia beati sunt pedes pacem portantes. Qui causas audit, juste judicet, quia Deus dicit: Juste judica proximo tuo. Et iterum: In quo judicio judicaveritis, judicabimini. Munera non accipietis, quia Dei sermo est: Obcaecant oculos sapientium, et subvertunt verba justorum, et cum Dominus dicit in tabernaculo suo, id est, in regno suo, habitare qui munera super innocentem non accipit.
+</div>
+<div class="text-section" data-section="2">
+  Diem Dominicum observate, ad ecclesiam currite, quia in ipsa Christus a mortuis resurrexit, ut nobis quoque exemplum praeberet resurrectionis. Ibi orate, et fabulas otiosas et verbositatem diligenter cavete, quia scriptum est: Domus mea domus orationis est. Ideo orare ibi debetis, et inutiliter non verbosare. Eleemosynas date juxta vires, quoniam sicut aqua exstinguit ignem, ita eleemosyna exstinguit peccata. Hospitales invicem, quia Dominus in judicio dicturus est: Hospes eram, et suscepistis me. Unde et quidam placuerunt angelis hospitio receptis. Peregrinos suscipite, et mementote vos ipsos in hoc saeculo peregrinos. Infirmos visitate, quia et Dominus dicturus est: Infirmus fui, et visitastis me. Viduis et pupillis ministrate, quia Dominus dicturus est: Quod uni ex minimis meis fecistis, mihi fecistis. Decimas ecclesiis reddite, quia Dominus praecepit dicens: Reddite quae sunt Caesaris Caesari, hoc est, vectigalia et tributa, et quae sunt Dei Deo, id est, decimas, et primitias, et vota quae vovistis omnia, sicut Dominus praecepit: Quaecunque vultis ut faciant vobis homines bona, haec et vos facite illis; et quod tibi non vis, alii ne feceris. Haec est enim lex et prophetae. Si hanc ad invicem charitatem impleveritis, omnia praecepta implebitis. Deum solum ubique timete, regem honorificate, quia, sicut scriptum est, non est potestas nisi a Deo, et qui resistit potestati, Dei ordinationi resistit. Ideoque piis praeceptis obedite. Justum censum ne subtrahatis, sicut Apostolus praecepit: Cui tributum, tributum; cui vectigal, vectigal. Servi carnales qui estis, obedite dominis vestris, sicut Apostolus jubet, non ad oculum servientes, quasi hominibus placentes, sed fide bona et corde simplici. Et vos, domini, eadem facite servis, conservate in eis justitiam et misericordiam, scientes quoniam illorum et vester Dominus in caelis est.
+</div>
+<div class="text-section" data-section="3">
+  Orationem Dominicam memoriter tenete, quia in ea breviter omnis necessitas praesentis vitae et futurae pleniter comprehenditur, et Christus eam docuit, ideoque Dominica dicitur, qui praecepit ut sic oremus. Symbolum etiam ex animo tenere, quia scriptum est: Impossibile est sine fide placere Deo. Ideoque vos ipsi, sicut ibi dicitur, credite, et filiis vestris, necnon et eis quos in baptismo suscepistis, hanc ipsam fidem tradite, quia ideo pro ipsis fidejussores exstitistis, ut sic credere vobis docentibus debeant. Scitote etiam vos semel non amplius baptizari debere, semel et non amplius ad confirmationem accedere, quia et apostoli semel manus super credentes imponebant, ut acciperent Spiritum sanctum.
+</div>
+<div class="text-section" data-section="4">
+  Jejunia legitima et publica maxime amate, quia per abstinentiam et eleemosynas populi placatur Deus, sicut Ninivitas triduo jejunantibus pepercit. Justitiam diligite, sicut scriptum est: Diligite justitiam qui judicatis terram. Diaboli suasionibus non consentite, sed, sicut Apostolus praecipit, resistite diabolo et fugiet a vobis. Communionem corporis et sanguinis Domini per tempora sumite.
+Haec sunt, fratres mei dilectissimi, opera fidei, quae ab universis Christianis communiter debent conservari, et qui his particeps in hoc saeculo fieri noluerit, particeps regni Dei in futuro esse non poterit; et nos humiles et infimi, vestro tamen amore et sollicitudine provocati, propterea haec vobis enumeravimus, ut nullus se excuset dicendo: Nescio inter bonum et malum, inter justum discernere, nescio quid dimittam, quid faciam. Nunc ergo diverte a malo, sicut scriptum est, et fac bonum. Inquire pacem, et sequere eam; quod si feceritis, adaugebit vobis Dominus intellectum et virtutem, ut etiam potiora et majora divina mandata discere et adimplere valeatis, et non solum vobis, si in istis operibus jugiter usque in finem perseveretis, peccata dimittet, sed et aeternum et caeleste regnum quasi filiis propriis tribuet, ut sitis, sicut dicit Apostolus, haeredes quidem Dei, coheredes autem Christi.
+Christum enim Filium Dei veniturum credite in die judicii judicare vivos et mortuos, sicut ipse ascendens in caelum per angelos apostolis mandavit, qui dixerunt: Sic veniet quemadmodum vidistis eum euntem in caelum. Tunc videbit eum omnis caro, sicut propheta dicit: Videbit omnis caro salutare Dei. Impii vident ut timeant quem despexerunt, sed non gaudebunt, quia gaudium in illum non habuerunt, sicut scriptum est: Tollatur impius, ne videat gloriam Dei. Tunc justi discernentur ab impiis, qui in hoc saeculo premebantur ab ipsis. Impii, ut in supplicio carceris diaboli cum ipso puniantur; justi, ut in regno Dei cum ipso glorientur. Recipient impii corpora, ut cum ipsis in perpetuum cum quibus peccaverant crucientur. Recipient recti justi corpora, ut in quibus Deo fideliter serviebant, in ipsis a Deo misericorditer mercedem accipiant. Omnes tunc resurgent, sicut Apostolus dicit: Omnes resurgemus, sed non omnes immutabimur, quia soli justi ad gloriam mutabuntur; tunc ibunt, sicut Veritas dicit, impii in supplicium aeternum, justi autem in vitam aeternam. Tunc fulgebunt justi sicut sol in regno patris eorum, ibi erit vita cum Deo sine timore mortis, ibi lux indeficiens, et nunquam tenebrae, ibi salus quam nulla aegritudo conturbat; ibi satietas indeficiens eis qui nunc esuriunt et sitiunt justitiam; ibi felicitas, quam nullus timor corrumpit; ibi gaudium quod nulla tristitia consumit; ibi aeterna gloria cum angelis et archangelis, cum patriarchis et prophetis, cum apostolis et martyribus, cum confessoribus et sacris virginibus quae sequuntur Christum quocunque ierit; ibi majora et meliora, suaviora et dulciora, jucundiora et amabiliora omnia sunt sanctis, quam dici aut cogitari possit, quia, sicut dicit Apostolus, quod oculus non vidit, nec auris audivit, nec in cor hominis ascendit, quae praeparavit Deus diligentibus se gaudia, ad quae vos perducat qui vos creavit. Haec, filioli, haec, fratres charissimi, quae vobis humiliter ego peccator ore suggessi, omnipotens Trinitas, Pater et Filius et Spiritus sanctus, sua virtute sensibus vestris salubribus et cordi loquatur, qui vivit et regnat in saecula saeculorum. Amen.
+</div>
+<h2 id="english-translation">English Translation</h2>
+<div class="text-section" data-section="1">
+  <p>I exhort you to remember what you promised to Almighty God at baptism: first, to believe in God the Father almighty, and in Jesus Christ His Son, and in the Holy Ghost — one almighty God in perfect Trinity. But because it is written:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Faith without works is dead</span>
+  <a href="/scriptures/#jas-2-26" class="verse-tooltip">
+    <span class="tooltip-ref">Jas 2:26</span>
+  </a>
+</span>, and he who knows God ought to keep His commandments, these are the commandments of God which we declare to you to perform and observe. That you love God, whom you have confessed, with your whole heart, and your whole mind, and your whole strength. Then your neighbours as yourselves. 
+<span class="verse-wrap">
+  <span class="verse-text">On these two commandments dependeth the whole law and the prophets.</span>
+  <a href="/scriptures/#matt-22-40" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 22:40</span>
+  </a>
+</span> The beginning of wisdom is the fear of the Lord, and its perfection is charity; and therefore that you may attain this charity, which is God, have peace with all men, as the Apostle has commanded, as the Lord says: Love peace and truth; have patience, for the Lord says: 
+<span class="verse-wrap">
+  <span class="verse-text">In your patience you shall possess your souls.</span>
+  <a href="/scriptures/#luke-21-19" class="verse-tooltip">
+    <span class="tooltip-ref">Luke 21:19</span>
+  </a>
+</span> Have mercy, for the Lord has commanded: 
+<span class="verse-wrap">
+  <span class="verse-text">Be you therefore merciful, as your Father also is merciful.</span>
+  <a href="/scriptures/#luke-6-36" class="verse-tooltip">
+    <span class="tooltip-ref">Luke 6:36</span>
+  </a>
+</span> And again: 
+<span class="verse-wrap">
+  <span class="verse-text">Blessed are the merciful: for they shall obtain mercy.</span>
+  <a href="/scriptures/#matt-5-7" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 5:7</span>
+  </a>
+</span> Be kind, as the Apostle has commanded: 
+<span class="verse-wrap">
+  <span class="verse-text">Be ye kind one to another; merciful, forgiving one another, even as God hath forgiven you in Christ.</span>
+  <a href="/scriptures/#eph-4-32" class="verse-tooltip">
+    <span class="tooltip-ref">Eph 4:32</span>
+  </a>
+</span> Be chaste, as the Apostle says: 
+<span class="verse-wrap">
+  <span class="verse-text">Follow peace with all men, and holiness: without which no man shall see God.</span>
+  <a href="/scriptures/#heb-12-14" class="verse-tooltip">
+    <span class="tooltip-ref">Heb 12:14</span>
+  </a>
+</span> Be undefiled in heart and body, for God says: 
+<span class="verse-wrap">
+  <span class="verse-text">Blessed are the clean of heart: for they shall see God.</span>
+  <a href="/scriptures/#matt-5-8" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 5:8</span>
+  </a>
+</span> Keep faith with your spouses, for the Lord says: 
+<span class="verse-wrap">
+  <span class="verse-text">What God hath joined together, let no man put asunder.</span>
+  <a href="/scriptures/#matt-19-6" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 19:6</span>
+  </a>
+</span> Let husbands love their wives chastely, as the Apostle commands: 
+<span class="verse-wrap">
+  <span class="verse-text">Husbands, love your wives, as Christ also loved the church.</span>
+  <a href="/scriptures/#eph-5-25" class="verse-tooltip">
+    <span class="tooltip-ref">Eph 5:25</span>
+  </a>
+</span> Let wives fear their husbands, for God said to the woman: Under the power of thy husband thou shalt be, and he shall have dominion over thee all the days. Teach your children to fear God; instruct your household likewise, lest anything be lost to God through your negligence; and exhort all your neighbours to do good, for it is written: 
+<span class="verse-wrap">
+  <span class="verse-text">He who causeth a sinner to be converted from the error of his way, shall save his soul from death, and shall cover a multitude of sins.</span>
+  <a href="/scriptures/#jas-5-20" class="verse-tooltip">
+    <span class="tooltip-ref">Jas 5:20</span>
+  </a>
+</span> Call the discordant back to concord, for blessed are the feet of them that bring peace. Whoever hears causes, let him judge justly, for God says: Judge righteously thy neighbour. And again: With what judgement you judge, you shall be judged. Accept no gifts, for God's word is that bribes blind the eyes of the wise and pervert the words of the just; and the Lord says that he shall dwell in His tabernacle, that is in His kingdom, who taketh not gifts against the innocent.
+</div>
+<div class="text-section" data-section="2">
+  <p>Observe the Lord&rsquo;s Day; hasten to the church, for in it Christ rose from the dead, that He might give us also the example of resurrection. Pray there, and carefully avoid idle tales and verbosity, for it is written: My house is a house of prayer. Therefore you ought to pray there and not speak unprofitably. Give alms according to your means, for as water quenches fire, so almsgiving quenches sin. Be hospitable to one another, for the Lord will say at the judgement:</p>
+<span class="verse-wrap">
+  <span class="verse-text">I was a stranger, and you took me in.</span>
+  <a href="/scriptures/#matt-25-35" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 25:35</span>
+  </a>
+</span> Whence also certain men pleased the angels by receiving them in hospitality. Receive pilgrims, and remember that you yourselves are pilgrims in this world. Visit the sick, for the Lord will also say: 
+<span class="verse-wrap">
+  <span class="verse-text">I was sick, and you visited me.</span>
+  <a href="/scriptures/#matt-25-36" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 25:36</span>
+  </a>
+</span> Minister to widows and orphans, for the Lord will say: 
+<span class="verse-wrap">
+  <span class="verse-text">What you did to one of these my least brethren, you did it to me.</span>
+  <a href="/scriptures/#matt-25-40" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 25:40</span>
+  </a>
+</span> Pay tithes to the churches, for the Lord has commanded, saying: Render to Caesar the things that are Caesar's — that is, tolls and tribute — and to God the things that are God's — that is, tithes and firstfruits and all the vows you have vowed — as the Lord has commanded: 
+<span class="verse-wrap">
+  <span class="verse-text">Whatsoever you would that men should do to you, do you also to them.</span>
+  <a href="/scriptures/#matt-7-12" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 7:12</span>
+  </a>
+</span> And what thou wouldst not have done to thee, do not to another. For this is the law and the prophets. If you fulfil this mutual charity, you will fulfil all the commandments. Fear God alone in every place; honour the king, for as it is written, 
+<span class="verse-wrap">
+  <span class="verse-text">there is no power but from God: and those that are, are ordained of God.</span>
+  <a href="/scriptures/#rom-13-1" class="verse-tooltip">
+    <span class="tooltip-ref">Rom 13:1</span>
+  </a>
+</span> Therefore obey lawful commands. Withhold not the just tax, as the Apostle has commanded: 
+<span class="verse-wrap">
+  <span class="verse-text">To whom tribute is due, tribute: to whom custom, custom.</span>
+  <a href="/scriptures/#rom-13-7" class="verse-tooltip">
+    <span class="tooltip-ref">Rom 13:7</span>
+  </a>
+</span> You who are servants in the flesh, obey your masters, as the Apostle enjoins, not serving to the eye as pleasing men, but in good faith and with a simple heart. And you, masters, do the same toward your servants; preserve justice and mercy toward them, knowing that their Lord and yours is in heaven.
+</div>
+<div class="text-section" data-section="3">
+  <p>Hold the Lord&rsquo;s Prayer by memory, for in it all the necessities of the present and future life are briefly and fully comprised, and Christ taught it, wherefore it is called the Lord&rsquo;s Prayer, since He commanded that we pray thus. Hold also the Creed by heart, for it is written:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Without faith it is impossible to please God.</span>
+  <a href="/scriptures/#heb-11-6" class="verse-tooltip">
+    <span class="tooltip-ref">Heb 11:6</span>
+  </a>
+</span> Therefore believe yourselves, as it is said therein, and hand on this same faith to your children and also to those whom you have received at baptism, for you stood as guarantors for them so that they should believe as you teach them. Know also that you may be baptised but once and not again, and that you may come to confirmation but once and not again, for the apostles also laid their hands upon believers but once, that they might receive the Holy Ghost.
+</div>
+<div class="text-section" data-section="4">
+  <p>Love especially the lawful and public fasts, for through abstinence and almsgiving the people appease God — as He spared the Ninevites who fasted for three days. Love justice, as it is written: Love justice, you that are the judges of the earth. Do not consent to the persuasions of the devil, but, as the Apostle commands, resist the devil and he will flee from you. Receive the communion of the Body and Blood of the Lord in the appointed seasons.</p>
+<p>These are, my most beloved brethren, the works of faith which must be kept in common by all Christians; and he who in this world refuses to have part in them will not be able to have part in the kingdom of God in the world to come. We, humble and lowly as we are, yet moved by love and care for you, have set these things before you so that no one may excuse himself saying: I do not know how to distinguish good from evil, how to discern what is just, I do not know what I should put away or what I should do. Turn therefore now from evil, as it is written, and do good. Seek peace and pursue it; and if you do this, the Lord will increase your understanding and strength, so that you may be able to learn and fulfil even greater and higher divine commandments — and not only will He forgive your sins if you persevere continually in these works until the end, but He will also bestow upon you the eternal and heavenly kingdom as upon His own children, that you may be, as the Apostle says,</p>
+<span class="verse-wrap">
+  <span class="verse-text">heirs indeed of God, and joint heirs with Christ.</span>
+  <a href="/scriptures/#rom-8-17" class="verse-tooltip">
+    <span class="tooltip-ref">Rom 8:17</span>
+  </a>
+</span>
+<p>Believe that Christ the Son of God will come on the day of judgement to judge the living and the dead, as He Himself, ascending into heaven, declared through angels to the apostles, who said:</p>
+<span class="verse-wrap">
+  <span class="verse-text">He shall so come, as you have seen him going into heaven.</span>
+  <a href="/scriptures/#acts-1-11" class="verse-tooltip">
+    <span class="tooltip-ref">Acts 1:11</span>
+  </a>
+</span> Then shall all flesh see Him, as the prophet says: 
+<span class="verse-wrap">
+  <span class="verse-text">All flesh shall see the salvation of God.</span>
+  <a href="/scriptures/#luke-3-6" class="verse-tooltip">
+    <span class="tooltip-ref">Luke 3:6</span>
+  </a>
+</span> The wicked shall see Him that they may fear the One they despised, but they shall not rejoice, for they had no joy in Him, as it is written: 
+<span class="verse-wrap">
+  <span class="verse-text">Let the wicked be taken away, that he see not the glory of God.</span>
+  <a href="/scriptures/#isa-26-10" class="verse-tooltip">
+    <span class="tooltip-ref">Isa 26:10</span>
+  </a>
+</span> Then shall the just be separated from the wicked, who in this age were oppressed by them. The wicked shall go to punishment in the prison of the devil to be tormented with him; the just shall go to glory in the kingdom of God with Him. The wicked shall receive their bodies back, to be tortured in them forever together with those with whom they had sinned. The righteous just shall also receive their bodies back, that in the very bodies in which they faithfully served God they may mercifully receive their reward from God. Then shall all rise, as the Apostle says: 
+<span class="verse-wrap">
+  <span class="verse-text">We shall all indeed rise again, but we shall not all be changed</span>
+  <a href="/scriptures/#1-cor-15-51" class="verse-tooltip">
+    <span class="tooltip-ref">1 Cor 15:51</span>
+  </a>
+</span> — for only the just shall be changed unto glory. Then shall go, as Truth says, 
+<span class="verse-wrap">
+  <span class="verse-text">the wicked into everlasting punishment: but the just into life everlasting.</span>
+  <a href="/scriptures/#matt-25-46" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 25:46</span>
+  </a>
+</span> 
+<span class="verse-wrap">
+  <span class="verse-text">Then shall the just shine as the sun in the kingdom of their Father.</span>
+  <a href="/scriptures/#matt-13-43" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 13:43</span>
+  </a>
+</span> There shall be life with God without fear of death; there, unfailing light and never darkness; there, health which no sickness disturbs; there, unfailing fullness for those who now hunger and thirst after justice; there, happiness which no fear corrupts; there, joy which no sorrow consumes; there, eternal glory with angels and archangels, with patriarchs and prophets, with apostles and martyrs, with confessors and holy virgins who follow Christ whithersoever He goeth. There all things are greater and better, sweeter and more delightful, more pleasant and more lovely to the saints than can be said or thought, for as the Apostle says: 
+<span class="verse-wrap">
+  <span class="verse-text">Eye hath not seen, nor ear heard, neither hath it entered into the heart of man, what things God hath prepared for them that love him.</span>
+  <a href="/scriptures/#1-cor-2-9" class="verse-tooltip">
+    <span class="tooltip-ref">1 Cor 2:9</span>
+  </a>
+</span> To which joys may He who created you bring you. These things, little children, these things, most dear brethren, which I a sinner have humbly set before you with my lips — may the almighty Trinity, Father and Son and Holy Ghost, speak with His power to your souls and hearts unto salvation. Who liveth and reigneth for ever and ever. Amen.
+
+</div>
+</div>
+
+    
+
+    
+    <div class="homily-nav">
+      
+      <a class="nav-btn nav-prev" href="http://localhost:1313/homilies/pseudo-boniface/sermon-08/">
+        ← <span>On How to Live Now and How We Must Live Hereafter</span>
+      </a>
+      
+      
+      <a class="nav-btn nav-next" href="http://localhost:1313/homilies/pseudo-boniface/sermon-07/">
+        <span>On Faith and Charity</span> →
+      </a>
+      
+    </div>
+
+  </div>
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

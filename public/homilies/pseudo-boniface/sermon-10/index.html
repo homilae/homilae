@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On the Incarnation of the Son of God and the Restoration of the Human Race — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,opsz,wght@0,6..144,400;0,6..144,500;1,6..144,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+    <button class="settings-trigger" onclick="toggleSettings()" aria-label="Settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  
+  <div class="settings-overlay" id="settings-overlay" onclick="toggleSettings()"></div>
+  <aside class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <span class="settings-title">Reading Settings</span>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-label">Appearance</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Mode</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setMode('light')">Light</button>
+            <button class="s-btn" onclick="setMode('sepia')">Sepia</button>
+            <button class="s-btn" onclick="setMode('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Font Size</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Size</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setFontSize('small')">Small</button>
+            <button class="s-btn active" onclick="setFontSize('medium')">Medium</button>
+            <button class="s-btn" onclick="setFontSize('large')">Large</button>
+            <button class="s-btn" onclick="setFontSize('xlarge')">X-Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Layout</div>
+        <div class="settings-row">
+          <span class="settings-row-label">View</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setView('parallel')">Parallel</button>
+            <button class="s-btn" onclick="setView('original')">Latin only</button>
+            <button class="s-btn" onclick="setView('translation')">English only</button>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:0.8rem">
+          <span class="settings-row-label">Line spacing</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setLineHeight('compact')">Compact</button>
+            <button class="s-btn active" onclick="setLineHeight('normal')">Normal</button>
+            <button class="s-btn" onclick="setLineHeight('spacious')">Spacious</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Typography</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Font</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setFont('cardo')">Cardo</button>
+            <button class="s-btn" onclick="setFont('garamond')">Garamond</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Scripture</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Show tooltips</span>
+          <label class="settings-toggle-switch">
+            <input type="checkbox" id="tooltip-toggle" checked onchange="toggleTooltips(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section settings-section--future">
+        <div class="settings-section-label">Coming soon</div>
+        <div class="settings-future-item">Bookmark this homily</div>
+        <div class="settings-future-item">Print optimised view</div>
+        <div class="settings-future-item">Download as PDF</div>
+        <div class="settings-future-item">Copy citation</div>
+      </div>
+
+    </div>
+  </aside>
+
+  
+  <div class="info-overlay" id="info-overlay" onclick="toggleInfo()"></div>
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-header">
+      <span class="info-modal-title">Sermon Information</span>
+      <button class="info-modal-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-modal-body">
+
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Type</div>
+        <div class="info-value">Sermon</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Liturgical Occasion</div>
+        <div class="info-value">Easter</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Audience</div>
+        <div class="info-value">General faithful</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Themes</div>
+        <div class="info-chips">
+          
+          <span class="info-chip">Christology · Incarnation</span>
+          
+          <span class="info-chip">Christology · Passion</span>
+          
+          <span class="info-chip">Christology · Resurrection</span>
+          
+          <span class="info-chip">Virtues · Hope</span>
+          
+          <span class="info-chip">Virtues · Charity</span>
+          
+          <span class="info-chip">Virtues · Fortitude</span>
+          
+          <span class="info-chip">Vices · Pride</span>
+          
+          <span class="info-chip">Vices · Lust</span>
+          
+          <span class="info-chip">Vices · Envy</span>
+          
+          <span class="info-chip">Vices · Anger</span>
+          
+          <span class="info-chip">Last things · Heaven</span>
+          
+          <span class="info-chip">Last things · Hell</span>
+          
+          <span class="info-chip">Last things · Judgement</span>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Scripture References</div>
+        <div class="info-chips">
+          
+          <span class="info-chip info-chip--verse">Rev 1:5</span>
+          
+          <span class="info-chip info-chip--verse">Heb 2:14</span>
+          
+          <span class="info-chip info-chip--verse">Matt 25:46</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="info-section">
+        <div class="info-label">Source Text</div>
+        <div class="info-value">
+          Migne, Patrologia Latina, vol. 89 (Paris, 1863)
+          
+          <a href="https://dn790000.ca.archive.org/0/items/patrologiaecur89mign/patrologiaecur89mign.pdf" target="_blank" rel="noopener" class="info-link">↗ View source</a>
+          
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Translation</div>
+        <div class="info-value">Claude Sonnet 4.6</div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Accuracy Note</div>
+        <div class="info-value info-value--notes">All translations are AI-assisted and have been reviewed, but may contain errors. Always verify against the original source text before citing.</div>
+      </div>
+      
+      
+
+      <div class="info-section info-section--last">
+        <div class="info-label">How to Cite</div>
+        <div class="info-value info-cite">
+          Pseudo-Boniface, "On the Incarnation of the Son of God and the Restoration of the Human Race," trans. Homiliae Archive,
+          <em>Homiliae: Christian Preaching Archive</em>,
+          accessed 2026,
+          http://localhost:1313/homilies/pseudo-boniface/sermon-10/.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reader-wrap">
+
+    
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/homilies/?author=pseudo-boniface">Pseudo-Boniface</a>
+         › Sermons (Pseudo-Boniface)
+      </div>
+
+      <div class="reader-title-row">
+        <div>
+          <h1 class="homily-title">On the Incarnation of the Son of God and the Restoration of the Human Race</h1>
+          
+          <p class="title-original">Sermo X: De Incarnatione Filii Dei et humani generis reparatione</p>
+          
+        </div>
+        <button class="info-trigger" onclick="toggleInfo()" aria-label="Sermon information">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <span>
+          <a href="/homilies/?author=pseudo-boniface" class="meta-author-link">
+            Pseudo-Boniface
+          </a>
+        </span>
+        <span>8th–9th century AD</span>
+        <span>Latin</span>
+      </div>
+
+      
+
+      <div class="view-toggle" style="margin-top:1rem">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">Latin only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    
+    <div class="col-labels">
+      <div class="col-label-outer">
+        <span class="lang-dot dot-latin"></span>
+        Latin · Original
+      </div>
+      <div class="col-label-outer">
+        <span class="lang-dot dot-english"></span>
+        English · Translation
+      </div>
+    </div>
+
+    
+    <div class="parallel-reader" id="parallel-reader"></div>
+
+    
+    <div id="raw-content"><h2 id="original-text">Original Text</h2>
+<div class="text-section" data-section="1">
+  Primum omnipotens Deus hominem in paradiso ad suam imaginem et similitudinem creavit, et aeternum eum esse voluit; sed postquam de paradisi gaudiis, culpa exigente, repulsus est primus humani generis parens, et in huius exsilii atque caecitatis quam patimur aerumnam venit, iam illa caelestis patriae gaudia quae prius contemplabatur videre non potuit. In paradiso quippe homo assueverat verbis Dei perfrui, beatorum angelorum spiritibus cordis munditia et celsitudine visionis interesse. Has autem homo delicias tunc amisit, cum in paradiso peccavit. Postquam huc cecidit primus homo, ab illo quod contemplabatur mentis lumine secessit, ex cuius videlicet carne nos in huius exsilii caecitate nati, audivimus quidem esse caelestem patriam; audivimus eius cives angelos Dei, audivimus eorumdem angelorum socios spiritus iustorum perfectorum; sed carnales quippe, quia illa invisibilia scire non valent per experimentum, dubitant utrumne sint quae corporalibus oculis non vident. Dum esse summa et invisibilia audiunt, diffidunt an vera sint, quia sola haec intima in quibus nati sunt visibilia noverunt, unde factum est ut ipse invisibilium et visibilium creator ad humani generis redemptionem unigenitus Patris veniret.
+</div>
+<div class="text-section" data-section="2">
+  Unigenitus Patris idcirco incarnatus est, ut nos ad fidem introduceret. O quanta est bonitas Dei nostri, qui nos creavit et liberavit, opprobria multa et irrisiones verborum pertulit a perfidis Iudaeis, ut nos per eius exemplum veram patientiam servaremus, insultantium alapas accepit, ut animas credentium laqueis diaboli liberaret; a perfidorum sputis faciem non abscondit, ut nos ablueret aqua salutis; tacitus flagella toleravit, ut nos ab aeternis suppliciis faceret salvos; colaphos pertulit, ut nobis perennes honores inter choros angelorum tribueret, in siti sua fellis amaritudinem accepit, ut nos aeterna dulcedine debriaret, ut vitam mortuis praepararet, usque ad mortem ipsa Vita pervenit. Cur itaque asperum creditur ut a Deo homo toleret flagella pro malis, si tanta Deus mala pertulit ab hominibus pro bonis? aut qui sana intelligentia de percussione sua ingratus existit, si ipse hinc sine flagello non exiit, qui hic sine peccato vixit? Haec omnia et alia multa redemptor noster pro nostra salute sustinuit, et nos debemus pro eius amore omnia vitia et concupiscentias malas relinquere, quia ille nos in tantum amavit, ut pro nobis suum sanctum sanguinem fuderit, sicut scriptum est: Qui dilexit nos et lavit nos a peccatis nostris in sanguine suo, et destrueret eum qui habebat mortis imperium, id est, diabolum. Sequamur ergo, fratres charissimi, districtam et asperam redemptoris Christi viam. Non nos terrenarum amor superet, non superbia inflet, non ira dilaniet, non luxuria polluat, non invidia consumat. Amore nostro, fratres charissimi, redemptor noster occubuit, et nos amore eius dicamus vincere nosmetipsos. Quod si perfecte agimus, non solum imminentes poenas evadimus, sed communi cum martyribus gloria remuneramur.
+</div>
+<div class="text-section" data-section="3">
+  Hanc itaque spem habentes, fratres charissimi, mundemus nos ab omni inquinamento carnis et spiritus, et quidquid malum ac sordidum est, nec corpore agamus, nec animo cogitemus, sicut decet sanctos, ut in futura resurrectione ad gloriam, non ad poenam, ire mereamur. Alii enim resurgent ut a Deo coelestia praemia consequantur, alii vero ut cum diabolo aeterna tormenta patiantur. Sic enim de iniquis et iniustis Dominus in Evangelio dicet: Tunc ibunt impii in ignem aeternum, iusti autem in vitam aeternam. Hanc ergo, fratres charissimi, resurrectionem, quae apostolicis ac divinis vocibus roborata est, firmissime custodite. Scitote resurrexisse a mortuis Dominum nostrum Iesum Christum, et immortalem factum sedere ad dexteram Patris, qui nos ad similia resurrectionis praemia provocare dignatur. Exhibete ergo vos dignos quibus caelestis et aeterna illa gloria conferatur, quam tunc potestis adipisci, si vos sanctos in omnibus servetis. Abstinete vos ab omni opere malo, ab odio, inimicitiis, ebrietatibus, fornicatione, a furto et periurio. Quia haec omnia et his similia odit Deus, et eos qui ista faciunt puniet in futuro. Estote ergo benigni, misericordes, humiles, pudici, et ea semper operantes quae in sanctis suis Deus diligit, ut possitis cum sanctis eius ad vitam aeternam pervenire, per Iesum Christum Dominum nostrum, qui nos protegere in omnibus, et sua gratia adiuvare dignetur. Ipsi gloria cum Patre et Spiritu sancto in omnia saecula saeculorum.
+</div>
+<h2 id="english-translation">English Translation</h2>
+<div class="text-section" data-section="1">
+  Almighty God first created man in paradise in his own image and likeness and willed him to be eternal. But after the first parent of the human race was driven out of the joys of paradise on account of his sin and came into the hardship of this exile and blindness that we now endure, he could no longer see the joys of the heavenly homeland that he had previously contemplated. In paradise, man had been accustomed to rejoice in the words of God, to take part with the spirits of the blessed angels through the cleanness of heart and the elevation of his vision. These delights man lost at the moment he sinned in paradise. After the first man fell here below, he withdrew from the light of mind by which he had contemplated; and from his flesh we were born, here in the blindness of this exile. We have heard that there is a heavenly homeland; we have heard that its citizens are the angels of God; we have heard that the spirits of the just made perfect are companions of those same angels. But being carnal, since they cannot know invisible things through experience, people doubt whether things they cannot see with their bodily eyes actually exist. When they hear of supreme and invisible realities, they are skeptical whether they are true, because they know only these visible things around them into which they were born. This is why the only-begotten Son of the Father, the creator of things both invisible and visible, came for the redemption of the human race.
+</div>
+<div class="text-section" data-section="2">
+  <p>The only-begotten Son of the Father took flesh precisely to lead us to faith. O how great is the goodness of our God, who created us and set us free! He endured many reproaches and mocking words from the faithless Jews, so that through his example we might preserve true patience. He received blows from those who insulted him, to free the souls of believers from the snares of the devil. He did not hide his face from the spittle of the treacherous, so that he might wash us with the water of salvation. He endured the scourges in silence, to make us safe from eternal punishment. He bore the buffets, to bestow on us lasting honor in the choirs of angels. In his thirst he received the bitterness of gall, to make us drunk with eternal sweetness. That he might prepare life for the dead, Life itself went all the way to death. Why, then, should it seem hard for a man to endure scourges from God for his sins, when God endured so much evil from men for the sake of good? And who with sound understanding should be ungrateful at his own chastisement, if the one who lived here without sin did not leave here without the scourge? Our redeemer endured all these things and many more besides for our salvation. And we ought, for love of him, to leave behind all vices and evil desires, because he loved us so greatly as to shed his holy blood for us, as it is written:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Who loved us, and washed us from our sins in his own blood</span>
+  <a href="/scriptures/#rev-1-5" class="verse-tooltip">
+    <span class="tooltip-ref">Rev 1:5</span>
+  </a>
+</span>, and 
+<span class="verse-wrap">
+  <span class="verse-text">through death he might destroy him who had the empire of death, that is to say, the devil.</span>
+  <a href="/scriptures/#heb-2-14" class="verse-tooltip">
+    <span class="tooltip-ref">Heb 2:14</span>
+  </a>
+</span> Let us follow, then, dearest brethren, the strict and rough road of Christ our redeemer. Let love of earthly things not overpower us; let pride not puff us up; let anger not tear us apart; let lust not defile us; let envy not consume us. Our redeemer died for love of us — let us say that we are conquering ourselves for love of him. If we do this perfectly, we not only escape the punishments that threaten us, but we are rewarded with a glory shared with the martyrs.
+</div>
+<div class="text-section" data-section="3">
+  <p>Having this hope, then, dearest brethren, let us cleanse ourselves from every pollution of flesh and spirit; let us neither do with the body nor entertain in the mind anything evil and sordid, as befits the saints, so that at the future resurrection we may merit to go to glory and not to punishment. For some will rise to receive heavenly rewards from God, while others will rise to suffer eternal torments with the devil. For of the unjust and wicked the Lord will say in the Gospel:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Then shall the wicked go into everlasting fire: but the just into life everlasting.</span>
+  <a href="/scriptures/#matt-25-46" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 25:46</span>
+  </a>
+</span> Hold fast, then, dearest brethren, to this resurrection, which is confirmed by apostolic and divine testimony. Know that our Lord Jesus Christ has risen from the dead and sits immortal at the right hand of the Father, who deigns to call us to the same rewards of resurrection. Show yourselves worthy to receive that heavenly and eternal glory — which you can attain if you keep yourselves holy in all things. Abstain from every evil work, from hatred, enmity, drunkenness, fornication, theft, and perjury, for God hates all these things and those like them, and will punish those who do them in the age to come. Be kind, merciful, humble, and chaste, and always doing what God loves in his saints, so that you may be able to come with his saints to eternal life, through Jesus Christ our Lord, who deigns to protect us in all things and assist us with his grace. To him be glory with the Father and the Holy Spirit for ever and ever.
+</div>
+</div>
+
+    
+
+    
+    <div class="homily-nav">
+      
+      <a class="nav-btn nav-prev" href="http://localhost:1313/homilies/pseudo-boniface/sermon-02/">
+        ← <span>On the Origin of the Human Condition</span>
+      </a>
+      
+      
+      <a class="nav-btn nav-next" href="http://localhost:1313/homilies/pseudo-boniface/sermon-04/">
+        <span>On the Eight Beatitudes of the Gospel</span> →
+      </a>
+      
+    </div>
+
+  </div>
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

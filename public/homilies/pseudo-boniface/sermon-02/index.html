@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On the Origin of the Human Condition — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,opsz,wght@0,6..144,400;0,6..144,500;1,6..144,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+    <button class="settings-trigger" onclick="toggleSettings()" aria-label="Settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  
+  <div class="settings-overlay" id="settings-overlay" onclick="toggleSettings()"></div>
+  <aside class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <span class="settings-title">Reading Settings</span>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-label">Appearance</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Mode</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setMode('light')">Light</button>
+            <button class="s-btn" onclick="setMode('sepia')">Sepia</button>
+            <button class="s-btn" onclick="setMode('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Font Size</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Size</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setFontSize('small')">Small</button>
+            <button class="s-btn active" onclick="setFontSize('medium')">Medium</button>
+            <button class="s-btn" onclick="setFontSize('large')">Large</button>
+            <button class="s-btn" onclick="setFontSize('xlarge')">X-Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Layout</div>
+        <div class="settings-row">
+          <span class="settings-row-label">View</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setView('parallel')">Parallel</button>
+            <button class="s-btn" onclick="setView('original')">Latin only</button>
+            <button class="s-btn" onclick="setView('translation')">English only</button>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:0.8rem">
+          <span class="settings-row-label">Line spacing</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setLineHeight('compact')">Compact</button>
+            <button class="s-btn active" onclick="setLineHeight('normal')">Normal</button>
+            <button class="s-btn" onclick="setLineHeight('spacious')">Spacious</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Typography</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Font</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setFont('cardo')">Cardo</button>
+            <button class="s-btn" onclick="setFont('garamond')">Garamond</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Scripture</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Show tooltips</span>
+          <label class="settings-toggle-switch">
+            <input type="checkbox" id="tooltip-toggle" checked onchange="toggleTooltips(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section settings-section--future">
+        <div class="settings-section-label">Coming soon</div>
+        <div class="settings-future-item">Bookmark this homily</div>
+        <div class="settings-future-item">Print optimised view</div>
+        <div class="settings-future-item">Download as PDF</div>
+        <div class="settings-future-item">Copy citation</div>
+      </div>
+
+    </div>
+  </aside>
+
+  
+  <div class="info-overlay" id="info-overlay" onclick="toggleInfo()"></div>
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-header">
+      <span class="info-modal-title">Sermon Information</span>
+      <button class="info-modal-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-modal-body">
+
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Type</div>
+        <div class="info-value">Sermon</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Liturgical Occasion</div>
+        <div class="info-value">Christmas</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Audience</div>
+        <div class="info-value">General faithful</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Themes</div>
+        <div class="info-chips">
+          
+          <span class="info-chip">Christology · Incarnation</span>
+          
+          <span class="info-chip">Virtues · Obedience</span>
+          
+          <span class="info-chip">Virtues · Charity</span>
+          
+          <span class="info-chip">Virtues · Humility</span>
+          
+          <span class="info-chip">Last things · Heaven</span>
+          
+          <span class="info-chip">Moral · Almsgiving</span>
+          
+          <span class="info-chip">Sacraments · Confession</span>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Scripture References</div>
+        <div class="info-chips">
+          
+          <span class="info-chip info-chip--verse">Gal 4:4</span>
+          
+          <span class="info-chip info-chip--verse">Luke 1:26-35</span>
+          
+          <span class="info-chip info-chip--verse">Luke 2:8-14</span>
+          
+          <span class="info-chip info-chip--verse">Luke 2:16</span>
+          
+          <span class="info-chip info-chip--verse">Luke 2:14</span>
+          
+          <span class="info-chip info-chip--verse">Matt 6:14</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="info-section">
+        <div class="info-label">Source Text</div>
+        <div class="info-value">
+          Migne, Patrologia Latina, vol. 89 (Paris, 1863)
+          
+          <a href="https://dn790000.ca.archive.org/0/items/patrologiaecur89mign/patrologiaecur89mign.pdf" target="_blank" rel="noopener" class="info-link">↗ View source</a>
+          
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Translation</div>
+        <div class="info-value">Claude Sonnet 4.6</div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Accuracy Note</div>
+        <div class="info-value info-value--notes">All translations are AI-assisted and have been reviewed, but may contain errors. Always verify against the original source text before citing.</div>
+      </div>
+      
+      
+
+      <div class="info-section info-section--last">
+        <div class="info-label">How to Cite</div>
+        <div class="info-value info-cite">
+          Pseudo-Boniface, "On the Origin of the Human Condition," trans. Homiliae Archive,
+          <em>Homiliae: Christian Preaching Archive</em>,
+          accessed 2026,
+          http://localhost:1313/homilies/pseudo-boniface/sermon-02/.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reader-wrap">
+
+    
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/homilies/?author=pseudo-boniface">Pseudo-Boniface</a>
+         › Sermons (Pseudo-Boniface)
+      </div>
+
+      <div class="reader-title-row">
+        <div>
+          <h1 class="homily-title">On the Origin of the Human Condition</h1>
+          
+          <p class="title-original">Sermo II: De origine humanae conditionis</p>
+          
+        </div>
+        <button class="info-trigger" onclick="toggleInfo()" aria-label="Sermon information">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <span>
+          <a href="/homilies/?author=pseudo-boniface" class="meta-author-link">
+            Pseudo-Boniface
+          </a>
+        </span>
+        <span>8th–9th century AD</span>
+        <span>Latin</span>
+      </div>
+
+      
+
+      <div class="view-toggle" style="margin-top:1rem">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">Latin only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    
+    <div class="col-labels">
+      <div class="col-label-outer">
+        <span class="lang-dot dot-latin"></span>
+        Latin · Original
+      </div>
+      <div class="col-label-outer">
+        <span class="lang-dot dot-english"></span>
+        English · Translation
+      </div>
+    </div>
+
+    
+    <div class="parallel-reader" id="parallel-reader"></div>
+
+    
+    <div id="raw-content"><h2 id="original-text">Original Text</h2>
+<div class="text-section" data-section="1">
+  Scire debemus, fratres dilectissimi, originem humanae conditionis, ut exinde cognoscamus maximam in nos Creatoris nostri misericordiam, qui primos parentes nostros, Adam scilicet et Evam uxorem illius, condidit ex limo terrae, et immisit in eos spiritum rationalem et intellectualem, quo Creatorem suum cognoscerent et laudarent, et constituit eos in paradisi dulcissima felicitate, ut in eo sine labore, et dolore, et mortis periculo, viverent, donec translati essent in caelestis regni perpetuam beatitudinem. Et praecepit eis de unius arboris fructu non manducare, ut per obedientiam unius mandati aeternam promererent gloriam. Sed diaboli fraude et invidia decepti sunt, ut manducarent de fructu interdicto illis. Pro hac etiam culpa ejecti sunt in hanc miseriam hujus terrae, et facti sunt sub potestate diabolica, propter inobedientiam primi mandati, et omnes cum peccatis nati in laboribus viventes, in mortis doloribus humanam amitterent vitam. Nec ullus fuit qui ad paradisi felicitatem vel regni caelestis beatitudinem post hujus vitae finem pervenire potuisset, donec omnipotens Deus Filium suum unigenitum, natum ex Virgine, misisset in mundum, sicut multum ante per prophetas suos sanctis patribus promisit. Sicut beatus mundi praedicator Paulus dixit: Cum ergo venit plenitudo temporis, misit Deus Filium suum in hunc mundum, ut totius mundi dilueret peccatum. Hac vero plenitudine temporis secundum praedestinationem Dei veniente, Missus est, ut in sancto Evangelio legimus, angelus Gabriel a Deo in civitatem Galilaeae, cui nomen Nazareth, ad Virginem desponsatam viro, cui nomen erat Joseph, de domo David, et nomen virginis Maria, et ingressus angelus ad eam dixit: Ave, gratia plena, Dominus tecum; benedicta tu in mulieribus. Quae cum audisset, turbata est in sermone ejus, et cogitabat qualis esset ista salutatio; et ait angelus ei: Ne timeas, Maria, invenisti gratiam apud Deum: Ecce concipies et paries in utero Filium, et vocabis nomen ejus Jesum. Hic erit magnus coram Domino, et Filius Altissimi vocabitur, et dabit illi Dominus Deus sedem David patris sui, et regnabit in domo Jacob in aeternum, et regni ejus non erit finis. Dixit autem Maria ad angelum: Quomodo fiet istud, quia virum non cognosco? Et respondens angelus dixit ei: Spiritus sanctus superveniet in te, et virtus Altissimi obumbrabit tibi; ideoque et quod nascetur ex te sanctum vocabitur Filius Dei. Et fuit tunc tale tempus et talis pax in mundo, ut totius orbis dominium ad unam pertineret civitatem, quae dicitur Roma; et illius civitatis simul et totius orbis unus fuit imperator et rector, nomine Augustus, qui etiam tale constituit edictum in mundo, ut omnis homo in patriam suam pergeret, et ibi censum pro capite suo solveret imperatori, et omnis servus fugitivus ad suum rediret dominum, et cujus dominus non inveniretur, occideretur, ne turbaret pacem, quam ille statuit in toto orbe; et hoc fuit per providentiam Dei factum, ut pax esset in toto orbe dum ille nasceretur qui veram pacem praedicaret hominibus, et omnia quae sunt in caelis et in terra pacificaret, et esset concordia inter angelicas dignitates et humanam naturam. Hoc itaque tempore tam pacifico et tam serena laetitia omnium ubique gentium, ut evangelica pandit historia, natus est in gente Judaea et Bethleem civitate David de Maria Virgine, non de virili conjunctione, sed de Spiritu sancto inspirante et fecundante virginalem uterum, ut integritas virginalis esset in partu et post partum.
+</div>
+<div class="text-section" data-section="2">
+  Eadem quoque nocte, ut in Evangelio legimus, qua natus est Deus Dei Filius in mundum, Erant pastores in regione eadem, vigilantes et custodientes vigilias noctis super gregem suum. Et ecce angelus Domini astitit juxta illos, et claritas Dei circumfulsit illos, et timuerunt timore magno. Respondit autem angelus Dei, et dixit ad pastores: Nolite timere; ecce enim evangelizo vobis gaudium magnum, quod erit omni populo, quia natus est nobis hodie Salvator, qui est Christus Dominus, in civitate David. Et hoc vobis signum: invenietis infantem positum in praesepio. Et subito facta est cum angelo multitudo militiae caelestis, laudantium Deum, et dicentium: Gloria in excelsis Deo et in terra pax hominibus bonae voluntatis. Et venerunt pastores et invenerunt infantem pannis involutum et positum in praesepio, et Mariam matrem ejus, sicut angeli eis praedixerunt. Haec enim festivitas salutis nostrae initium est, et humani generis reformatio, in qua Deus per Domini misericordiam descendit ad homines, ut homines per obedientiam potuissent ascendere ad Deum, quia per inobedientiam expulsi sunt de paradisi felicitate, quam felicitatem non solum restituit nobis Deus de Virgine natus, sed etiam caelestis regni credentibus et mandata ejus observantibus portas aperuit, et perdonavit filios Dei esse in fide et charitate, qui fuerunt filii irae in peccatis, et miseriae, et omne jugum diabolicae servitutis contrivit et comminuit, ut nullum potuisset ultra dominium habere diabolus in omni homine, qui mandata Dei servare voluisset et se a peccatis custodire.
+</div>
+<div class="text-section" data-section="3">
+  Igitur illi qui peccare non metuunt, nec sua peccata curant confiteri, vel per poenitentiam emendare, servi sunt diaboli; qui vero se a peccatis custodire curant, vel sua peccata per confessionem et poenitentiam abluere, et in mandatis Dei vivere gaudent, hi sunt filii dilectionis Dei et haeredes aeternae beatitudinis. Haec est enim magna nobilitas, ut terrenus homo Filius Dei efficiatur, et haec gloriosa nobilitas et magna libertas bonis moribus diligenter observari debet, nec altissimus Pater, qui Deus est omnium, nisi bonos et castos et fideles et mandatis suis custodientes filios vult habere; et dignum est ut perfecta illum diligamus charitate, qui nos in tantum dilexit; qui cum Deus est aeternus, homo voluit pro nostra nasci salute, et omnia facere et pati quae leguntur in Evangelio sancto; qui tantum mirabiliter claruit in conspectu populi, ut veraciter agnosci potuerit, quod idem ipse qui homo videbatur in fragilitate carnis, Deus erat in potestate divinitatis. In cujus nativitate angeli, ut audivimus, laudantes Deum cecinerunt: Gloria in excelsis Deo et in terra pax hominibus bonae voluntatis. Et nos gloriam cum angelis Deo canamus, laudantes ejus ineffabilem misericordiam, qui seipsum humiliavit, ut nos exaltaret. Factus est Filius hominis, ut nos efficeret Filios Dei. Venit in regione mortalitatis nostrae, ut nos levaret in regione gloriae suae. Addiderunt quoque angeli hymnos voce: Et in terra pax hominibus bonae voluntatis. Vera est enim pax, ut bona voluntate subditi simus Deo omnipotenti, facientes magis illius ex toto corde, et tota anima, et tota mente, id est, omni intelligentia nostra, et omni voluntate nostra, et semper in memoriam habeamus voluntatem et praecepta illius; et diligamus homines alios sicut nosmet ipsos, nulli facientes aliquid quod nolumus ut alter nobis faciat; sed sic faciamus in alios, sicut nostra voluntas sit, ut alii nobis faciant. Et simus misericordes in pauperes et in miseros, et faciamus illis bene secundum vires nostras et necessitatem illorum, et si quis peccat in nobis, dimittamus illi, ut nobis Deus dimittat peccata nostra, quia sic in Evangelio legimus, ipsa Veritate dicente: Si dimiseritis hominibus peccata illorum quae in vos gesserunt, dimittet et vobis Pater vester caelestis peccata vestra. Et semper voluntatem quam nostram, quia illius voluntas salus est nostra. Mundemus nos ab omni iniquitate corporis et animae. Vivamus in castitate et charitate Dei et hominum, et cum gaudio serviamus Deo in omni opere bono, in misericordia et pietate, in justitia et patientia, et in spe bonitatis Dei. Scientes certissime quaecunque egerimus bona in eleemosynis et in humilitate, et obedientia praeceptorum illius, quod omnia in aeterna beatitudine Dominus noster nobis restituet.
+</div>
+<h2 id="english-translation">English Translation</h2>
+<div class="text-section" data-section="1">
+  <p>We ought to know, most beloved brethren, the origin of the human condition, that from it we may come to understand the exceeding mercy of our Creator toward us — who formed our first parents, Adam and his wife Eve, from the clay of the earth, breathed into them a rational and intellectual spirit by which they might know and praise their Creator, and established them in the most sweet felicity of Paradise, to live therein without toil, pain, or the peril of death, until they should be translated to the everlasting blessedness of the heavenly kingdom. He commanded them not to eat of the fruit of one tree, so that through obedience to this single commandment they might merit eternal glory. But they were deceived by the fraud and envy of the devil, and ate of the fruit that was forbidden to them. For this transgression they were cast out into the wretchedness of this present earth and made subject to the power of the devil, through disobedience to that first commandment; and all born thenceforth in sin, living in labours, were to lose their human life in the anguish of death. Nor was there any who could attain, after the end of this life, to the felicity of Paradise or the blessedness of the heavenly kingdom — until Almighty God sent into the world His only-begotten Son, born of a Virgin, as He had long before promised through His prophets to the holy patriarchs. As the blessed preacher to the world, Paul, declared:</p>
+<span class="verse-wrap">
+  <span class="verse-text">But when the fulness of the time was come, God sent his Son, made of a woman, made under the law.</span>
+  <a href="/scriptures/#gal-4-4" class="verse-tooltip">
+    <span class="tooltip-ref">Gal 4:4</span>
+  </a>
+</span> And when this fulness of time arrived according to the predestination of God, as we read in the holy Gospel: 
+<span class="verse-wrap">
+  <span class="verse-text">And in the sixth month, the angel Gabriel was sent from God into a city of Galilee, called Nazareth, to a virgin espoused to a man whose name was Joseph, of the house of David; and the virgin's name was Mary. And the angel being come in, said unto her: Hail, full of grace, the Lord is with thee: blessed art thou among women. Who having heard, was troubled at his saying, and thought with herself what manner of salutation this should be. And the angel said to her: Fear not, Mary, for thou hast found grace with God. Behold thou shalt conceive in thy womb, and shalt bring forth a son; and thou shalt call his name Jesus. He shall be great, and shall be called the Son of the most High; and the Lord God shall give unto him the throne of David his father; and he shall reign in the house of Jacob for ever. And Mary said to the angel: How shall this be done, because I know not man? And the angel answering, said to her: The Holy Ghost shall come upon thee, and the power of the most High shall overshadow thee. And therefore also the Holy which shall be born of thee shall be called the Son of God.</span>
+  <a href="/scriptures/#luke-1-26-35" class="verse-tooltip">
+    <span class="tooltip-ref">Luke 1:26-35</span>
+  </a>
+</span> At that time there was such peace in the world that the dominion of the whole earth belonged to a single city, called Rome; and over that city and over all the world there was one emperor and ruler, by name Augustus, who issued a decree throughout the world that every man should go to his homeland and pay there a head-tax to the emperor, that every fugitive slave should return to his master, and that any slave whose master could not be found should be put to death, lest he disturb the peace which Augustus had established throughout the earth. And this came to pass by the providence of God, so that there might be peace over all the earth when He was born who would preach true peace to men, reconcile all things in heaven and on earth, and restore concord between the angelic powers and human nature. In this time of such profound peace and the unclouded joy of all peoples everywhere, as the evangelical history declares, He was born in the land of Judaea and in Bethlehem, the city of David, of the Virgin Mary — not by the union of man, but by the Holy Ghost inspiring and making fruitful her virginal womb — so that the integrity of her virginity was preserved both in the birth and after it.
+</div>
+<div class="text-section" data-section="2">
+  <p>On that same night, as we read in the Gospel, on which God the Son of God was born into the world:</p>
+<span class="verse-wrap">
+  <span class="verse-text">And there were in the same country shepherds watching, and keeping the night watches over their flock. And behold an angel of the Lord stood by them, and the brightness of God shone round about them; and they feared with a great fear. And the angel said to them: Fear not; for, behold, I bring you good tidings of great joy, that shall be to all the people: For, this day, is born to you a Saviour, who is Christ the Lord, in the city of David. And this shall be a sign unto you. You shall find the infant wrapped in swaddling clothes, and laid in a manger. And suddenly there was with the angel a multitude of the heavenly army, praising God, and saying: Glory to God in the highest; and on earth peace to men of good will.</span>
+  <a href="/scriptures/#luke-2-8-14" class="verse-tooltip">
+    <span class="tooltip-ref">Luke 2:8-14</span>
+  </a>
+</span> 
+<span class="verse-wrap">
+  <span class="verse-text">And they came with haste: and they found Mary and Joseph, and the infant lying in the manger</span>
+  <a href="/scriptures/#luke-2-16" class="verse-tooltip">
+    <span class="tooltip-ref">Luke 2:16</span>
+  </a>
+</span>, as the angels had foretold them. This festival is the beginning of our salvation and the renewal of the human race — in which God, through the mercy of the Lord, descended to men, that men might through obedience ascend to God; for through disobedience they had been expelled from the felicity of Paradise. That felicity God born of a Virgin not only restored to us, but also opened to believers who keep His commandments the gates of the heavenly kingdom; and He granted to those who had been children of wrath in sins and misery to become children of God in faith and charity, and He crushed and shattered the whole yoke of diabolical servitude, so that the devil could no longer hold dominion over any man who willed to keep the commandments of God and to guard himself from sin.
+</div>
+<div class="text-section" data-section="3">
+  <p>Therefore those who fear not to sin, and take no care to confess their sins or to amend them through penance, are servants of the devil. But those who take care to guard themselves from sin, or to cleanse their sins through confession and penance, and who rejoice to live according to the commandments of God — these are children of God&rsquo;s love and heirs of eternal blessedness. For this is the great nobility: that an earthly man should become a son of God. This glorious nobility and this great liberty must be diligently preserved through upright conduct, nor does the most high Father, who is God of all, desire to have children save such as are good, chaste, faithful, and obedient to His commandments. It is therefore meet that we love with perfect charity Him who loved us so greatly — who, though He is the eternal God, willed to be born as man for our salvation, and to do and to suffer all that is recounted in the holy Gospel; who shone forth so wondrously before the people that it could be truly recognised that the very same One who appeared as man in the frailty of flesh was God in the power of divinity. At His nativity the angels, as we have heard, sang in praise of God:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Glory to God in the highest; and on earth peace to men of good will.</span>
+  <a href="/scriptures/#luke-2-14" class="verse-tooltip">
+    <span class="tooltip-ref">Luke 2:14</span>
+  </a>
+</span> And let us too sing glory to God with the angels, praising His ineffable mercy, who humbled Himself that He might exalt us. He became the Son of man that He might make us sons of God. He came into the region of our mortality that He might raise us into the region of His glory. And the angels added their hymn: And on earth peace to men of good will. True peace is this: that in good will we be subject to Almighty God, doing His will above all else with our whole heart, and our whole soul, and our whole mind — that is, with all our understanding and all our will — and that we keep ever in memory His will and His commandments; and that we love other men as ourselves, doing to no one anything that we should not wish another to do to us, but dealing with others as our own will would have others deal with us. Let us be merciful to the poor and the wretched, and do good to them according to our means and their necessity; and if anyone sin against us, let us forgive him, that God may forgive us our sins. For so we read in the Gospel, Truth itself declaring: 
+<span class="verse-wrap">
+  <span class="verse-text">For if you will forgive men their offences, your heavenly Father will forgive you also your offences.</span>
+  <a href="/scriptures/#matt-6-14" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 6:14</span>
+  </a>
+</span> And let us prefer always His will to our own, for His will is our salvation. Let us cleanse ourselves from all iniquity of body and soul. Let us live in chastity and in charity toward God and men, and serve God with joy in every good work, in mercy and piety, in justice and patience, and in hope in the goodness of God — knowing most certainly that whatever good we do in almsgiving and in humility and in obedience to His commandments, all of it our Lord will restore to us in eternal blessedness.
+</div>
+</div>
+
+    
+
+    
+    <div class="homily-nav">
+      
+      <a class="nav-btn nav-prev" href="http://localhost:1313/homilies/pseudo-boniface/sermon-15/">
+        ← <span>On the Renunciation Made at Baptism</span>
+      </a>
+      
+      
+      <a class="nav-btn nav-next" href="http://localhost:1313/homilies/pseudo-boniface/sermon-10/">
+        <span>On the Incarnation of the Son of God and the Restoration of the Human Race</span> →
+      </a>
+      
+    </div>
+
+  </div>
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

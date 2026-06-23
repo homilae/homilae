@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On the Actions to Be Avoided and Those to Be Pursued — Homiliae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,opsz,wght@0,6..144,400;0,6..144,500;1,6..144,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="wordmark">Homiliae</a>
+    <nav>
+      <a href="/homilies">Browse</a>
+      <a href="/scriptures">Scripture Index</a>
+      <a href="/about">About</a>
+    </nav>
+    <button class="settings-trigger" onclick="toggleSettings()" aria-label="Settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  
+  <div class="settings-overlay" id="settings-overlay" onclick="toggleSettings()"></div>
+  <aside class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <span class="settings-title">Reading Settings</span>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-label">Appearance</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Mode</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setMode('light')">Light</button>
+            <button class="s-btn" onclick="setMode('sepia')">Sepia</button>
+            <button class="s-btn" onclick="setMode('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Font Size</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Size</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setFontSize('small')">Small</button>
+            <button class="s-btn active" onclick="setFontSize('medium')">Medium</button>
+            <button class="s-btn" onclick="setFontSize('large')">Large</button>
+            <button class="s-btn" onclick="setFontSize('xlarge')">X-Large</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Layout</div>
+        <div class="settings-row">
+          <span class="settings-row-label">View</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setView('parallel')">Parallel</button>
+            <button class="s-btn" onclick="setView('original')">Latin only</button>
+            <button class="s-btn" onclick="setView('translation')">English only</button>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:0.8rem">
+          <span class="settings-row-label">Line spacing</span>
+          <div class="settings-btn-group">
+            <button class="s-btn" onclick="setLineHeight('compact')">Compact</button>
+            <button class="s-btn active" onclick="setLineHeight('normal')">Normal</button>
+            <button class="s-btn" onclick="setLineHeight('spacious')">Spacious</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Typography</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Font</span>
+          <div class="settings-btn-group">
+            <button class="s-btn active" onclick="setFont('cardo')">Cardo</button>
+            <button class="s-btn" onclick="setFont('garamond')">Garamond</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-label">Scripture</div>
+        <div class="settings-row">
+          <span class="settings-row-label">Show tooltips</span>
+          <label class="settings-toggle-switch">
+            <input type="checkbox" id="tooltip-toggle" checked onchange="toggleTooltips(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section settings-section--future">
+        <div class="settings-section-label">Coming soon</div>
+        <div class="settings-future-item">Bookmark this homily</div>
+        <div class="settings-future-item">Print optimised view</div>
+        <div class="settings-future-item">Download as PDF</div>
+        <div class="settings-future-item">Copy citation</div>
+      </div>
+
+    </div>
+  </aside>
+
+  
+  <div class="info-overlay" id="info-overlay" onclick="toggleInfo()"></div>
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-header">
+      <span class="info-modal-title">Sermon Information</span>
+      <button class="info-modal-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-modal-body">
+
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Type</div>
+        <div class="info-value">Sermon</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Liturgical Occasion</div>
+        <div class="info-value">No specific occasion</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Audience</div>
+        <div class="info-value">General faithful</div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Themes</div>
+        <div class="info-chips">
+          
+          <span class="info-chip">Virtues · Charity</span>
+          
+          <span class="info-chip">Virtues · Humility</span>
+          
+          <span class="info-chip">Virtues · Obedience</span>
+          
+          <span class="info-chip">Virtues · Justice</span>
+          
+          <span class="info-chip">Virtues · Temperance</span>
+          
+          <span class="info-chip">Virtues · Faith</span>
+          
+          <span class="info-chip">Virtues · Hope</span>
+          
+          <span class="info-chip">Moral · Almsgiving</span>
+          
+          <span class="info-chip">Moral · Poverty</span>
+          
+          <span class="info-chip">Last things · Heaven</span>
+          
+          <span class="info-chip">Ecclesiology · Priesthood</span>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="info-section">
+        <div class="info-label">Scripture References</div>
+        <div class="info-chips">
+          
+          <span class="info-chip info-chip--verse">Rom 13:1</span>
+          
+          <span class="info-chip info-chip--verse">Matt 5:3</span>
+          
+          <span class="info-chip info-chip--verse">Sir 3:33</span>
+          
+          <span class="info-chip info-chip--verse">Prov 19:17</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="info-section">
+        <div class="info-label">Source Text</div>
+        <div class="info-value">
+          Migne, Patrologia Latina, vol. 89 (Paris, 1863)
+          
+          <a href="https://dn790000.ca.archive.org/0/items/patrologiaecur89mign/patrologiaecur89mign.pdf" target="_blank" rel="noopener" class="info-link">↗ View source</a>
+          
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Translation</div>
+        <div class="info-value">Claude Sonnet 4.6</div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-label">Accuracy Note</div>
+        <div class="info-value info-value--notes">All translations are AI-assisted and have been reviewed, but may contain errors. Always verify against the original source text before citing.</div>
+      </div>
+      
+      
+
+      <div class="info-section info-section--last">
+        <div class="info-label">How to Cite</div>
+        <div class="info-value info-cite">
+          Pseudo-Boniface, "On the Actions to Be Avoided and Those to Be Pursued," trans. Homiliae Archive,
+          <em>Homiliae: Christian Preaching Archive</em>,
+          accessed 2026,
+          http://localhost:1313/homilies/pseudo-boniface/sermon-09/.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reader-wrap">
+
+    
+    <div class="reader-header">
+      <div class="breadcrumb">
+        <a href="/homilies">Homilies</a> ›
+        <a href="/homilies/?author=pseudo-boniface">Pseudo-Boniface</a>
+         › Sermons (Pseudo-Boniface)
+      </div>
+
+      <div class="reader-title-row">
+        <div>
+          <h1 class="homily-title">On the Actions to Be Avoided and Those to Be Pursued</h1>
+          
+          <p class="title-original">Sermo IX: Qui actus sint omni studio evitandi, et qui tota virium instantia sectandi</p>
+          
+        </div>
+        <button class="info-trigger" onclick="toggleInfo()" aria-label="Sermon information">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <span>
+          <a href="/homilies/?author=pseudo-boniface" class="meta-author-link">
+            Pseudo-Boniface
+          </a>
+        </span>
+        <span>8th–9th century AD</span>
+        <span>Latin</span>
+      </div>
+
+      
+
+      <div class="view-toggle" style="margin-top:1rem">
+        <button class="view-btn active" onclick="setView('parallel')">Parallel</button>
+        <button class="view-btn" onclick="setView('original')">Latin only</button>
+        <button class="view-btn" onclick="setView('translation')">English only</button>
+      </div>
+    </div>
+
+    
+    <div class="col-labels">
+      <div class="col-label-outer">
+        <span class="lang-dot dot-latin"></span>
+        Latin · Original
+      </div>
+      <div class="col-label-outer">
+        <span class="lang-dot dot-english"></span>
+        English · Translation
+      </div>
+    </div>
+
+    
+    <div class="parallel-reader" id="parallel-reader"></div>
+
+    
+    <div id="raw-content"><h2 id="original-text">Original Text</h2>
+<div class="text-section" data-section="1">
+  Considerare oportet nos, charissimi, praesentis vitae statum, vel qui actus sint nobis omni studio evitandi, vel qui tota virium nostrarum instantia sectandi. Inter omnia quae hic agi possint semper aspicere debemus quomodo diabolo deceptori nostro resistamus, et quomodo Deo Iesu redemptori nostro placeamus. In eo illi placemus, si hoc agimus quod ille iussit, et quod ille interdixit refutamus. Peccata vero et iniquitates prohibet nos committere, commissa poenitentiae medicamine citius curare. Recte itaque vivere et pie et aeterna quaerere praecepit nobis, et unumquemque locum et conditionem suam diligenter procurare, ne vacuus appareat, vel minus utilis in loco suo. Una est enim corpori nostro anima, in qua vita consistit, sed multa sunt membra diversis distincta officiis. Sic in Ecclesia una est fides, quae per charitatem ubique operari debet, sed diversae dignitates proprias habentes ministrationes. Nam alius ordo praepositorum est, alius subditorum; alius divitum, alius pauperum; alius senum, alius iuvenum; et unaquaeque persona habens sua propria praecepta, sicut unumquodque membrum habet suum proprium in corpore officium. Nam episcoporum officium est prava prohibere, pusillanimes consolari, protervos corripere. Deinde regius honor populis debet esse timori et venerationi, quia non est potestas nisi a Deo. Item, potentes et iudices omnes qui regi adharent fideles sint oportet, et humiles, et misericordes, in aequitate iudicare et non in muneribus, viduas et pupillos et pauperes defendere, episcopis suis subditos esse, neminem vi opprimere, non iniustis divitiis inhiare, sua magis indigentibus dare quam aliena rapere.
+</div>
+<div class="text-section" data-section="2">
+  Item, sunt in populo Dei alii sapientes, et alii stulti. Sapientium est bona quae sciunt et opere complere et aliis praedicare. Quid prodest viatori scire viam, si non vult intrare? Ille vero qui viam Dei scit et intrat, aliosque introducit, similis est firmamento, quod multis splendet sideribus. Qui vero multos aedificat, multorum mercede gloriatur. Debent itaque potentes Deum habere sibi praesentem semper, et licet hominem non timeant, Deum tamen metuant, et potestatem sibi concessam in Dei honorem et in salutem animae suae fruere. Qui vero stulti sunt et indocti, discant humiliter a sapientibus quia qui ignorat ignorabitur, ne ignorantia se putent excusari posse apud districtum iudicem; ille considerat occulta uniuscuiusque.
+</div>
+<div class="text-section" data-section="3">
+  Tres distantiae sunt in humano genere; alii sunt qui bene sciunt, et faciunt quae sciunt: hi sunt optimi hominum ac Deo proximi. Secundus gradus est in hominibus qui per se bona nesciunt, volunt tamen discere a bene scientibus, et implere quae didicerint, et horum vita utilis est in Ecclesia. Qui bona quae ignorat discere contemnit, huius vita omnibus inutilis est et plurimis noxia. Quapropter qui sciat bonum, faciat; et qui nesciat discat, ut et ille de sua scientia gaudeat, et hic de sua industria proficiat. Alii sunt in Ecclesia divites, alii pauperes. Pauperibus praeceptum est humiles esse, et sperare in Deum, qui dixit: Beati pauperes spiritu, et meliores divitias tacito avidius amare, quanto his terrenis vacui sunt. Divitibus praeceptum est sua dare, non aliena rapere, vestire, induere, quia multa sunt quae divites per abundantiam divitiarum superflua faciunt, vel in cibo, vel in vestitu. Ideo refectio pauperum abluat peccata quae superfluitas contraxit, quia sicut aqua exstinguit ignem, ita eleemosyna exstinguit peccatum. Dives qui parcit divitiis non parcit animae, aut cui largus est qui semetipso tenax est? Cogitet unusquisque quanto pretio ab igne praesenti, si cogatur ardere vel unum diem, velit se redimere, quanto est acrior ignis iudicii? Ignis gehennae insuper aeternus est. Ideo qui habeat divitias, praeveniat faciem iudicis, et misereatur miseris, ut ei misereatur Deus, qui pauperi, ut dictum est, misereatur; teneretur Domino, et ipse reddet ei. Senes vero decet religiosos esse, compositis moribus, et canitiem ornare sobrietate, et semper de ingressu alterius vitae cogitare. Adolescentes convenit obedientiae et subiectioni seniorum operam dare, ut proficiant semper in domo Dei, ut meliores ac meliores fiant, nec vanis oblectationibus et noxiis cupiditatibus malignis se spiritus mancipare sinant, sed castos se et immaculatos studeant ad maturam perducere aetatem.
+</div>
+<div class="text-section" data-section="4">
+  Parentibus quoque praeceptum est ut erudiant filios suos in timore Dei. Quid enim parenti proficit, si habeat filium tormentis perpetuis deputatum? ideo diligentius erudiant in disciplina pietatis suos filios patres, ut benedictione haereditatis hic et in futuro saeculo habeant illos. Sed et filii obediant parentibus suis, nam et ipsemet Christus subditus fuisse parentibus suis legitur. Viri vero diligant uxores suas in castitate et conscientia pura, et quasi fragiliori vasculo, honorem eis competentem in timore Dei faciant, uxoresque viris suis sint subditae in timore et fide, scientes a Deo constitutam esse subiectionem uxoris viro. Sunt quoque alia communia in Ecclesia omni dignitati, aetati et sexui, praecepta, ut est diligere Dominum Deum ex toto corde, ex tota mente, totaque virtute, et proximum sicut seipsum, nullusque hoc alteri faciat quod sibi fieri nollet. Patientia quoque omnibus necessaria est et compassionis affectus, et misericordiae largitas, et iustitiae aequitas, et fidei puritas, et spei firmitas, orationumque instantia, et mansuetudo morum. His enim et huiusmodi hostiis promeretur divina clementia. Haec enim salutis praecepta et omnibus conveniunt, et cunctis necessaria esse noscuntur. His passibus iter caeleste, et his clavibus supernae patriae ianua panditur; Per haec vestigia omnes sancti cursum vitae praesentis peregerunt, et qui nunc regnant cum Christo per has semitas ad eum pervenerunt, nec est haec via laboriosa, sed valde gloriosa, quae brevi spatio peragitur, sed perpetua laetitia et gloria coronatur. Qui vero hac pergere non cessat, angelicae beatitudinis consors efficitur, et ipsius Domini Dei omnipotentis aeterno fruitur aspectu, qui vivit et regnat in saecula saeculorum. Amen.
+</div>
+<h2 id="english-translation">English Translation</h2>
+<div class="text-section" data-section="1">
+  <p>We need to consider, dearest brethren, the state of the present life — what actions we must avoid with every effort, and what actions we must pursue with all the force of our strength. Among everything that can be done in this world, we must always keep our eyes on how to resist the devil who deceives us, and how to please God Jesus our redeemer. We please him when we do what he has commanded and refuse what he has forbidden. He forbids us to commit sins and iniquities, and commands us to heal those we have committed as quickly as possible with the medicine of penance. He has also commanded us to live rightly and devoutly, to seek eternal things, and for each person to attend diligently to his own place and condition, so that he does not appear idle or less than useful in his station. For the body has one soul in which its life consists, yet it has many members distinguished by different offices. So in the Church there is one faith, which must operate through charity everywhere, but there are different ranks, each with its own proper ministry. For the order of superiors is one thing, that of subjects another; the rich are one thing, the poor another; the elderly one thing, the young another. Each person has their own proper commandments, just as each member has its own proper function in the body. The office of bishops is to forbid what is wrong, to comfort the fainthearted, and to correct the insolent. Then the royal dignity ought to be held in fear and reverence by the people, because</p>
+<span class="verse-wrap">
+  <span class="verse-text">there is no power but from God.</span>
+  <a href="/scriptures/#rom-13-1" class="verse-tooltip">
+    <span class="tooltip-ref">Rom 13:1</span>
+  </a>
+</span> Likewise all those in power and judges who are attached to the king must be faithful, humble, and merciful; they must judge in equity and not for bribes, defend widows, orphans, and the poor, be subject to their bishops, oppress no one by force, not hunger after unjust riches, and give their own to those in need rather than seize what belongs to others.
+</div>
+<div class="text-section" data-section="2">
+  In the people of God, some are wise and others are foolish. It is the task of the wise to complete in deed the good things they know, and to proclaim them to others. What does it profit a traveler to know the road if he is unwilling to take it? The one who knows the way of God and enters it, and also leads others in, is like the firmament which shines with many stars. The one who builds up many will be glorified with the reward of many. Those in power must therefore always hold God as present before them, and even if they do not fear a human being, let them fear God, and use the power granted to them for God&rsquo;s honor and the salvation of their own soul. Those who are foolish and untaught should learn humbly from the wise, because the one who is ignorant will be disregarded. Let them not think they can excuse themselves before the strict judge on grounds of ignorance — he takes account of the hidden secrets of each one.
+</div>
+<div class="text-section" data-section="3">
+  <p>There are three levels in the human race. Some know what is good and do what they know — these are the best of people and closest to God. The second level consists of those who do not know good on their own, but want to learn from those who know well, and to carry out what they have learned; their lives are useful to the Church. The one who despises learning the good things he does not know — his life is useless to everyone and harmful to many. Therefore, the one who knows the good should do it; and the one who does not know it should learn, so that the former may rejoice in his knowledge and the latter make progress through his diligence. In the Church some are rich and some are poor. The poor are commanded to be humble and to hope in God, who said:</p>
+<span class="verse-wrap">
+  <span class="verse-text">Blessed are the poor in spirit: for theirs is the kingdom of heaven</span>
+  <a href="/scriptures/#matt-5-3" class="verse-tooltip">
+    <span class="tooltip-ref">Matt 5:3</span>
+  </a>
+</span> — and to love silently and eagerly the better riches, in proportion as they are free from these earthly ones. The rich are commanded to give their own things, not to seize what belongs to others; to clothe and care for the needy — for the rich do many superfluous things through the abundance of their wealth, whether in food or clothing. Therefore the refreshment of the poor should wash away the sins which excess has contracted, for 
+<span class="verse-wrap">
+  <span class="verse-text">as water quencheth fire, so alms extinguish sin.</span>
+  <a href="/scriptures/#sir-3-33" class="verse-tooltip">
+    <span class="tooltip-ref">Sir 3:33</span>
+  </a>
+</span> The rich man who spares his wealth does not spare his soul — or for whom is he generous who is miserly with himself? Let each person think at what price he would want to ransom himself from present fire if forced to burn for even a single day — how much more fierce is the fire of judgment? The fire of Gehenna is moreover eternal. Therefore let the one who has wealth forestall the face of the judge, and show mercy to the wretched, so that God may show him mercy — for the one who shows mercy to the poor, as it is said, 
+<span class="verse-wrap">
+  <span class="verse-text">lendeth to the Lord, and he will repay him.</span>
+  <a href="/scriptures/#prov-19-17" class="verse-tooltip">
+    <span class="tooltip-ref">Prov 19:17</span>
+  </a>
+</span> The elderly should be religious, composed in their ways, adorning their grey hairs with sobriety, and always thinking about entering the next life. Young people should devote themselves to obedience and submission to their elders, that they may always make progress in the house of God and become better and better, and not allow the malicious spirit to enslave them to idle pleasures and harmful lusts, but strive to bring themselves to maturity in chastity and without stain.
+</div>
+<div class="text-section" data-section="4">
+  Parents too are commanded to instruct their children in the fear of God. For what does it profit a parent to have a child consigned to perpetual torments? Therefore let fathers instruct their children more diligently in the discipline of piety, so that they may have them as an inheritance of blessing in this age and in the age to come. Children likewise should obey their parents, for even Christ himself is recorded to have been subject to his parents. Husbands should love their wives in chastity and with a pure conscience, and as if they were the weaker vessel, pay them the respect that is fitting in the fear of God; and wives should be subject to their husbands in fear and faith, knowing that the subjection of the wife to the husband is established by God. There are also other commandments common in the Church to every rank, age, and sex: to love the Lord God with the whole heart, the whole mind, and the whole strength; and one&rsquo;s neighbor as oneself; and let no one do to another what he would not want done to himself. Patience is also necessary for all, along with compassion, generosity of mercy, the equity of justice, the purity of faith, the firmness of hope, perseverance in prayer, and gentleness of conduct. For it is by these and similar offerings that divine mercy is merited. These commandments of salvation are fitting for all and are known to be necessary for everyone. By these steps the heavenly road is traveled; by these keys the gate of the heavenly homeland is opened. All the saints completed the course of the present life by these paths, and those who now reign with Christ came to him by these ways. This road is not laborious but exceedingly glorious — it is traveled in a brief span of time but is crowned with everlasting joy and glory. Whoever does not cease to walk it becomes a partaker of the blessedness of the angels, and enjoys the eternal sight of the Lord God almighty, who lives and reigns for ever and ever. Amen.
+</div>
+</div>
+
+    
+
+    
+    <div class="homily-nav">
+      
+      <a class="nav-btn nav-prev" href="http://localhost:1313/homilies/pseudo-boniface/sermon-06/">
+        ← <span>On the Capital Sins and the Chief Commandments of God</span>
+      </a>
+      
+      
+      <a class="nav-btn nav-next" href="http://localhost:1313/homilies/pseudo-boniface/sermon-01/">
+        <span>On Right Faith</span> →
+      </a>
+      
+    </div>
+
+  </div>
+
+  <script src="/js/reader.js"></script>
+</body>
+</html>

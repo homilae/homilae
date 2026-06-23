@@ -8,6 +8,16 @@
 - Counter-Reformation
 - Modern
 
+## Homily Type
+- Homily
+- Sermon
+- Panegyric
+- Funeral oration
+- Catechetical instruction
+- Mission sermon
+- Retreat conference
+- University sermon
+
 ## Liturgical Occasion
 - Advent
 - Christmas
@@ -18,58 +28,84 @@
 - Easter
 - Ascension
 - Pentecost
-- Ordinary Time
+- Trinity Sunday
 - Corpus Christi
 - Sacred Heart
 - Christ the King
+- Transfiguration
+- Exaltation of the Holy Cross
+- All Saints
+- All Souls
 - Annunciation
 - Assumption
 - Immaculate Conception
 - Nativity of Mary
-- Feast of a Saint
+- Our Lady of Sorrows
+- Our Lady of the Rosary
+- Nativity of John the Baptist
+- Feast of Peter and Paul
+- Feast of an Apostle
+- Feast of a Martyr
+- Feast of a Virgin
+- Feast of a Doctor of the Church
+- Feast of a Confessor
+- Feast of a Bishop
+- Feast of a Religious
+- Feast of a Founder
 - Dedication of a Church
+- Ordination
 - Funeral
-- Votive
 - No specific occasion
 
 ## Audience
 - General faithful
 - Clergy
 - Religious
-- Cistercian
-- Dominican
-- Franciscan
-- Benedictine
+- Religious · Benedictine
+- Religious · Cistercian
+- Religious · Dominican
+- Religious · Franciscan
+- Religious · Augustinian
+- Religious · Carmelite
+- Religious · Jesuit
+- Religious · Oratorian
 - Laity
 - Nobility
+- Court
 - Students
 - Sick and dying
 - Penitents
+- Converts
 - Children
-- Women
-- Men
 - Missionaries
 
 ## Themes
 - Sacraments · Baptism
+- Sacraments · Confirmation
 - Sacraments · Eucharist
 - Sacraments · Confession
-- Sacraments · Confirmation
-- Sacraments · Marriage
+- Sacraments · Anointing of the Sick
 - Sacraments · Holy Orders
-- Sacraments · Anointing
-- Prayer · Mental prayer
+- Sacraments · Marriage
 - Prayer · Vocal prayer
+- Prayer · Mental prayer
 - Prayer · Contemplation
+- Prayer · Fasting
+- Prayer · Almsgiving
+- Spiritual life · Detachment
+- Spiritual life · Examination of conscience
 - Virtues · Faith
 - Virtues · Hope
 - Virtues · Charity
-- Virtues · Humility
-- Virtues · Obedience
 - Virtues · Prudence
 - Virtues · Justice
 - Virtues · Fortitude
 - Virtues · Temperance
+- Virtues · Humility
+- Virtues · Obedience
+- Virtues · Chastity
+- Virtues · Patience
+- Virtues · Zeal
 - Vices · Pride
 - Vices · Avarice
 - Vices · Lust
@@ -77,40 +113,120 @@
 - Vices · Gluttony
 - Vices · Envy
 - Vices · Sloth
+- Sin · Mortal sin
+- Sin · Scandal
+- Sin · Obstinacy in sin
 - Last things · Death
 - Last things · Judgement
 - Last things · Hell
 - Last things · Purgatory
 - Last things · Heaven
+- Last things · Resurrection of the body
 - Christology · Incarnation
 - Christology · Passion
 - Christology · Resurrection
 - Christology · Ascension
+- Christology · Sacred Heart
+- Christology · Second Coming
 - Mariology · Immaculate Conception
+- Mariology · Divine Motherhood
 - Mariology · Assumption
 - Mariology · Queenship
 - Mariology · Intercession
+- Mariology · Our Lady of Sorrows
 - Ecclesiology · Church
+- Ecclesiology · Papacy
 - Ecclesiology · Priesthood
-- Moral · Poverty
-- Moral · Justice
+- Ecclesiology · Religious life
+- Ecclesiology · Tradition
+- Moral · Poverty and wealth
 - Moral · Almsgiving
+- Moral · Justice
+- Moral · Marriage and family
+- Moral · War and peace
+- Moral · Slavery
+- Doctrine · Trinity
+- Doctrine · Creation
+- Doctrine · Original sin
+- Doctrine · Grace
+- Doctrine · Predestination
+- Doctrine · Free will
+- Doctrine · Providence
+- Doctrine · Angels and devils
+- Doctrine · Indulgences
 - Mystical theology · Union with God
+- Mystical theology · Dark night of the soul
+- Mystical theology · Contemplative prayer
 - Scripture exposition · Genesis
+- Scripture exposition · Exodus
+- Scripture exposition · Leviticus
+- Scripture exposition · Numbers
+- Scripture exposition · Deuteronomy
+- Scripture exposition · Joshua
+- Scripture exposition · Judges
+- Scripture exposition · Ruth
+- Scripture exposition · 1 Samuel
+- Scripture exposition · 2 Samuel
+- Scripture exposition · 1 Kings
+- Scripture exposition · 2 Kings
+- Scripture exposition · 1 Chronicles
+- Scripture exposition · 2 Chronicles
+- Scripture exposition · Ezra
+- Scripture exposition · Nehemiah
+- Scripture exposition · Tobit
+- Scripture exposition · Judith
+- Scripture exposition · Esther
+- Scripture exposition · 1 Maccabees
+- Scripture exposition · 2 Maccabees
+- Scripture exposition · Job
 - Scripture exposition · Psalms
+- Scripture exposition · Proverbs
+- Scripture exposition · Ecclesiastes
+- Scripture exposition · Song of Solomon
+- Scripture exposition · Wisdom
+- Scripture exposition · Sirach
 - Scripture exposition · Isaiah
+- Scripture exposition · Jeremiah
+- Scripture exposition · Lamentations
+- Scripture exposition · Baruch
+- Scripture exposition · Ezekiel
+- Scripture exposition · Daniel
+- Scripture exposition · Hosea
+- Scripture exposition · Joel
+- Scripture exposition · Amos
+- Scripture exposition · Obadiah
+- Scripture exposition · Jonah
+- Scripture exposition · Micah
+- Scripture exposition · Nahum
+- Scripture exposition · Habakkuk
+- Scripture exposition · Zephaniah
+- Scripture exposition · Haggai
+- Scripture exposition · Zechariah
+- Scripture exposition · Malachi
 - Scripture exposition · Matthew
+- Scripture exposition · Mark
+- Scripture exposition · Luke
 - Scripture exposition · John
+- Scripture exposition · Acts
 - Scripture exposition · Romans
-
-## Homily Type
-- Homily
-- Sermon
-- Panegyric
-- Funeral oration
-- Catechetical instruction
-- Mission sermon
-- Mystagogical
-- Retreat conference
-- Lenten series
-- Advent series
+- Scripture exposition · 1 Corinthians
+- Scripture exposition · 2 Corinthians
+- Scripture exposition · Galatians
+- Scripture exposition · Ephesians
+- Scripture exposition · Philippians
+- Scripture exposition · Colossians
+- Scripture exposition · 1 Thessalonians
+- Scripture exposition · 2 Thessalonians
+- Scripture exposition · 1 Timothy
+- Scripture exposition · 2 Timothy
+- Scripture exposition · Titus
+- Scripture exposition · Philemon
+- Scripture exposition · Hebrews
+- Scripture exposition · James
+- Scripture exposition · 1 Peter
+- Scripture exposition · 2 Peter
+- Scripture exposition · 1 John
+- Scripture exposition · 2 John
+- Scripture exposition · 3 John
+- Scripture exposition · Jude
+- Scripture exposition · Revelation
