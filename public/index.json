@@ -10,8 +10,8 @@
   "themes": ["Christology · Passion","Christology · Resurrection","Sacraments · Baptism","Virtues · Faith","Virtues · Charity","Virtues · Humility","Virtues · Temperance","Virtues · Fortitude","Moral · Almsgiving","Moral · Justice","Last things · Heaven","Last things · Hell"],
   "liturgical_occasion": ["Lent"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Rev 1:5","section":"1"},{"ref":"Heb 2:14","section":"1"},{"ref":"2 Cor 6:2","section":"3"}]
-  "word_count": 1983,
+  "scripture_refs": [{"ref":"Rev 1:5","section":"1"},{"ref":"Heb 2:14","section":"1"},{"ref":"2 Cor 6:2","section":"3"}],
+  "word_count": 1983
 },
 {
   "title": "On Faith and Charity",
@@ -24,8 +24,8 @@
   "themes": ["Virtues · Faith","Virtues · Charity","Virtues · Hope","Virtues · Humility","Virtues · Obedience","Last things · Heaven","Last things · Judgement","Sacraments · Baptism"],
   "liturgical_occasion": ["No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Ps 36:27","section":"1"},{"ref":"Heb 11:6","section":"2"},{"ref":"Matt 22:37-40","section":"3"},{"ref":"John 14:23","section":"3"},{"ref":"John 13:35","section":"3"},{"ref":"Rom 13:10","section":"3"},{"ref":"1 John 4:21","section":"3"},{"ref":"John 3:5","section":"4"}]
-  "word_count": 1523,
+  "scripture_refs": [{"ref":"Ps 36:27","section":"1"},{"ref":"Heb 11:6","section":"2"},{"ref":"Matt 22:37-40","section":"3"},{"ref":"John 14:23","section":"3"},{"ref":"John 13:35","section":"3"},{"ref":"Rom 13:10","section":"3"},{"ref":"1 John 4:21","section":"3"},{"ref":"John 3:5","section":"4"}],
+  "word_count": 1523
 },
 {
   "title": "On Faith and the Works of Love",
@@ -38,8 +38,8 @@
   "themes": ["Virtues · Faith","Virtues · Charity","Virtues · Hope","Virtues · Humility","Virtues · Obedience","Virtues · Temperance","Sacraments · Baptism","Sacraments · Confirmation","Sacraments · Eucharist","Moral · Almsgiving","Moral · Justice","Last things · Judgement","Last things · Hell","Last things · Heaven","Christology · Resurrection","Christology · Ascension"],
   "liturgical_occasion": ["No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Jas 2:26","section":"1"},{"ref":"Matt 22:40","section":"1"},{"ref":"Luke 21:19","section":"1"},{"ref":"Luke 6:36","section":"1"},{"ref":"Matt 5:7","section":"1"},{"ref":"Eph 4:32","section":"1"},{"ref":"Heb 12:14","section":"1"},{"ref":"Matt 5:8","section":"1"},{"ref":"Matt 19:6","section":"1"},{"ref":"Eph 5:25","section":"1"},{"ref":"Matt 5:3","section":"1"},{"ref":"Jas 5:20","section":"1"},{"ref":"Matt 25:35","section":"2"},{"ref":"Matt 25:36","section":"2"},{"ref":"Matt 25:40","section":"2"},{"ref":"Matt 7:12","section":"2"},{"ref":"Rom 13:1","section":"2"},{"ref":"Rom 13:7","section":"2"},{"ref":"Heb 11:6","section":"3"},{"ref":"Acts 1:11","section":"4"},{"ref":"Luke 3:6","section":"4"},{"ref":"Isa 26:10","section":"4"},{"ref":"1 Cor 15:51","section":"4"},{"ref":"Matt 25:46","section":"4"},{"ref":"Matt 13:43","section":"4"},{"ref":"1 Cor 2:9","section":"4"},{"ref":"Rom 8:17","section":"4"}]
-  "word_count": 3012,
+  "scripture_refs": [{"ref":"Jas 2:26","section":"1"},{"ref":"Matt 22:40","section":"1"},{"ref":"Luke 21:19","section":"1"},{"ref":"Luke 6:36","section":"1"},{"ref":"Matt 5:7","section":"1"},{"ref":"Eph 4:32","section":"1"},{"ref":"Heb 12:14","section":"1"},{"ref":"Matt 5:8","section":"1"},{"ref":"Matt 19:6","section":"1"},{"ref":"Eph 5:25","section":"1"},{"ref":"Matt 5:3","section":"1"},{"ref":"Jas 5:20","section":"1"},{"ref":"Matt 25:35","section":"2"},{"ref":"Matt 25:36","section":"2"},{"ref":"Matt 25:40","section":"2"},{"ref":"Matt 7:12","section":"2"},{"ref":"Rom 13:1","section":"2"},{"ref":"Rom 13:7","section":"2"},{"ref":"Heb 11:6","section":"3"},{"ref":"Acts 1:11","section":"4"},{"ref":"Luke 3:6","section":"4"},{"ref":"Isa 26:10","section":"4"},{"ref":"1 Cor 15:51","section":"4"},{"ref":"Matt 25:46","section":"4"},{"ref":"Matt 13:43","section":"4"},{"ref":"1 Cor 2:9","section":"4"},{"ref":"Rom 8:17","section":"4"}],
+  "word_count": 3012
 },
 {
   "title": "On How to Live Now and How We Must Live Hereafter",
@@ -52,8 +52,8 @@
   "themes": ["Virtues · Charity","Virtues · Humility","Virtues · Obedience","Virtues · Justice","Virtues · Temperance","Vices · Pride","Sacraments · Confession","Sacraments · Baptism","Last things · Death","Last things · Judgement","Last things · Hell","Last things · Heaven","Moral · Almsgiving","Moral · Poverty"],
   "liturgical_occasion": ["No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Ps 36:27","section":"1"},{"ref":"Matt 19:17","section":"1"},{"ref":"Matt 22:37-39","section":"1"},{"ref":"Matt 5:45","section":"1"},{"ref":"Prov 13:8","section":"2"},{"ref":"Sir 3:33","section":"2"},{"ref":"Matt 5:9","section":"2"},{"ref":"1 Cor 6:10","section":"2"}]
-  "word_count": 1894,
+  "scripture_refs": [{"ref":"Ps 36:27","section":"1"},{"ref":"Matt 19:17","section":"1"},{"ref":"Matt 22:37-39","section":"1"},{"ref":"Matt 5:45","section":"1"},{"ref":"Prov 13:8","section":"2"},{"ref":"Sir 3:33","section":"2"},{"ref":"Matt 5:9","section":"2"},{"ref":"1 Cor 6:10","section":"2"}],
+  "word_count": 1894
 },
 {
   "title": "On Right Faith",
@@ -66,8 +66,8 @@
   "themes": ["Virtues · Faith","Last things · Judgement","Last things · Heaven","Last things · Hell","Sacraments · Baptism"],
   "liturgical_occasion": ["No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Acts 4:24","section":"2"}]
-  "word_count": 967,
+  "scripture_refs": [{"ref":"Acts 4:24","section":"2"}],
+  "word_count": 967
 },
 {
   "title": "On the Actions to Be Avoided and Those to Be Pursued",
@@ -80,8 +80,8 @@
   "themes": ["Virtues · Charity","Virtues · Humility","Virtues · Obedience","Virtues · Justice","Virtues · Temperance","Virtues · Faith","Virtues · Hope","Moral · Almsgiving","Moral · Poverty","Last things · Heaven","Ecclesiology · Priesthood"],
   "liturgical_occasion": ["No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Rom 13:1","section":"1"},{"ref":"Matt 5:3","section":"3"},{"ref":"Sir 3:33","section":"3"},{"ref":"Prov 19:17","section":"3"}]
-  "word_count": 2218,
+  "scripture_refs": [{"ref":"Rom 13:1","section":"1"},{"ref":"Matt 5:3","section":"3"},{"ref":"Sir 3:33","section":"3"},{"ref":"Prov 19:17","section":"3"}],
+  "word_count": 2218
 },
 {
   "title": "On the Capital Sins and the Chief Commandments of God",
@@ -94,8 +94,8 @@
   "themes": ["Virtues · Faith","Virtues · Justice","Virtues · Charity","Virtues · Humility","Vices · Pride","Vices · Avarice","Vices · Lust","Vices · Envy","Vices · Gluttony","Last things · Hell","Last things · Heaven","Last things · Judgement","Moral · Almsgiving","Moral · Justice"],
   "liturgical_occasion": ["No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"1 Pet 1:25","section":"1"},{"ref":"1 Pet 2:1","section":"1"},{"ref":"Rom 1:32","section":"1"},{"ref":"Matt 25:34","section":"2"},{"ref":"Matt 13:43","section":"2"},{"ref":"1 Cor 2:9","section":"2"}]
-  "word_count": 1464,
+  "scripture_refs": [{"ref":"1 Pet 1:25","section":"1"},{"ref":"1 Pet 2:1","section":"1"},{"ref":"Rom 1:32","section":"1"},{"ref":"Matt 25:34","section":"2"},{"ref":"Matt 13:43","section":"2"},{"ref":"1 Cor 2:9","section":"2"}],
+  "word_count": 1464
 },
 {
   "title": "On the Day of the Paschal Feast",
@@ -108,8 +108,8 @@
   "themes": ["Christology · Incarnation","Christology · Passion","Christology · Resurrection","Virtues · Hope","Virtues · Charity","Virtues · Fortitude","Vices · Pride","Last things · Heaven","Last things · Hell","Last things · Judgement"],
   "liturgical_occasion": ["Easter"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Matt 27:52","section":"1"},{"ref":"Rom 4:25","section":"1"},{"ref":"Gen 3:5","section":"2"},{"ref":"Matt 13:43","section":"3"}]
-  "word_count": 1822,
+  "scripture_refs": [{"ref":"Matt 27:52","section":"1"},{"ref":"Rom 4:25","section":"1"},{"ref":"Gen 3:5","section":"2"},{"ref":"Matt 13:43","section":"3"}],
+  "word_count": 1822
 },
 {
   "title": "On the Eight Beatitudes of the Gospel",
@@ -122,8 +122,8 @@
   "themes": ["Virtues · Humility","Virtues · Charity","Virtues · Justice","Virtues · Fortitude","Vices · Pride","Sacraments · Confession","Last things · Judgement","Last things · Heaven","Moral · Almsgiving","Scripture exposition · Matthew"],
   "liturgical_occasion": ["No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Matt 5:3-10","section":"1"},{"ref":"Matt 11:29","section":"2"},{"ref":"Ps 26:13","section":"2"},{"ref":"John 16:20","section":"3"},{"ref":"Luke 6:36","section":"5"}]
-  "word_count": 2072,
+  "scripture_refs": [{"ref":"Matt 5:3-10","section":"1"},{"ref":"Matt 11:29","section":"2"},{"ref":"Ps 26:13","section":"2"},{"ref":"John 16:20","section":"3"},{"ref":"Luke 6:36","section":"5"}],
+  "word_count": 2072
 },
 {
   "title": "On the Incarnation of the Son of God and the Restoration of the Human Race",
@@ -136,8 +136,8 @@
   "themes": ["Christology · Incarnation","Christology · Passion","Christology · Resurrection","Virtues · Hope","Virtues · Charity","Virtues · Fortitude","Vices · Pride","Vices · Lust","Vices · Envy","Vices · Anger","Last things · Heaven","Last things · Hell","Last things · Judgement"],
   "liturgical_occasion": ["Easter"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Rev 1:5","section":"2"},{"ref":"Heb 2:14","section":"2"},{"ref":"Matt 25:46","section":"3"}]
-  "word_count": 1573,
+  "scripture_refs": [{"ref":"Rev 1:5","section":"2"},{"ref":"Heb 2:14","section":"2"},{"ref":"Matt 25:46","section":"3"}],
+  "word_count": 1573
 },
 {
   "title": "On the Origin of the Human Condition",
@@ -150,8 +150,8 @@
   "themes": ["Christology · Incarnation","Virtues · Obedience","Virtues · Charity","Virtues · Humility","Last things · Heaven","Moral · Almsgiving","Sacraments · Confession"],
   "liturgical_occasion": ["Christmas"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Gal 4:4","section":"1"},{"ref":"Luke 1:26-35","section":"1"},{"ref":"Luke 2:8-14","section":"2"},{"ref":"Luke 2:16","section":"2"},{"ref":"Luke 2:14","section":"3"},{"ref":"Matt 6:14","section":"3"}]
-  "word_count": 2816,
+  "scripture_refs": [{"ref":"Gal 4:4","section":"1"},{"ref":"Luke 1:26-35","section":"1"},{"ref":"Luke 2:8-14","section":"2"},{"ref":"Luke 2:16","section":"2"},{"ref":"Luke 2:14","section":"3"},{"ref":"Matt 6:14","section":"3"}],
+  "word_count": 2816
 },
 {
   "title": "On the Renunciation Made at Baptism",
@@ -164,8 +164,8 @@
   "themes": ["Sacraments · Baptism","Sacraments · Eucharist","Sacraments · Confession","Virtues · Faith","Virtues · Charity","Virtues · Hope","Virtues · Humility","Virtues · Obedience","Virtues · Temperance","Vices · Pride","Vices · Lust","Vices · Envy","Moral · Almsgiving","Moral · Justice","Last things · Heaven","Last things · Hell","Last things · Judgement","Christology · Resurrection"],
   "liturgical_occasion": ["Christmas","No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Rom 1:32","section":"1"},{"ref":"Matt 22:37-40","section":"3"},{"ref":"Sir 3:33","section":"4"},{"ref":"1 Cor 2:9","section":"5"},{"ref":"Matt 13:43","section":"5"}]
-  "word_count": 1136,
+  "scripture_refs": [{"ref":"Rom 1:32","section":"1"},{"ref":"Matt 22:37-40","section":"3"},{"ref":"Sir 3:33","section":"4"},{"ref":"1 Cor 2:9","section":"5"},{"ref":"Matt 13:43","section":"5"}],
+  "word_count": 1136
 },
 {
   "title": "On the Two Kingdoms Established by God",
@@ -178,8 +178,8 @@
   "themes": ["Sacraments · Baptism","Sacraments · Confession","Sacraments · Eucharist","Virtues · Faith","Virtues · Hope","Virtues · Charity","Virtues · Humility","Vices · Pride","Vices · Envy","Last things · Judgement","Last things · Hell","Last things · Heaven","Moral · Almsgiving","Moral · Justice"],
   "liturgical_occasion": ["Lent"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"2 Cor 6:2","section":"1"},{"ref":"Ps 45:11","section":"1"},{"ref":"Ps 100:5","section":"2"},{"ref":"1 Cor 6:10","section":"2"},{"ref":"Prov 19:5","section":"2"},{"ref":"Wis 1:11","section":"2"},{"ref":"1 John 3:15","section":"2"},{"ref":"Matt 25:21","section":"3"}]
-  "word_count": 1385,
+  "scripture_refs": [{"ref":"2 Cor 6:2","section":"1"},{"ref":"Ps 45:11","section":"1"},{"ref":"Ps 100:5","section":"2"},{"ref":"1 Cor 6:10","section":"2"},{"ref":"Prov 19:5","section":"2"},{"ref":"Wis 1:11","section":"2"},{"ref":"1 John 3:15","section":"2"},{"ref":"Matt 25:21","section":"3"}],
+  "word_count": 1385
 },
 {
   "title": "On the Twofold Operation of Justice",
@@ -192,8 +192,8 @@
   "themes": ["Virtues · Charity","Virtues · Humility","Virtues · Obedience","Virtues · Justice","Virtues · Temperance","Vices · Pride","Vices · Envy","Sacraments · Confession","Moral · Almsgiving","Moral · Poverty","Last things · Judgement","Last things · Hell","Last things · Heaven","Ecclesiology · Priesthood"],
   "liturgical_occasion": ["No specific occasion"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"1 Tim 2:4","section":"1"},{"ref":"Matt 6:14","section":"2"},{"ref":"1 Pet 5:6","section":"2"},{"ref":"Luke 21:19","section":"2"},{"ref":"Prov 13:8","section":"2"},{"ref":"Exod 20:12","section":"2"},{"ref":"Matt 5:3","section":"2"},{"ref":"Ezek 33:11","section":"4"},{"ref":"Ezek 18:21","section":"4"}]
-  "word_count": 2508,
+  "scripture_refs": [{"ref":"1 Tim 2:4","section":"1"},{"ref":"Matt 6:14","section":"2"},{"ref":"1 Pet 5:6","section":"2"},{"ref":"Luke 21:19","section":"2"},{"ref":"Prov 13:8","section":"2"},{"ref":"Exod 20:12","section":"2"},{"ref":"Matt 5:3","section":"2"},{"ref":"Ezek 33:11","section":"4"},{"ref":"Ezek 18:21","section":"4"}],
+  "word_count": 2508
 },
 {
   "title": "Sermon for the Feast of the Most Holy Trinity",
@@ -206,8 +206,8 @@
   "themes": ["Virtues · Faith","Virtues · Humility","Virtues · Charity","Ecclesiology · Church","Scripture exposition · Psalms","Scripture exposition · John"],
   "liturgical_occasion": ["Votive"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Ps 66:8","section":"1"},{"ref":"John 3:2","section":"1"},{"ref":"Osee 4:1","section":"1"},{"ref":"Matt 23:8","section":"1"},{"ref":"1 John 5:7","section":"2"},{"ref":"John 3:12","section":"2"},{"ref":"John 17:3","section":"3"},{"ref":"Apoc 1:8","section":"4"},{"ref":"Ps 150:1","section":"4"},{"ref":"Eccli 43:4","section":"4"},{"ref":"Isa 6:1","section":"6"},{"ref":"1 Tim 6:16","section":"6"},{"ref":"Rom 1:20","section":"7"},{"ref":"Job 11:7","section":"7"},{"ref":"Gen 1:26","section":"8"},{"ref":"1 Cor 13:12","section":"8"},{"ref":"Matt 5:8","section":"8"},{"ref":"Wis 7:26","section":"8"},{"ref":"Ps 32:6","section":"9"},{"ref":"Mark 16:15","section":"9"},{"ref":"1 John 5:7","section":"9"},{"ref":"Luke 13:21","section":"10"},{"ref":"Rom 1:21","section":"11"},{"ref":"Ps 17:46","section":"13"},{"ref":"2 Tim 4:7","section":"14"},{"ref":"Lev 9:22","section":"16"},{"ref":"Ps 24:9","section":"16"},{"ref":"Matt 25:6","section":"17"},{"ref":"Prov 10:22","section":"18"},{"ref":"Ps 144:16","section":"19"},{"ref":"Eccli 40:17","section":"20"},{"ref":"Eph 1:3","section":"21"},{"ref":"Gen 32:26","section":"23"}]
-  "word_count": 5812,
+  "scripture_refs": [{"ref":"Ps 66:8","section":"1"},{"ref":"John 3:2","section":"1"},{"ref":"Osee 4:1","section":"1"},{"ref":"Matt 23:8","section":"1"},{"ref":"1 John 5:7","section":"2"},{"ref":"John 3:12","section":"2"},{"ref":"John 17:3","section":"3"},{"ref":"Apoc 1:8","section":"4"},{"ref":"Ps 150:1","section":"4"},{"ref":"Eccli 43:4","section":"4"},{"ref":"Isa 6:1","section":"6"},{"ref":"1 Tim 6:16","section":"6"},{"ref":"Rom 1:20","section":"7"},{"ref":"Job 11:7","section":"7"},{"ref":"Gen 1:26","section":"8"},{"ref":"1 Cor 13:12","section":"8"},{"ref":"Matt 5:8","section":"8"},{"ref":"Wis 7:26","section":"8"},{"ref":"Ps 32:6","section":"9"},{"ref":"Mark 16:15","section":"9"},{"ref":"1 John 5:7","section":"9"},{"ref":"Luke 13:21","section":"10"},{"ref":"Rom 1:21","section":"11"},{"ref":"Ps 17:46","section":"13"},{"ref":"2 Tim 4:7","section":"14"},{"ref":"Lev 9:22","section":"16"},{"ref":"Ps 24:9","section":"16"},{"ref":"Matt 25:6","section":"17"},{"ref":"Prov 10:22","section":"18"},{"ref":"Ps 144:16","section":"19"},{"ref":"Eccli 40:17","section":"20"},{"ref":"Eph 1:3","section":"21"},{"ref":"Gen 32:26","section":"23"}],
+  "word_count": 5812
 },
 {
   "title": "Why the Lenten Fasts Are to Be Venerated above Other Fasts",
@@ -220,7 +220,7 @@
   "themes": ["Virtues · Charity","Virtues · Temperance","Virtues · Fortitude","Virtues · Hope","Vices · Lust","Vices · Anger","Vices · Envy","Vices · Gluttony","Moral · Almsgiving","Last things · Judgement","Last things · Heaven"],
   "liturgical_occasion": ["Lent"],
   "audience": ["General faithful"],
-  "scripture_refs": [{"ref":"Eph 6:8","section":"1"},{"ref":"2 Cor 9:7","section":"1"},{"ref":"Matt 7:7","section":"2"}]
-  "word_count": 1271,
+  "scripture_refs": [{"ref":"Eph 6:8","section":"1"},{"ref":"2 Cor 9:7","section":"1"},{"ref":"Matt 7:7","section":"2"}],
+  "word_count": 1271
 }
 ]

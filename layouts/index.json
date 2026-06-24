@@ -13,8 +13,8 @@
   "themes": {{ $p.Params.themes | jsonify }},
   "liturgical_occasion": {{ $p.Params.liturgical_occasion | jsonify }},
   "audience": {{ $p.Params.audience | jsonify }},
-  "scripture_refs": {{ $p.Params.scripture_refs | jsonify }}
-  "word_count": {{ $p.WordCount }},
+  "scripture_refs": {{ $p.Params.scripture_refs | jsonify }},
+  "word_count": {{ $p.WordCount }}
 }
 {{- end }}
 ]

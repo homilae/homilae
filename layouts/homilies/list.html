@@ -32,7 +32,13 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="author-search" placeholder="Search authors or sermons…" oninput="filterAuthors(this.value)">
       </div>
-      <div class="browse-filter-row" id="period-filters"></div>
+      <div class="filter-dropdowns" style="margin-top:1rem">
+        <div class="filter-dropdown-wrap">
+          <select class="filter-dropdown" id="period-dropdown" onchange="setPeriodFromDropdown(this.value)">
+            <option value="">All Periods</option>
+          </select>
+        </div>
+      </div>
     </div>
 
     <div class="browse-wrap">
@@ -96,6 +102,7 @@
   let currentAuthor = null;
   let activeTheme = null;
   let activeOccasion = null;
+  let activeLength = null;
   let activePeriod = null;
 
   // Load author data
@@ -120,7 +127,17 @@ try {
       // Update total count
       document.getElementById('total-homily-count').textContent = allHomilies.length;
 
-   window.setThemeFromDropdown = function(val) {
+   window.setLengthFromDropdown = function(val) {
+    activeLength = val || null;
+    renderSermonList();
+  };
+
+  window.setPeriodFromDropdown = function(val) {
+    activePeriod = val || null;
+    renderAuthorGrid();
+  };
+
+  window.setThemeFromDropdown = function(val) {
     activeTheme = val || null;
     renderSermonList();
    };
@@ -129,13 +146,18 @@ try {
     activeOccasion = val || null;
     renderSermonList();
    };
-      // Build period filters
+      // Build period filter dropdown
       const periods = [...new Set(allHomilies.map(h => h.period).filter(Boolean))].sort();
-      buildPillFilters('period-filters', periods, val => {
-        activePeriod = activePeriod === val ? null : val;
-        renderAuthorGrid();
-        updatePillsActive('period-filters', activePeriod);
-      });
+      const periodDropdown = document.getElementById('period-dropdown');
+      if (periodDropdown) {
+        periodDropdown.innerHTML = '<option value="">All Periods</option>';
+        periods.forEach(p => {
+          const opt = document.createElement('option');
+          opt.value = p;
+          opt.textContent = p;
+          periodDropdown.appendChild(opt);
+        });
+      }
 
       // If URL has author param, go straight to detail view
       if (urlAuthor) {
