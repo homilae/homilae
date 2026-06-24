@@ -4,7 +4,7 @@ title_original: "Sermo III: In Festo SS. Trinitatis"
 author: "Innocent V"
 work_series: "Sermons (Innocent V)"
 number: 3
-date_composed: ""
+date_composed: "13th century AD"
 date_composed_circa: true
 language_original: "Latin"
 period: "High Medieval"
@@ -15,7 +15,6 @@ liturgical_occasion:
 
 audience:
   - "General faithful"
-  - "Clergy"
 
 themes:
   - "Virtues · Faith"
@@ -266,7 +265,7 @@ Et quomodo? Solent enim homines suo episcopo obviam exire, capulia deponere, ben
 
 {{< section "18" >}}
 
-Sed quid est ista benedictio quae est a nobis petenda? Scire debetis quod multiplex est benedictio Domini secundum quod ab ipso egrediuntur quatuor bona. Est benedictio fortuitae, quae consistit in bonis temporalibus. Prov. (10. 22.): «Benedictio Domini divites facit.» Et in Gen. (30. 29. 30.) dicit Jacob ad Laban: «nosti, qualiter tibi servierim, et quomodo benedixit te Deus ad introitum meum.» Istam multi desiderant; istam desiderabat Esau.
+Sed quid est ista benedictio quae est a nobis petenda? Scire debetis quod multiplex est benedictio Domini secundum quod ab ipso egrediuntur quatuor bona. Est benedictio fortunae, quae consistit in bonis temporalibus. Prov. (10. 22.): «Benedictio Domini divites facit.» Et in Gen. (30. 29. 30.) dicit Jacob ad Laban: «nosti, qualiter tibi servierim, et quomodo benedixit te Deus ad introitum meum.» Istam multi desiderant; istam desiderabat Esau.
 
 {{< /section >}}
 

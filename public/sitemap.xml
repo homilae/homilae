@@ -11,6 +11,8 @@
   </url><url>
     <loc>http://localhost:1313/authors/</loc>
   </url><url>
+    <loc>http://localhost:1313/homilies/</loc>
+  </url><url>
     <loc>http://localhost:1313/themes/christology--ascension/</loc>
   </url><url>
     <loc>http://localhost:1313/themes/christology--incarnation/</loc>
@@ -24,8 +26,6 @@
     <loc>http://localhost:1313/themes/ecclesiology--priesthood/</loc>
   </url><url>
     <loc>http://localhost:1313/</loc>
-  </url><url>
-    <loc>http://localhost:1313/homilies/</loc>
   </url><url>
     <loc>http://localhost:1313/homily_types/</loc>
   </url><url>

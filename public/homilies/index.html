@@ -20,9 +20,10 @@
   </header>
 
   
-<script id="author-data" type="application/json">
-    "{\"Innocent V\":{\"bio\":\"Innocent V (c. 1225–1276) was a Dominican friar, theologian, and the first Dominican to become Pope, reigning for only five months in 1276 before his death. Born Peter of Tarentaise in Burgundy, he studied and later taught theology in Paris, where he was a contemporary and colleague of Thomas Aquinas and Albert the Great. He produced a substantial commentary on the Sentences of Peter Lombard and was regarded as one of the leading scholastic theologians of his generation. As Archbishop of Lyon and later Cardinal Bishop of Ostia, he played a central role in the Second Council of Lyon (1274), which attempted reunion with the Eastern Church. Elected Pope on 21 January 1276, he died on 22 June of the same year — one of the shortest pontificates in history. He was beatified by Leo XIII in 1898. His Sermon 3 was printed in 1869, the other 24 are still only in manuscripts.\\n\",\"dates\":\"c. 1225–1276\",\"image\":\"/images/authors/innocentv.jpg\",\"image_caption\":\"Pope Innocent V, in the former Dominican convent of San Niccolo in Treviso painted in 1352 as part of a 40 friar fresco cycle by Tommaso da Modena\",\"slug\":\"innocent-v\",\"tradition\":\"Medieval Latin · Dominican\"},\"Pseudo-Boniface\":{\"bio\":\"The fifteen sermons printed under the name of Boniface of Mainz (c. 675–754) in Migne's Patrologia Latina (vol. 89, cols. 843–872) are today regarded by scholars as pseudo-Bonifacian — that is, transmitted under his name but not securely attributable to his pen. The collection was assembled for the Martène–Durand edition from a manuscript owned by Chancellor Daguesseau containing fourteen sermons, collated against two Swedish royal manuscripts identified by Mabillon, with a fifteenth added from a separate source; there is no single manuscript witness to all fifteen together. The Vatican manuscript bearing fourteen of the sermons carries the rubric Sermones sancti Bonifacii martiris ad populum et de baptismo, which locates them in an early medieval missionary context and associates them with Boniface's name, but the sermons are absent from Levison's critical MGH edition and from other standard collections of Boniface's authentic works. Current scholarship connects the collection to insular circles on the Continent and to Carolingian reform thought, with strong parallels to the Admonitio Generalis and Alcuinian theology, suggesting a late eighth- or early ninth-century compilation drawing on preaching materials from Boniface's missionary milieu. Whatever their precise origin, the sermons are historically significant documents of early medieval catechesis: addressed to recently converted or imperfectly Christianised communities, they offer a vivid picture of the doctrinal instruction, moral formation, and practical Christian duties — including the renunciation of surviving pagan practices — that defined the Bonifacian mission in Germania. This is the first English translation of the pseudo-Bonifacian sermons.\\n\",\"dates\":\"8th–9th century AD\",\"image\":\"/images/authors/bonifacemainz.jpg\",\"image_caption\":\"St. Boniface, depicted in a medieval manuscript\",\"slug\":\"pseudo-boniface\",\"tradition\":\"Carolingian Latin\"}}"
+  <script id="author-data" type="application/json">
+    "{\"Innocent V\":{\"bio\":\"Innocent V (c. 1225–1276) was a Dominican friar, theologian, and the first Dominican to become Pope, reigning for only five months in 1276 before his death. Born Peter of Tarentaise in Burgundy, he studied and later taught theology in Paris, where he was a contemporary and colleague of Thomas Aquinas and Albert the Great. He produced a substantial commentary on the Sentences of Peter Lombard and was regarded as one of the leading scholastic theologians of his generation. As Archbishop of Lyon and later Cardinal Bishop of Ostia, he played a central role in the Second Council of Lyon (1274), which attempted reunion with the Eastern Church. Elected Pope on 21 January 1276, he died on 22 June of the same year — one of the shortest pontificates in history. He was beatified by Leo XIII in 1898. His Sermon on the Trinity was printed in 1869, the other 24 are still only in manuscripts.\\n\",\"dates\":\"c. 1225–1276\",\"image\":\"/images/authors/innocentv.jpg\",\"image_caption\":\"Pope Innocent V, in the former Dominican convent of San Niccolo in Treviso painted in 1352 as part of a 40 friar fresco cycle by Tommaso da Modena\",\"slug\":\"innocent-v\",\"tradition\":\"Medieval Latin · Dominican\"},\"Pseudo-Boniface\":{\"bio\":\"The fifteen sermons printed under the name of Boniface of Mainz (c. 675–754) in Migne's Patrologia Latina (vol. 89, cols. 843–872) are today regarded by scholars as pseudo-Bonifacian — that is, transmitted under his name but not securely attributable to his pen. The collection was assembled for the Martène–Durand edition from a manuscript owned by Chancellor Daguesseau containing fourteen sermons, collated against two Swedish royal manuscripts identified by Mabillon, with a fifteenth added from a separate source; there is no single manuscript witness to all fifteen together. The Vatican manuscript bearing fourteen of the sermons carries the rubric Sermones sancti Bonifacii martiris ad populum et de baptismo, which locates them in an early medieval missionary context and associates them with Boniface's name, but the sermons are absent from Levison's critical MGH edition and from other standard collections of Boniface's authentic works. Current scholarship connects the collection to insular circles on the Continent and to Carolingian reform thought, with strong parallels to the Admonitio Generalis and Alcuinian theology, suggesting a late eighth- or early ninth-century compilation drawing on preaching materials from Boniface's missionary milieu. Whatever their precise origin, the sermons are historically significant documents of early medieval catechesis: addressed to recently converted or imperfectly Christianised communities, they offer a vivid picture of the doctrinal instruction, moral formation, and practical Christian duties — including the renunciation of surviving pagan practices — that defined the Bonifacian mission in Germania. This is the first English translation of the pseudo-Bonifacian sermons.\\n\",\"dates\":\"8th–9th century AD\",\"image\":\"/images/authors/bonifacemainz.jpg\",\"image_caption\":\"St. Boniface, depicted in a medieval manuscript\",\"slug\":\"pseudo-boniface\",\"tradition\":\"Carolingian Latin\"}}"
   </script>
+
   
   <div id="view-authors" class="browse-view">
     <div class="browse-hero">
@@ -49,32 +50,18 @@
         <button onclick="showAuthorIndex()" class="back-btn">← All Authors</button>
       </div>
       <div class="author-detail-header">
-        <div class="author-detail-text">
+        <div>
           <h1 class="author-detail-name" id="detail-name"></h1>
           <div class="author-detail-meta" id="detail-meta"></div>
-          <p class="author-detail-bio" id="detail-bio"></p>
-        </div>
-        <div class="author-detail-image-wrap" id="detail-image-wrap" style="display:none">
-          <img class="author-detail-image" id="detail-image" src="" alt="">
-          <div class="author-detail-caption" id="detail-caption"></div>
         </div>
       </div>
+      <p class="author-detail-bio" id="detail-bio"></p>
       <div class="browse-search-box" style="margin-top:1.2rem">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="sermon-search" placeholder="Search within this author's sermons…" oninput="filterSermons(this.value)">
       </div>
-      <div class="filter-dropdowns">
-        <div class="filter-dropdown-wrap">
-          <select class="filter-dropdown" id="theme-dropdown" onchange="setThemeFromDropdown(this.value)">
-            <option value="">All Themes</option>
-          </select>
-        </div>
-        <div class="filter-dropdown-wrap">
-          <select class="filter-dropdown" id="occasion-dropdown" onchange="setOccasionFromDropdown(this.value)">
-            <option value="">All Occasions</option>
-          </select>
-        </div>
-      </div>
+      <div class="browse-filter-row" id="theme-filters"></div>
+      <div class="browse-filter-row" id="occasion-filters" style="margin-top:0.4rem"></div>
     </div>
 
     <div class="browse-wrap">
@@ -91,14 +78,12 @@
   let activePeriod = null;
 
   
-try {
+  try {
     let raw = document.getElementById('author-data').textContent.trim();
     let parsed = JSON.parse(raw);
-    while (typeof parsed === 'string') {
-      parsed = JSON.parse(parsed);
-    }
+    while (typeof parsed === 'string') { parsed = JSON.parse(parsed); }
     authorData = parsed;
-  } catch(e) { console.error('Author data error:', e); }
+  } catch(e) {}
 
   
   const urlParams = new URLSearchParams(window.location.search);
@@ -112,15 +97,6 @@ try {
       
       document.getElementById('total-homily-count').textContent = allHomilies.length;
 
-   window.setThemeFromDropdown = function(val) {
-    activeTheme = val || null;
-    renderSermonList();
-   };
-
-   window.setOccasionFromDropdown = function(val) {
-    activeOccasion = val || null;
-    renderSermonList();
-   };
       
       const periods = [...new Set(allHomilies.map(h => h.period).filter(Boolean))].sort();
       buildPillFilters('period-filters', periods, val => {
@@ -179,20 +155,15 @@ try {
       return;
     }
 
-let html = filtered.map(({ name, data, homilies, count }) => `
-  <div class="author-card" onclick="showAuthorDetail('${name.replace(/'/g, "\\'")}')">
-    <div class="author-card-left">
-      <div class="author-card-period">${data.tradition || ''}</div>
-      <div class="author-card-name">${name}</div>
-      <div class="author-card-dates">${data.dates || ''}</div>
-      <div class="author-card-desc">${(data.bio || data.description || '').substring(0, 120)}…</div>
-      <div class="author-card-count">${count} ${count === 1 ? 'homily' : 'homilies'}</div>
-    </div>
-    <div class="author-card-right">
-      ${data.image ? `<img src="${data.image}" alt="${name}" class="author-card-img">` : ''}
-    </div>
-  </div>
-`).join('');
+    let html = filtered.map(({ name, data, homilies, count }) => `
+      <div class="author-card" onclick="showAuthorDetail('${name.replace(/'/g, "\\'")}')">
+        <div class="author-card-period">${data.tradition || ''}</div>
+        <div class="author-card-name">${name}</div>
+        <div class="author-card-dates">${data.dates || ''}</div>
+        <div class="author-card-desc">${(data.description || '').substring(0, 120)}…</div>
+        <div class="author-card-count">${count} ${count === 1 ? 'homily' : 'homilies'}</div>
+      </div>
+    `).join('');
 
     if (extraHomilies.length > 0) {
       html += `<div class="search-also-label">Sermons matching "${term}"</div>`;
@@ -225,42 +196,24 @@ let html = filtered.map(({ name, data, homilies, count }) => `
     document.getElementById('detail-name').textContent = authorName;
     document.getElementById('detail-meta').textContent =
       [data.dates, data.tradition].filter(Boolean).join(' · ');
-    document.getElementById('detail-bio').textContent = data.bio || data.description || '';
-    const imageWrap = document.getElementById('detail-image-wrap');
-    const imageEl = document.getElementById('detail-image');
-    const captionEl = document.getElementById('detail-caption');
-
-    if (data.image) {
-      imageEl.src = data.image;
-      imageEl.alt = authorName;
-      captionEl.textContent = data.image_caption || '';
-      imageWrap.style.display = 'block';
-    } else {
-      imageWrap.style.display = 'none';
-    }
+    document.getElementById('detail-bio').textContent = data.description || '';
     document.getElementById('sermon-search').value = '';
 
+    
     const themes = [...new Set(homilies.flatMap(h => h.themes || []).filter(Boolean))].sort();
-    const themeDropdown = document.getElementById('theme-dropdown');
-    themeDropdown.innerHTML = '<option value="">All Themes</option>';
-    themes.forEach(t => {
-      const opt = document.createElement('option');
-      opt.value = t;
-      opt.textContent = t;
-      themeDropdown.appendChild(opt);
-    });
-    themeDropdown.value = '';
+    buildPillFilters('theme-filters', themes, val => {
+      activeTheme = activeTheme === val ? null : val;
+      renderSermonList();
+      updatePillsActive('theme-filters', activeTheme);
+    }, 'Theme: ');
 
+    
     const occasions = [...new Set(homilies.flatMap(h => h.liturgical_occasion || []).filter(Boolean))].sort();
-    const occasionDropdown = document.getElementById('occasion-dropdown');
-    occasionDropdown.innerHTML = '<option value="">All Occasions</option>';
-    occasions.forEach(o => {
-      const opt = document.createElement('option');
-      opt.value = o;
-      opt.textContent = o;
-      occasionDropdown.appendChild(opt);
-    });
-    occasionDropdown.value = '';
+    buildPillFilters('occasion-filters', occasions, val => {
+      activeOccasion = activeOccasion === val ? null : val;
+      renderSermonList();
+      updatePillsActive('occasion-filters', activeOccasion);
+    }, 'Occasion: ');
 
     
     window.history.pushState({}, '', '/homilies/?author=' + encodeURIComponent(

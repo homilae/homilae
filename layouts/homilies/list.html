@@ -63,7 +63,7 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="sermon-search" placeholder="Search within this author's sermons…" oninput="filterSermons(this.value)">
       </div>
-      <div class="filter-dropdowns">
+<div class="filter-dropdowns">
         <div class="filter-dropdown-wrap">
           <select class="filter-dropdown" id="theme-dropdown" onchange="setThemeFromDropdown(this.value)">
             <option value="">All Themes</option>
@@ -72,6 +72,14 @@
         <div class="filter-dropdown-wrap">
           <select class="filter-dropdown" id="occasion-dropdown" onchange="setOccasionFromDropdown(this.value)">
             <option value="">All Occasions</option>
+          </select>
+        </div>
+        <div class="filter-dropdown-wrap">
+          <select class="filter-dropdown" id="length-dropdown" onchange="setLengthFromDropdown(this.value)">
+            <option value="">All Lengths</option>
+            <option value="short">Short (under 1000 words)</option>
+            <option value="medium">Medium (1000–3000 words)</option>
+            <option value="long">Long (over 3000 words)</option>
           </select>
         </div>
       </div>
@@ -291,12 +299,21 @@ let html = filtered.map(({ name, data, homilies, count }) => `
 
     let homilies = allHomilies.filter(h => h.author === currentAuthor);
 
-    if (term) homilies = homilies.filter(h =>
+if (term) homilies = homilies.filter(h =>
       h.title.toLowerCase().includes(term) ||
       (h.work_series || '').toLowerCase().includes(term)
     );
     if (activeTheme) homilies = homilies.filter(h => (h.themes || []).includes(activeTheme));
     if (activeOccasion) homilies = homilies.filter(h => (h.liturgical_occasion || []).includes(activeOccasion));
+    if (activeLength) {
+      homilies = homilies.filter(h => {
+        const wc = h.word_count || 0;
+        if (activeLength === 'short') return wc < 2000;
+        if (activeLength === 'medium') return wc >= 2000 && wc <= 6000;
+        if (activeLength === 'long') return wc > 6000;
+        return true;
+      });
+    }
 
     if (homilies.length === 0) {
       list.innerHTML = '<div class="browse-empty">No sermons match.</div>';
@@ -341,6 +358,7 @@ let html = filtered.map(({ name, data, homilies, count }) => `
             ${h.date_composed ? '<span>' + h.date_composed + '</span>' : ''}
             ${h.liturgical_occasion && h.liturgical_occasion[0] !== 'No specific occasion'
               ? '<span>' + h.liturgical_occasion[0] + '</span>' : ''}
+            ${h.word_count ? '<span>' + h.word_count.toLocaleString() + ' words</span>' : ''}
           </div>
         </div>
         <div class="lang-badge lang-${(h.language_original||'').toLowerCase()}">${h.language_original||''}</div>
